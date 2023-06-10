@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: hsl(0, 0%, 80%);
+  font-size: 14px;
+  font-family: "Raleway", sans-serif; 
+}
+
+.section__container {
+  display: flex;
+  height: 100vh;
+  min-height: 600px;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__container {
+  width: 50%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 32px hsla(0, 0%, 0%, 0.3);
+}
+
+.image__content {
+  width: 50%;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.image__img {
+  width: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+.form__content {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.form {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 0 3rem;
+}
+
+.form__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__paragraph {
+  font-weight: 300;
+}
+
+.msg {
+  color: #f00909;
+  opacity: 0;
+}
+
+.msg.active {
+  opacity: 1;
+}
+
+.form__link {
+  font-weight: 400;
+  color: black;
+}
+
+.form__container {
+  margin-top: 3rem;
+  display: grid;
+  grid-gap: 2.5rem;
+}
+
+.form__group {
+  position: relative;
+}
+
+.form__input {
+  width: 90%;
+  background: none;
+  color: #706c6c;
+  font-size: 1rem;
+  padding: 0.6rem 0.3rem;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #706c6c;
+  font-family: raleway;
+  z-index: 100;
+  position: relative;
+}
+
+.form__input:not(:placeholder-shown) {
+  color: #000000;
+}
+
+input[type="password"] {
+  font-weight: bold; /* Hace los puntos más gruesos */
+}
+
+.form__label {
+  color: #706c6c;
+  position: absolute;
+  bottom: 25%;
+  left: 5%;
+  transition: transform 0.5s, color 0.3s;
+}
+
+.form__input:focus+.form__label {
+  transform: translateY(-175%);
+}
+
+.form__label.fixed {
+  transform: translateY(-175%);
+}
+
+.form__submit {
+  background-color: hsl(0, 0%, 25%);
+  color: white;
+  font-family: "Raleway", sans-serif; 
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.form__submit:hover{
+  background-color: hsl(0, 1%, 37%);
+
+}
+
+/* Media query para pantallas con ancho máximo de 767px */
+@media screen and (max-width: 767px) {
+  /* Cambiar la dirección de flexión a column */
+  .card__container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+    height: 80%;
+    grid: flex;
+  }
+  /* Ajustar los estilos del contenedor de la imagen */
+  .image__content {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+  }
+  /* Ocultar la imagen en pantallas pequeñas */
+  .image__img {
+    width: 0;
+    border-radius: 10px 10px 0 0;
+  }
+  /* Ajustar los estilos del contenido del formulario */
+  .form__content {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+/* Media query para pantallas con ancho máximo de 767px y altura máxima de 1075px */
+@media screen and (max-height: 1075px) and (max-width: 767px) {
+  /* Ajustar los estilos del formulario */
+  .form {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+}
+
+/* Media query para pantallas con ancho máximo de 767px y altura máxima de 850px */
+/*es decir, los cambios realizados aqui se veran con pantallas con 766 x 849*/
+@media screen and (max-height: 850px) and (max-width: 767px) {
+  /* Ocultar el contenido de la imagen */
+  .image__content {
+    display: none;
+  }
+  /* Ajustar los estilos del formulario */
+  .form {
+    padding: 1rem 3rem;
+  }
+  /* Ajustar los estilos del contenido del formulario */
+  .form__content {
+    width: 100%;
+    height: 100%;
+  }
+  /* Ajustar los estilos del contenedor de la tarjeta */
+  .card__container {
+    display: flex;
+    flex-direction: none;
+    justify-content: none;
+    width: 80%;
+    height: 80%;
+    justify-content: space-around;
+  }
+}
+
+/* Media query para pantallas con ancho mínimo de 767px y altura máxima de 850px */
+/*es decir, los cambios realizados aqui se veran con pantallas con 767 x 849*/
+@media screen and (max-height: 850px) and (min-width: 767px) {
+  /* Ajustar los estilos del formulario */
+  .form {
+    padding: 0 1rem;
+  }
+  /* Ajustar los estilos del contenedor de la tarjeta */
+  .card__container {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+/* Media query para pantallas con ancho máximo de 767px y altura máxima de 1275px */
+@media screen and (max-height: 1275px) and (max-width: 767px) {
+  /* Ajustar los estilos del contenido de la imagen */
+  .image__content {
+    display: none;
+  }
+  /* Ajustar los estilos del contenido del formulario */
+  .form__content {
+    width: 100%;
+    height: 100%;
+    
+  }
+}
+
+/* Media query para pantallas con ancho máximo de 378px */
+@media screen and (max-width: 378px) {
+  /* Ajustar los estilos del formulario */
+  .form {
+    padding: 0 1rem;
+  }
+  /* Ajustar los estilos del contenedor de la tarjeta */
+  .card__container {
+    width: 80%;
+    height: 80%;
+  }
+}
+
+/* Media query para pantallas con altura máxima de 500px */
+@media screen and (max-height: 500px) {
+  /* Ajustar los estilos del contenedor del formulario */
+  .form__container {
+    margin-top: 0.8rem;
+    display: grid;
+    grid-gap: 1.5rem;
+  }
+  /* Ajustar los estilos del contenedor de la tarjeta */
+  .card__container {
+    width: 80%;
+    height: 90%;
+  }
+}
+
+/* Media query para pantallas con altura máxima de 350px */
+@media screen and (max-height: 350px) {
+  /* Ajustar los estilos del contenedor del formulario */
+  .form__container {
+    margin-top: 0.5rem;
+    display: grid;
+    grid-gap: 1.2rem;
+  }
+  /* Ajustar los estilos del contenedor de la tarjeta */
+  .card__container {
+    width: 80%;
+    height: 95%;
+  }
+}
+
+
+/*
+Iphone SE: Bien
+Iphone X: Bien
+Iphone 12: Bien
+Pixel 5: Bien
+Galaxy S8+: Bien
+Samsung Galaxy 20 ultra: Bien
+Ipad air: Arreglar posicion
+Ipad mini: Arreglar posicion
+Surface pro 7: Arreglar posicion
+Surface duo: Bien
+Galaxy fold: Bien
+Galaxy A51/71: Bien
+Nest hub: Bien 
+Nest hub max: Bien 
+
+
+Por arreglar: 
+Iphone XR: Arreglar posicion
+Pixel 5: Arreglar posicion
+Samsung Galaxy 20 ultra: Arreglar posicion
+Ipad air: Arreglar posicion
+Ipad mini: Arreglar posicion
+Surface pro 7: Arreglar posicion
+Galaxy A51/71:Arreglar posicion
+*/
