@@ -1,0 +1,133 @@
+/* Estilos generales del documento */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: black;
+}
+
+/* Estilos del encabezado */
+header {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Estilos del logotipo */
+.logo {
+  font-size: 1.5rem;
+}
+
+/* Estilos del texto del encabezado */
+.header-text {
+  font-size: 1.5rem;
+}
+
+/* Estilos de los botones en el encabezado */
+.buttons {
+  display: flex;
+}
+
+/* Estilos generales de los botones */
+button {
+  cursor: pointer;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 25px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos de los botones al pasar el mouse por encima */
+button:hover {
+  background-color: #f8f8f8;
+  color: black;
+}
+
+/* Estilos para el contenido principal */
+main {
+  padding: 25px;
+  max-width: 600px;
+  margin: 25px auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los conjuntos de campos */
+fieldset {
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+/* Estilos para la leyenda de los conjuntos de campos */
+legend {
+  font-weight: bold;
+}
+
+/* Estilos para las etiquetas de los campos */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Estilos para los campos de entrada (input, textarea, select) */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Estilos para los botones de "Agregar" y "Enviar" */
+.btn-agregar,
+.btn-enviar {
+  background-color: black;
+  color: white;
+}
+
+/* Estilos para los botones de "Agregar" y "Enviar" al pasar el mouse por encima */
+.btn-agregar:hover,
+.btn-enviar:hover {
+  background-color: #f8f8f8;
+  color: black;
+}
+
+/* Estilos para el menú desplegable (select) */
+select {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+/* Estilos para el área de texto (textarea) que permite redimensionar verticalmente */
+textarea {
+  resize: vertical;
+}
+
+/* Estilos para el mensaje de éxito */
+.mensaje-exito {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Para que aparezca por encima de otros elementos */
+}

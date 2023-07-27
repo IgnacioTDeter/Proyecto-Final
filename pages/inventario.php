@@ -65,7 +65,7 @@ $query_orders = "SELECT * FROM pedidos";
         <div class="add__div">
           <button class="add__btn">
             <i class="ri-add-circle-fill"></i>
-            Añadir
+            <a href="../pages/pedidos.html">Añadir</a>
           </button>
         </div>
 
