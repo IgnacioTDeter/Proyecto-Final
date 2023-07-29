@@ -38,8 +38,8 @@
     <h2><?php echo $msg_welcome ?></h2>
     <h2><?php echo $mode ?></h2>
     <a href="pages/login.html">Login</a>
-    <a href="pages/inventario.php">Inventario</a>
-    <a href="pages/guardar_pedido.php">Guardar pedido</a>
+    <a href="pages/pedidos.php">Inventario</a> <!--esto tecnicamente te lleva al inventario, como no esta subido nos lleva a los pedidos a modo de ejemplo-->
+    <a href="pages/guardar_pedido.php">Guardar pedido</a><!--este formulario tambien funciona a modo de ejemplo ya que no esta subido el final-->
     <a href="php/logout.php">Logout</a>
 
 </body>
