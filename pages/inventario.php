@@ -26,7 +26,7 @@
         </div>
         <ul class="nav__list">
           <li class="nav__iteam">
-            <a href="" class="nav__link">Pedidos</a>
+            <a href="pedidos.php" class="nav__link">Pedidos</a>
           </li>
           <li class="nav__iteam">
             <a href="inventario.php" class="nav__link">Inventario</a>
