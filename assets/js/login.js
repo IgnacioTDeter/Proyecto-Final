@@ -7,7 +7,7 @@ form.addEventListener('submit', (e) => {
 
     const data = new FormData(form);
 
-    fetch('../php/login.php', {
+    fetch('./php/login.php', {
         method: 'POST',
         body: data
     }) 
