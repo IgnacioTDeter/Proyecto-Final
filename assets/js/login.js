@@ -24,7 +24,7 @@ form.addEventListener('submit', (e) => {
             msg.classList.add('active');
         } else if (data === 'success') {
             form.reset();
-            window.location = "../index.php";
+            window.location = "./pages/inventario.php";
         }
     })
     .catch(error => console.log(error))
