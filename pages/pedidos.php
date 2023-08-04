@@ -1,8 +1,21 @@
 <?php
 include('../php/connect_bd.php');
 
-$query_orders = "SELECT * FROM pedidos";
-
+if (isset($_GET['enviar'])) {
+    $busqueda = $_GET['search'];
+  
+    if (!empty($busqueda)) {
+      $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitizar la entrada
+      $sql = "SELECT * FROM pedidos WHERE alumno LIKE '" . $busqueda . "'";
+      
+    } 
+    else {
+      $sql = "SELECT * FROM pedidos";
+    }
+  
+  }else {
+    $sql = "SELECT * FROM pedidos";
+  }
 ?> 
 
 <!DOCTYPE html>
@@ -63,16 +76,19 @@ $query_orders = "SELECT * FROM pedidos";
       </div>
       <div class="action__div">
         <div class="add__div">
-          <button class="add__btn">
+          <a href="formulario.html"><button class="add__btn">
             <i class="ri-add-circle-fill"></i>
             Añadir
-          </button>
+          </button></a>
         </div>
 
+        <form method="GET" action="pedidos.php">
         <div class="search__container">
-          <input type="text" class="search__input" placeholder="Buscar..." />
-          <button class="search__button">Buscar</button>
+          <input name="search" type="search" class="search__input" placeholder="Buscar..." />
+          <button class="search__button" type="submit" name="enviar">Buscar</button>
         </div>
+      </form>
+      
       </div>
     </section>
 
@@ -90,7 +106,7 @@ $query_orders = "SELECT * FROM pedidos";
           </thead>
 
           <?php
-            $orders = mysqli_query($conexion, $query_orders);
+            $orders = mysqli_query($conexion, $sql);
 
             while($row = mysqli_fetch_assoc($orders)) {
               ?>

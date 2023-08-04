@@ -1,3 +1,26 @@
+<?php
+include('../php/connect_bd.php');
+
+
+
+if (isset($_GET['enviar'])) {
+  $busqueda = $_GET['search'];
+
+  if (!empty($busqueda)) {
+    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitizar la entrada
+    $sql = "SELECT * FROM Inventario 
+    WHERE herramienta LIKE '" . $busqueda . "'";
+    
+  } 
+  else {
+    $sql = "SELECT * FROM Inventario";
+  }
+
+}else {
+  $sql = "SELECT * FROM inventario";
+}
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +74,14 @@
 
     <section class="section__search">
       
+      <form method="GET" action="inventario.php">
         <div class="search__container">
-          <input type="text" class="search__input" placeholder="Buscar..." />
-          <button class="search__button">Buscar</button>
+          <input name="search" type="search" class="search__input" placeholder="Buscar..." />
+          <button class="search__button" type="submit" name="enviar">Buscar</button>
         </div>
+      </form>
       
+     
     </section>
 
     <section class="section__table">
@@ -72,44 +98,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                  // Conexión a la base de datos
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "tec1";
+                <?php
+            $orders = mysqli_query($conexion, $sql );
 
-                  $conn = new mysqli($servername, $username, $password, $dbname);
-
-                  // Verificar la conexión
-                  if ($conn->connect_error) {
-                      die("Error de conexión: " . $conn->connect_error);
-                  }
-
-                  // Consulta SQL para obtener los datos del inventario
-                  $sql = "SELECT herramienta, cantidad, rubro, sub_rubro, proveedor, ubicacion FROM Inventario";
-                  $result = $conn->query($sql);
-
-                  // Mostrar los datos del inventario en la tabla
-                  if ($result->num_rows > 0) {
-                      while ($row = $result->fetch_assoc()) {
-                          echo "<tr class='tr'>";
-                          echo "<td class='table_cell table_cell-0'>" . $row["herramienta"] . "</td>";
-                          echo "<td class='table__cell'>" . $row["cantidad"] . "</td>";
-                          echo "<td class='table__cell'>" . $row["rubro"] . "</td>";
-                          echo "<td class='table__cell'>" . $row["sub_rubro"] . "</td>";
-                          echo "<td class='table__cell'>" . $row["proveedor"] . "</td>";
-                          echo "<td class='table__cell'>" . $row["ubicacion"] . "</td>";
-                          echo "</tr>";
-                      }
-                  } else {
-                      echo "<tr class='tr'>";
-                      echo "<td colspan='6'>No hay herramientas disponibles en el inventario.</td>";
-                      echo "</tr>";
-                  }
-
-                  $conn->close();
-                  ?>
+            while($row = mysqli_fetch_assoc($orders)) {
+              ?>
+              <tr class="tr">
+                <td class="table__cell table__cell-0"><?php echo $row['herramienta'];?></td>
+                  <td class="table__cell"><?php echo $row['cantidad'];?></td>
+                  <td class="table__cell"><?php echo $row['rubro'];?></td>
+                  <td class="table__cell"><?php echo $row['sub_rubro'];?></td>
+                  <td class="table__cell"><?php echo $row['proveedor'];?></td>
+                  <td class="table__cell"><?php echo $row['ubicacion'];?></td>
+              </tr>
+          <?php
+            }
+            mysqli_free_result($orders);
+          ?>
                 </tbody>
               </table>
               
