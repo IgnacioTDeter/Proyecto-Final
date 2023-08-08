@@ -34,7 +34,7 @@ form.addEventListener('submit', (e) => {
                 msg.classList.add('active');
                 overlay.classList.add('active');
                 form.reset();
-                window.location = "inventario.php";
+                window.location = "inventory.php";
             }
         })
         .catch(error => console.log(error))
