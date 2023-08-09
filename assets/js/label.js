@@ -1,4 +1,4 @@
-function Form() {
+
     let inputs = document.querySelectorAll('.form__input');
 
     for ( let i = 0; i < inputs.length; i++) {
@@ -11,6 +11,3 @@ function Form() {
             }
         })
     } 
-}
-
-Form()
