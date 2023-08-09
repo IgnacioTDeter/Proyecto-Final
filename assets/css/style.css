@@ -425,6 +425,9 @@ a {
   cursor: pointer;
 }
 
+.add__btn__a{
+  color: var(--text-white);
+}
 .add__btn:hover {
   background-color: hsl(215, 100%, 35%);
 }
