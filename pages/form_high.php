@@ -21,7 +21,7 @@ if(!isset($_SESSION['user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="../assets/css/form_high.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet"/>
 
