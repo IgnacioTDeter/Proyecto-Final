@@ -92,15 +92,15 @@ select {
 /* Estilos para los botones de "Agregar" y "Enviar" */
 .btn-agregar,
 .btn-enviar {
-  background-color: black;
+  background-color: hsl(215, 100%, 50%);
   color: white;
 }
 
 /* Estilos para los botones de "Agregar" y "Enviar" al pasar el mouse por encima */
 .btn-agregar:hover,
 .btn-enviar:hover {
-  background-color: #f8f8f8;
-  color: black;
+  background-color: hsl(215, 100%, 35%);
+  color: white;
 }
 
 /* Estilos para el menú desplegable (select) */
