@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Pedido</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <!-- header -->
+    <header class="hero">
+      <input type="checkbox" id="nav__check" hidden />
+      <label for="nav__check" class="hamburger">
+        <i class="ri-menu-line hamburger__icon"></i>
+      </label>
+      <nav class="nav">
+        <div class="hero__logo hero__logo-1">
+          <img
+            class="hero__logo-img"
+            src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4"
+            alt="logo"
+          />
+          <h2 class="title__hero">Pañol</h2>
+          <label for="nav__check" class="hamburger">
+            <i class="ri-menu-fold-line hamburger__icon"></i>
+          </label>
+        </div>
+        <ul class="nav__list">
+          <li class="nav__iteam">
+            <a href="pedidos.php" class="nav__link">Pedidos</a>
+          </li>
+          <li class="nav__iteam">
+            <a href="inventario.php" class="nav__link">Inventario</a>
+          </li>
+          <li class="nav__iteam">
+            <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="hero__logo hero__logo-0">
+        <img
+          class="hero__logo-img"
+          src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4"
+          alt="logo"
+        />
+        <h2 class="title__hero">Pañol</h2>
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <!-- Agregamos un contenedor para el mensaje de éxito -->
+      <div id="mensajeExito" class="mensaje-exito"></div>
+
+      <!-- Formulario de pedido -->
+      <form
+        id="pedidoForm"
+        class="pedido-form"
+        method="post"
+        action="guardar_pedido.php"
+        onsubmit="return validarFormulario()"
+      >
+        <!-- Datos del Solicitante -->
+        <fieldset class="solicitante-fieldset">
+          <legend>Datos del Solicitante</legend>
+          <label for="dia">Día</label>
+          <input type="date" id="dia" name="dia" required />
+          <label for="profesor">Profesor</label>
+          <input type="text" id="profesor" name="profesor" required />
+          <label for="alumno">Alumno</label>
+          <input type="text" id="alumno" name="alumno" required />
+          <label for="salon">Salón</label>
+          <input type="text" id="salon" name="salon" required />
+          <label for="curso">Curso</label>
+          <input type="text" id="curso" name="curso" required />
+        </fieldset>
+
+        <!-- Datos del Pedido -->
+        <fieldset class="pedido-fieldset">
+          <legend>Datos del Pedido</legend>
+          <label for="cantidad">Cantidad Solicitada</label>
+          <input type="number" id="cantidad" name="cantidad" min="1" required />
+
+          <!-- Desplegable de herramientas -->
+          <label for="herramienta">Herramienta</label>
+          <select id="herramienta" name="herramienta" required>
+            <option value="">Seleccione una opción</option>
+            <option value="Cinta métrica">Cinta métrica</option>
+            <option value="Destornillador">Destornillador</option>
+            <option value="Llave ajustable">Llave ajustable</option>
+            <option value="Martillo">Martillo</option>
+            <option value="Nivel de burbuja">Nivel de burbuja</option>
+            <option value="Pala">Pala</option>
+            <option value="Sierra eléctrica">Sierra eléctrica</option>
+            <option value="Taladro inalámbrico">Taladro</option>
+          </select>
+        </fieldset>
+
+        <!-- Botones del formulario -->
+        <button type="submit" class="form__submit button">Enviar</button>
+      </form>
+    </main>
+
+    <!-- Script JavaScript para el formulario -->
+    <script src="../assets/js/pedidos.js"></script>
+  </body>
+</html>
