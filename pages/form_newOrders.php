@@ -114,5 +114,6 @@ if (isset($_POST['dia'], $_POST['profesor'], $_POST['alumno'], $_POST['salon'], 
 
     <!-- Script JavaScript para el formulario -->
     <script src="../assets/js/orders.js"></script>
+       <script src="../assets/js/add_tool.js"></script>
   </body>
 </html>
