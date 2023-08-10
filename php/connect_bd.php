@@ -6,3 +6,4 @@ $conexion = mysqli_connect('localhost', 'root', '', 'tec1');
 //     echo '<h1>CONECTADO EXITOSAMENTE</h1>';
 // }
 /**/
+/* */
