@@ -86,7 +86,7 @@ if (isset($_POST['dia'], $_POST['profesor'], $_POST['alumno'], $_POST['salon'], 
       <!-- Formulario de pedido -->
       <form id="pedidoForm" method="post" action="form_newOrders.php" >
         <!-- Datos de la herramienta -->
-        <fieldset>
+        <fieldset id="fieldset">
         <legend>Datos del Pedido</legend>
         <label for="dia">Día </label>
         <input id="dia" name="dia" type="date" required>
