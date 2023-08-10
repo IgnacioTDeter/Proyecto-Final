@@ -108,12 +108,10 @@ if (isset($_POST['dia'], $_POST['profesor'], $_POST['alumno'], $_POST['salon'], 
         
         <!-- Botones del formulario -->
         <button type="submit" class="btn-enviar">Enviar</button>
-        <div class="btn-enviar" id="add_tool">Agregar herramienta</div>
       </form>
     </main>
 
     <!-- Script JavaScript para el formulario -->
     <script src="../assets/js/orders.js"></script>
-    <script src="../assets/js/add_tool.js"></script>
   </body>
 </html>
