@@ -65,9 +65,6 @@ if (isset($_POST['dia'], $_POST['profesor'], $_POST['alumno'], $_POST['salon'], 
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
         <li class="nav__iteam">
-          <a href="form_high.php" class="nav__link">Dar de alta</a>
-        </li>
-        <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
         </li>
       </ul>
