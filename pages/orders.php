@@ -1,17 +1,17 @@
 <?php
 include('../php/connect_bd.php');
 
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['user'])) {
-//   echo '<script>
-//     alert("Debes iniciar sesión para acceder");
-//     window.location =  "../php/index.html";
-//   </script>';
+if (!isset($_SESSION['user'])) {
+  echo '<script>
+    alert("Debes iniciar sesión para acceder");
+    window.location =  "../php/index.php";
+  </script>';
 
-//   session_destroy();
-//   die();
-// }
+  session_destroy();
+  die();
+}
 
 if (isset($_GET['enviar'])) {
   $busqueda = $_GET['search'];
