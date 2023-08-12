@@ -13,6 +13,8 @@ if (!isset($_SESSION['user'])) {
 
   session_destroy();
   die();
+}
+
 $update = false;
 $del = false;
 $dia = date("Y-m-d");
