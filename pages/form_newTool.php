@@ -1,6 +1,19 @@
 <?php
 include("../php/connect_bd.php");
 
+session_start();
+
+if (!isset($_SESSION['user'])) {
+
+  echo '<script>
+    alert("Debes iniciar sesión para acceder");
+    window.location = "../index.php";
+  </script>';
+
+
+  session_destroy();
+  die();
+
 if (isset($_POST['nombre'], $_POST['cantidad'], $_POST['proveedor'], $_POST['ubicacion'], $_POST['rubro'], $_POST['subrubro'])) {
     $nombre = $_POST['nombre'];
     $cantidad = $_POST['cantidad'];
