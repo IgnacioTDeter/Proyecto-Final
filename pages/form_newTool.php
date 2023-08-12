@@ -13,6 +13,7 @@ if (!isset($_SESSION['user'])) {
 
   session_destroy();
   die();
+}
 
 if (isset($_POST['nombre'], $_POST['cantidad'], $_POST['proveedor'], $_POST['ubicacion'], $_POST['rubro'], $_POST['subrubro'])) {
     $nombre = $_POST['nombre'];
