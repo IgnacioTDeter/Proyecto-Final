@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])) {
 
   echo '<script>
     alert("La sesión ya está iniciada");
-    window.location = 'pages/inventory.php';
+    window.location = "pages/inventory.php";
   </script>';
 } 
 
