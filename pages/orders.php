@@ -4,30 +4,35 @@ include('../php/connect_bd.php');
 session_start();
 
 if (!isset($_SESSION['user'])) {
-
   echo '<script>
     alert("Debes iniciar sesión para acceder");
-    window.location = "../index.php";
+    window.location =  "../php/index.php";
   </script>';
-
 
   session_destroy();
   die();
+}
 
 if (isset($_GET['enviar'])) {
   $busqueda = $_GET['search'];
 
   if (!empty($busqueda)) {
-    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitizar la entrada
-    $sql = "SELECT * FROM pedidos 
-    WHERE alumno LIKE '" . $busqueda . "'";
+    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitize input
+    $sql = "SELECT * FROM pedido WHERE alumno LIKE '$busqueda'";
   } else {
-    $sql = "SELECT * FROM pedidos";
+    $sql = "SELECT * FROM pedido";
   }
 } else {
-  $sql = "SELECT * FROM pedidos";
+  $sql = "SELECT * FROM pedido";
 }
 
+// Execute the query
+$orders = mysqli_query($conexion, $sql);
+
+if (!$orders) {
+  echo 'Query error: ' . mysqli_error($conexion);
+  die();
+}
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +74,9 @@ if (isset($_GET['enviar'])) {
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-
+        <li class="nav__iteam">
+          <a href="form_high.php" class="nav__link">Dar de alta</a>
+        </li>
         <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
         </li>
@@ -82,13 +89,13 @@ if (isset($_GET['enviar'])) {
   </header>
 
   <section class="section__pedidos">
-    <div class="title__section">
-      <h1 class="section__title">Pedidos</h1>
+    <div class="title__pedidos">
+      <h1 class="pedidos__title">Pedidos</h1>
     </div>
     <div class="action__div">
       <div class="add__div">
-        <button class="btn__blue">
-          <a href="form_newOrders.php" class="btn__blue--text">
+        <button class="add__btn">
+          <a href="form_newOrders.php" class="add__btn__a">
             <i class="ri-add-circle-fill"></i>
             Añadir
           </a>
@@ -98,9 +105,7 @@ if (isset($_GET['enviar'])) {
       <form method="GET" action="orders.php">
         <div class="search__container">
           <input name="search" type="search" class="search__input" placeholder="Buscar..." />
-          <button class="btn__blue" type="submit" name="enviar">
-            <p class="btn__blue--text">Buscar</p>
-          </button>
+          <button class="search__button" type="submit" name="enviar">Buscar</button>
         </div>
       </form>
     </div>
@@ -120,40 +125,41 @@ if (isset($_GET['enviar'])) {
         </thead>
 
         <?php
-        $orders = mysqli_query($conexion, $sql);
-        while ($row = mysqli_fetch_assoc($orders)) {
-          ?>
-            <tr class="tr">
-              <td class="table__cell table__cell-0"><?php echo $row['dia']; ?></td>
-              <td class="table__cell"><?php echo $row['profesor']; ?></td>
-              <td class="table__cell"><?php echo $row['alumno']; ?></td>
-              <td class="table__cell"><?php echo $row['salon']; ?></td>
-              <td class="table__cell"><?php echo $row['curso']; ?></td>
-              <td class="table__cell">
-                <a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>
-                <a href="form_newOrders.php?edit=<?php echo $row['id']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
-                <a href="#" class="btn__table btn__table-red"><i class="ri-close-circle-fill"></i></a>
-              </td>
-            </tr>
-          <?php
+        if ($orders && mysqli_num_rows($orders) > 0) {
+          while ($row = mysqli_fetch_assoc($orders)) {
+            echo '<tr class="tr">';
+            echo '<td class="table__cell table__cell-0">' . $row['dia'] . '</td>';
+            echo '<td class="table__cell">' . $row['profesor'] . '</td>';
+            echo '<td class="table__cell">' . $row['alumno'] . '</td>';
+            echo '<td class="table__cell">' . $row['salon'] . '</td>';
+            echo '<td class="table__cell">' . $row['curso'] . '</td>';
+            echo '<td class="table__cell">';
+            echo '<a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
+            echo '<a href="#" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>';
+            echo '<a href="#" class="btn__table btn__table-red"><i class="ri-close-circle-fill"></i></a>';
+            echo '</td>';
+            echo '</tr>';
           }
-          mysqli_free_result($orders);
-          ?>
+        } else {
+          echo '<tr class="no-results-row"><td colspan="6">No se encontraron valores.</td></tr>';
+        }
+
+        mysqli_free_result($orders);
+        ?>
       </table>
     </div>
-  
-  <div class="pagination">
-    <button class="pagination__button" onclick="previousPage()" id="btnPrevious">
-      <i class="ri-arrow-left-s-line"></i>
-    </button>
-    <span id="pageNumbers"></span>
-    <button class="pagination__button" onclick="nextPage()" id="btnNext">
-      <i class="ri-arrow-right-s-line"></i>
-    </button>
-  </div>
-</section>
-  <script src="../assets/js/header.js"></script>
-  <script src="../assets/js/table.js"></script>
+    <div class="pagination">
+      <button class="pagination__button" onclick="previousPage()" id="btnPrevious">
+        <i class="ri-arrow-left-s-line"></i>
+      </button>
+      <span id="pageNumbers"></span>
+      <button class="pagination__button" onclick="nextPage()" id="btnNext">
+        <i class="ri-arrow-right-s-line"></i>
+      </button>
+    </div>
+  </section>
+  <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/table.js"></script>
 </body>
 
 </html>
