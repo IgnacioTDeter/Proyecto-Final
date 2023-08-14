@@ -118,8 +118,7 @@ if (isset($_GET['enviar'])) {
               <td class="table__cell"><?php echo $row['curso']; ?></td>
               <td class="table__cell">
                 <a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>
-                <a href="form_newOrders.php?edit=<?php echo $row['id']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
-                <a href="#" class="btn__table btn__table-red"><i class="ri-close-circle-fill"></i></a>
+                <a href="form_newOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
               </td>
             </tr>
           <?php
