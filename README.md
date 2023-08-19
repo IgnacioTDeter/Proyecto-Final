@@ -5,11 +5,17 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 <h1> Atencion ! </h1>
 Este proyecto no funciona al 100%, ya que la informacion de la base de datos es CONFIDENCIAL, y no sera proporcionada.
 
+
+
+
+
 # Registro de Versiones
 
 ## [Versión 1.1.0] - 19-08-2023
 ### Cambios
-- Se agrego la columna "Estado" 
+- Se agrego la columna "Estado"
+
+  
   
 ## [Versión 1.0.0] 
 ### Cambios
