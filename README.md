@@ -10,7 +10,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 ## [Versión 1.1.0] - 19-08-2023
 ### Cambios
-- Se agrego la columna "Estado"
+- Se agrego la columna "Estado" en la base de datos
 
 <br>
 <br>
