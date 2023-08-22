@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-08-2023 a las 00:56:57
+-- Tiempo de generación: 13-08-2023 a las 06:05:54
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -24,58 +24,87 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `detalles_pedidos`
+--
+
+CREATE TABLE `detalles_pedidos` (
+  `id` int(11) NOT NULL,
+  `id_pedido` int(11) DEFAULT NULL,
+  `id_herramienta` int(11) DEFAULT NULL,
+  `herramienta` varchar(255) DEFAULT NULL,
+  `cantidad_solicitada` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `detalles_pedidos`
+--
+
+INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramienta`, `cantidad_solicitada`) VALUES
+(3, 5, 1, 'martillo', 1),
+(4, 5, 1, 'martillo', 2),
+(5, 6, 2, 'destornillador', 1),
+(6, 6, 2, 'destornillador', 1),
+(7, 7, NULL, 'prueba final', 2),
+(8, 7, NULL, 'prueba final', 1),
+(9, 7, NULL, 'prueba final', 1),
+(10, 7, 1, 'martillo', 2),
+(11, 7, 2, 'destornillador', 3),
+(12, 8, NULL, 'maritllo', 59),
+(13, 8, 2, 'destornillador ', 59),
+(14, 9, NULL, 'maritllo', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `inventario`
 --
 
 CREATE TABLE `inventario` (
-  `id` int(11) NOT NULL,
-  `herramienta` varchar(100) NOT NULL,
-  `cantidad` int(11) NOT NULL,
-  `rubro` varchar(100) DEFAULT NULL,
-  `sub_rubro` varchar(100) DEFAULT NULL,
-  `proveedor` varchar(100) DEFAULT NULL,
-  `ubicacion` varchar(100) DEFAULT NULL,
-  `estado` int(3) NOT NULL
+  `id_herramienta` int(11) NOT NULL,
+  `herramienta` varchar(255) DEFAULT NULL,
+  `cantidad` int(11) DEFAULT NULL,
+  `rubro` varchar(255) DEFAULT NULL,
+  `sub_rubro` varchar(255) DEFAULT NULL,
+  `proveedor` varchar(255) DEFAULT NULL,
+  `ubicacion` varchar(255) DEFAULT NULL,
+  `estado` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id`, `herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `estado`) VALUES
-(1, 'Cinta métrica', 25, 'Herramientas de medición', 'Construcción', 'Ferretería ABC', 'Almacén 2', 0),
-(2, 'Destornillador', 8, 'Herramientas manuales', 'Reparaciones', 'Ferretería XYZ', 'Almacén 2', 0),
-(3, 'Llave ajustable', 12, 'Herramientas manuales', 'Plomería', 'Ferretería XYZ', 'Almacén 2', 0),
-(4, 'Martillo', 10, 'Herramientas manuales', 'Construcción', 'Ferretería ABC', 'Almacén 1', 0),
-(5, 'Nivel de burbuja', 20, 'Herramientas de medición', 'Construcción', 'Herramientas SA', 'Almacén 4', 0),
-(6, 'Pala', 6, 'Herramientas manuales', 'Jardinería', 'Ferretería XYZ', 'Almacén 3', 0),
-(7, 'Sierra eléctrica', 5, 'Herramientas eléctricas', 'Carpintería', 'Herramientas SA', 'Almacén 1', 0),
-(8, 'Taladro inalámbrico', 8, 'Herramientas eléctricas', 'Construcción', 'Ferretería ABC', 'Almacén 3', 0);
+INSERT INTO `inventario` (`id_herramienta`, `herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `estado`) VALUES
+(1, 'martillo', 10, 'manual', 'golpe', 'tobias suarez', 'l1', 'bueno'),
+(2, 'destornillador', 10, 'manual', 'destornillador', 'tobias suarez', 'l1', 'bueno');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pedidos`
+-- Estructura de tabla para la tabla `pedido`
 --
 
-CREATE TABLE `pedidos` (
-  `id` int(11) NOT NULL,
-  `dia` date NOT NULL,
-  `profesor` varchar(100) NOT NULL,
-  `alumno` varchar(100) NOT NULL,
-  `salon` varchar(100) DEFAULT NULL,
-  `curso` varchar(100) DEFAULT NULL,
-  `cantidad_solicitada` int(11) NOT NULL,
-  `herramienta` varchar(100) NOT NULL
+CREATE TABLE `pedido` (
+  `id_pedido` int(11) NOT NULL,
+  `dia` date DEFAULT NULL,
+  `profesor` varchar(255) DEFAULT NULL,
+  `alumno` varchar(255) DEFAULT NULL,
+  `salon` varchar(255) DEFAULT NULL,
+  `curso` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `pedidos`
+-- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedidos` (`id`, `dia`, `profesor`, `alumno`, `salon`, `curso`, `cantidad_solicitada`, `herramienta`) VALUES
-(1, '2023-07-25', 'kulikosqii', 'espindola juan', 'l2', '7mo', 6, 'Destornillador'),
-(2, '2023-07-27', 'aa', 'aa', 'a1', '11', 1, 'Destornillador');
+INSERT INTO `pedido` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`) VALUES
+(3, '2023-08-02', 'tobias', 'Alumno', NULL, NULL),
+(4, '2023-08-10', '1', '1', '1', '1'),
+(5, '0000-00-00', '1', '1', '1', '1'),
+(6, '1111-11-11', '1', '1', '1', '1'),
+(7, '2023-08-10', 'prueba final', 'prueba final', 'prueba final', 'prueba final'),
+(8, '0000-00-00', '59', '59', '59', '59'),
+(9, '1111-11-11', 'aa', 'a', 'a', '22');
 
 -- --------------------------------------------------------
 
@@ -103,10 +132,24 @@ INSERT INTO `usuarios` (`id`, `user_name`, `password`) VALUES
 --
 
 --
--- Indices de la tabla `pedidos`
+-- Indices de la tabla `detalles_pedidos`
 --
-ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `detalles_pedidos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pedido` (`id_pedido`),
+  ADD KEY `id_herramienta` (`id_herramienta`);
+
+--
+-- Indices de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  ADD PRIMARY KEY (`id_herramienta`);
+
+--
+-- Indices de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  ADD PRIMARY KEY (`id_pedido`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -119,16 +162,39 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `pedidos`
+-- AUTO_INCREMENT de la tabla `detalles_pedidos`
 --
-ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `detalles_pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `inventario`
+--
+ALTER TABLE `inventario`
+  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `pedido`
+--
+ALTER TABLE `pedido`
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `detalles_pedidos`
+--
+ALTER TABLE `detalles_pedidos`
+  ADD CONSTRAINT `detalles_pedidos_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`),
+  ADD CONSTRAINT `detalles_pedidos_ibfk_2` FOREIGN KEY (`id_herramienta`) REFERENCES `inventario` (`id_herramienta`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
