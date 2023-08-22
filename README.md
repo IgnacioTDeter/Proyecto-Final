@@ -8,6 +8,46 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+
+## [Versión 1.1.1] - 21-08-2023
+### Cambios
+- funciones agregadas 
+    -agregar hrramienta
+    -input dinamicos
+
+- actualizacion archivo add_tool.js
+
+- creacion archivo data_into_orders.js
+    -js que permite ver la informacion de las herramientas en los pedidos 
+
+- translado de codigo php a archivos en carpetas nuevas
+
+-creacion archivo checkPages.php
+    -permite ver si la secion esta iniciada 
+
+-Actualizacion de la BD
+
+- se agrego 2 carpetas
+
+   php
+    ├── logic
+    │   ├── logic_inventory
+    │   │   └── logic_tool.php
+    │   └── logic_orders
+    │       ├── logic_form_editarOrders.php
+    │       └── logic_form_newOrders.php
+    └── search
+        ├── search_inventory.php
+        └── search_orders.php
+
+
+    
+
+
+<br>
+<br>
+  
+
 ## [Versión 1.1.0] - 19-08-2023
 ### Cambios
 - Se agrego la columna "Estado" en la base de datos

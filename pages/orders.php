@@ -1,41 +1,7 @@
 <?php
 include('../php/connect_bd.php');
-
-session_start();
-
-if (!isset($_SESSION['user'])) {
-  echo '<script>
-    alert("Debes iniciar sesión para acceder");
-    window.location =  "../php/index.php";
-  </script>';
-
-  session_destroy();
-  die();
-}
-
-if (isset($_GET['enviar'])) {
-  $busqueda = $_GET['search'];
-
-  if (!empty($busqueda)) {
-    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitize input
-    $sql = "SELECT * FROM pedido WHERE alumno LIKE '$busqueda'";
-  } else {
-    $sql = "SELECT * FROM pedido";
-    $sql_details = "SELECT * FROM detalles_pedidos";
-  }
-} else {
-  $sql = "SELECT * FROM pedido";
-  $sql_details = "SELECT * FROM detalles_pedidos";
-}
-
-// Execute the query
-$orders = mysqli_query($conexion, $sql);
-$orders_details = mysqli_query($conexion, $sql_details);
-
-if (!$orders) {
-  echo 'Query error: ' . mysqli_error($conexion);
-  die();
-}
+include('../php/checkPages.php');
+include('../php/search/search_orders.php');
 ?>
 
 
@@ -133,9 +99,7 @@ if (!$orders) {
           <?php
           while ($row = mysqli_fetch_assoc($orders)) {
             $rowId = $row['id_pedido']; // Obtener el id del pedido
-              $row_details = mysqli_fetch_assoc($orders_details);
-
-            ?>
+          ?>
             <tr class="tr" data-row-id="<?php echo $rowId; ?>">
               <td class="table__cell table__cell-0">
                 <?php echo $row['dia']; ?>
@@ -155,14 +119,17 @@ if (!$orders) {
               <td class="table__cell">
                 <div class="btn-group">
                   <!-- Configurar el botón con el atributo data-row-id -->
-                  <a href="#" class="btn__table btn__table-blue" data-row-id="<?php echo $rowId; ?>"><i
-                      class="ri-eye-fill"></i></a>
-                  <a href="form_editOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i
-                      class="ri-pencil-fill"></i></a>
-                  <a href="../php/deleteOrder.php?id_pedido=<?php echo $row['id_pedido'];?>" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
+                  <a href="#" class="btn__table btn__table-blue" data-row-id="<?php echo $rowId; ?>"><i class="ri-eye-fill"></i></a>
+                  <a href="form_editOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
+                  <a href="#" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
                 </div>
               </td>
             </tr>
+
+            <?php
+            $sql_detalles = "SELECT * FROM detalles_pedidos WHERE id_pedido = $rowId";
+            $detalles = mysqli_query($conexion, $sql_detalles);
+            ?>
 
             <!-- Filas de detalles relacionadas a la fila principal -->
             <tr class="custom-dropdown-row table__header-item table__header-item-0" style="display: none;" data-row-id="<?php echo $rowId; ?>">
@@ -170,59 +137,32 @@ if (!$orders) {
               <th class="" colspan="3" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Cantidad</th>
             </tr>
 
-            <tr class="custom-dropdown-row" style="display: none;" data-row-id="<?php echo $rowId; ?>">
-              <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
-                <?php echo $row_details['herramienta']; ?>
-              </td>
-              <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
-                <?php echo $row_details['cantidad_solicitada']; ?>
-              </td>
-            </tr>
+
             <?php
+            while ($row = mysqli_fetch_assoc($detalles)) {
+
+            ?>
+              <tr class="custom-dropdown-row" style="display: none;" data-row-id="<?php echo $rowId; ?>">
+                <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
+                  <?php echo $row['herramienta']; ?>
+                </td>
+                <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
+                  <?php echo $row['cantidad_solicitada']; ?>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
+          <?php
           }
           ?>
         </tbody>
       </table>
     </div>
   </section>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    const borrarBtn = document.getElementById("deleteOrder");
-    
-    borrarBtn.addEventListener("click", function () {
-        const id = borrarBtn.getAttribute('delete-id'); // ID que deseas borrar (cambia según tus necesidades)
-        
-        // Enviar una solicitud al servidor utilizando Fetch API
-        fetch(`../php/deleteOrder.php`)
-            .then(response => response.text())
-            .then(message => {
-                console.log(message); // Puedes mostrar el mensaje en la consola o en el DOM
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-    });
 
-      const btnTableBlueElements = document.querySelectorAll('.btn__table-blue');
 
-      btnTableBlueElements.forEach(btn => {
-        btn.addEventListener('click', (event) => {
-          event.preventDefault();
-
-          const rowId = btn.getAttribute('data-row-id');
-          const dropdownRows = document.querySelectorAll(`tr.custom-dropdown-row[data-row-id="${rowId}"]`);
-
-          dropdownRows.forEach(dropdownRow => {
-            if (dropdownRow.style.display === 'none' || dropdownRow.style.display === '') {
-              dropdownRow.style.display = 'table-row';
-            } else {
-              dropdownRow.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <script src="../assets/js/data_into_orders.js"></script>
 </body>
 
 </html>

@@ -1,19 +1,9 @@
 <?php
 
   include('../php/connect_bd.php');
+  include('../php/checkPages.php');
+  include('../php/logic/logic_orders/logic_form_editOrders.php');
 
-  $id_pedido = $_GET['edit'];
-
-  $query_order = "SELECT * FROM pedido WHERE id_pedido = $id_pedido";
-
-  $query_details_order = "SELECT * FROM detalles_pedidos WHERE id_pedido = $id_pedido";
-
-  $details_order = mysqli_query($conexion, $query_details_order);
-
-  $order = mysqli_query($conexion, $query_order);
-
-  $row_details = mysqli_fetch_assoc($details_order);
-  $row_order = mysqli_fetch_assoc($order);
 
 ?>
 
@@ -74,7 +64,7 @@
       <div id="mensajeExito" class="mensaje__exito"></div>
 
       <!-- Formulario de pedido -->
-      <form id="pedidoForm" action="../php/form_editOrders.php" method="post">
+      <form id="pedidoForm" action="./form_editOrders.php" method="post">
       <fieldset class="input__container" id="fieldset">
         <legend>Datos del Pedido</legend>
         <input id="dia" name="id_pedido" type="text" required value="<?php echo $row_order['id_pedido'];?>" hidden>

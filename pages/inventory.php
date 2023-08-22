@@ -1,35 +1,8 @@
 <?php
 include('../php/connect_bd.php');
+include('../php/checkPages.php');
+include('../php/search/search_inventory.php');
 
-
-
-session_start();
-
-if (!isset($_SESSION['user'])) {
-
-  echo '<script>
-    alert("Debes iniciar sesión para acceder");
-    window.location = "../index.php";
-  </script>';
-
-
-  session_destroy();
-  die();
-}
-
-if (isset($_GET['enviar'])) {
-  $busqueda = $_GET['search'];
-
-  if (!empty($busqueda)) {
-    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitizar la entrada
-    $sql = "SELECT * FROM Inventario 
-    WHERE herramienta LIKE '" . $busqueda . "'";
-  } else {
-    $sql = "SELECT * FROM Inventario";
-  }
-} else {
-  $sql = "SELECT * FROM inventario";
-}
 ?>
 
 <!DOCTYPE html>
