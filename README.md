@@ -37,17 +37,19 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 -Actualizacion de la BD
 
 - se agrego 2 carpetas
+
+  <br>
 .
-├── php
-│   ├── logic
-│   │   ├── logic_inventory
-│   │   │   └── logic_tool.php
-│   │   └── logic_orders
-│   │       ├── logic_form_editarOrders.php
-│   │       └── logic_form_newOrders.php
-│   └── search
-│       ├── search_inventory.php
-│       └── search_orders.php
+├── php  <br>
+│   ├── logic <br>
+│   │   ├── logic_inventory <br>
+│   │   │   └── logic_tool.php <br>
+│   │   └── logic_orders <br>
+│   │       ├── logic_form_editarOrders.php <br>
+│   │       └── logic_form_newOrders.php <br>
+│   └── search <br>
+│       ├── search_inventory.php <br>
+│       └── search_orders.php <br>
 
     
 
