@@ -8,8 +8,15 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+## [Versión 2.1.0] - 23-08-2023
+### Cambios
 
-## [Versión 1.1.1] - 21-08-2023
+- Opcion de eliminar Pedidos
+- Solucion de varios errores de editar y agregar herramienta
+
+  
+
+## [Versión 2.0.0] - 21-08-2023
 ### Cambios
 - funciones agregadas 
     -agregar hrramienta
@@ -28,18 +35,17 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 -Actualizacion de la BD
 
 - se agrego 2 carpetas
-
-   php
-    ├── logic
-    │   ├── logic_inventory
-    │   │   └── logic_tool.php
-    │   └── logic_orders
-    │       ├── logic_form_editarOrders.php
-    │       └── logic_form_newOrders.php
-    └── search
-        ├── search_inventory.php
-        └── search_orders.php
-
+.
+├── php
+│   ├── logic
+│   │   ├── logic_inventory
+│   │   │   └── logic_tool.php
+│   │   └── logic_orders
+│   │       ├── logic_form_editarOrders.php
+│   │       └── logic_form_newOrders.php
+│   └── search
+│       ├── search_inventory.php
+│       └── search_orders.php
 
     
 
@@ -58,7 +64,6 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 ## [Versión 1.0.0] 
 ### Cambios
 - Poder agregar pedidos con varias herramientas
-- Eliminar pedidos
 - Editar pedidos
 - Agregar herramientas al inventario
 - Visualizar los pedidos hechos
