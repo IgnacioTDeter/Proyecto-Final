@@ -84,7 +84,7 @@ INSERT INTO `inventario` (`id_herramienta`, `herramienta`, `cantidad`, `rubro`, 
 -- Estructura de tabla para la tabla `pedido`
 --
 
-CREATE TABLE `pedido` (
+CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL,
   `dia` date DEFAULT NULL,
   `profesor` varchar(255) DEFAULT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`) VALUES
+INSERT INTO `pedidos` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`) VALUES
 (3, '2023-08-02', 'tobias', 'Alumno', NULL, NULL),
 (4, '2023-08-10', '1', '1', '1', '1'),
 (5, '0000-00-00', '1', '1', '1', '1'),
