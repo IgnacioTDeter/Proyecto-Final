@@ -15,6 +15,8 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Solucion de varios errores de editar y agregar herramienta
 
   
+<br>
+<br>
 
 ## [Versión 2.0.0] - 21-08-2023
 ### Cambios
