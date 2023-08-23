@@ -38,8 +38,8 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 - se agrego 2 carpetas
 
-  <br>
-.
+<br>
+. <br>
 ├── php  <br>
 │   ├── logic <br>
 │   │   ├── logic_inventory <br>
