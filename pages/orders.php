@@ -121,7 +121,7 @@ include('../php/search/search_orders.php');
                   <!-- Configurar el botón con el atributo data-row-id -->
                   <a href="#" class="btn__table btn__table-blue" data-row-id="<?php echo $rowId; ?>"><i class="ri-eye-fill"></i></a>
                   <a href="form_editOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
-                  <a href="#" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
+                  <a href="../php/deleteOrder.php?id_pedido=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
                 </div>
               </td>
             </tr>
