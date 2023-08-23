@@ -2,7 +2,7 @@
     include('connect_bd.php');
 
     $id_pedido = $_GET['id_pedido'];
-    $query_delete = "DELETE FROM pedido WHERE id_pedido = '$id_pedido'";
+    $query_delete = "DELETE FROM pedidos WHERE id_pedido = '$id_pedido'";
     $query_delete_details = "DELETE FROM detalles_pedidos WHERE id_pedido = '$id_pedido'";
 
     $delete_details = mysqli_query($conexion, $query_delete_details);
