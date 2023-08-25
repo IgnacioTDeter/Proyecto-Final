@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-08-2023 a las 21:25:40
+-- Tiempo de generación: 25-08-2023 a las 04:05:07
 -- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,13 +40,18 @@ CREATE TABLE `detalles_pedidos` (
 --
 
 INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramienta`, `cantidad_solicitada`) VALUES
-(1, 15, NULL, '1', 1),
-(2, 16, NULL, '2', 2),
-(3, 17, NULL, '13', 13),
-(4, 18, NULL, '14', 14),
-(5, 19, 10, '6', 6),
-(6, 20, NULL, '2', 2),
-(7, 20, 6, '3', 3);
+(3, 5, 1, 'martillo', 1),
+(4, 5, 1, 'martillo', 2),
+(5, 6, 2, 'destornillador', 1),
+(6, 6, 2, 'destornillador', 1),
+(7, 7, NULL, 'prueba final', 2),
+(8, 7, NULL, 'prueba final', 1),
+(9, 7, NULL, 'prueba final', 1),
+(10, 7, 1, 'martillo', 2),
+(11, 7, 2, 'destornillador', 3),
+(12, 8, NULL, 'maritllo', 59),
+(13, 8, 2, 'destornillador ', 59),
+(14, 9, NULL, 'maritllo', 1);
 
 -- --------------------------------------------------------
 
@@ -62,21 +67,16 @@ CREATE TABLE `inventario` (
   `sub_rubro` varchar(255) DEFAULT NULL,
   `proveedor` varchar(255) DEFAULT NULL,
   `ubicacion` varchar(255) DEFAULT NULL,
-  `estado` varchar(255) DEFAULT NULL
+  `id_detalle` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `inventario`
 --
 
-INSERT INTO `inventario` (`id_herramienta`, `herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `estado`) VALUES
-(4, '1', 1, '1', '1', '1', '1', NULL),
-(5, '1', 1, '1', '1', '1', '1', NULL),
-(6, '3', 3, '3', '3', '3', '3', NULL),
-(7, '4', 4, '', '', '$', '4', NULL),
-(8, '4', 4, '4', '44', '4', '4', NULL),
-(9, '5', 5, '5', '5', '5', '5', NULL),
-(10, '6', 6, '6', '6', '6', '6', NULL);
+INSERT INTO `inventario` (`id_herramienta`, `herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `id_detalle`) VALUES
+(1, 'martillo', 10, 'manual', 'golpe', 'tobias suarez', 'l1', NULL),
+(2, 'destornillador', 10, 'manual', 'destornillador', 'tobias suarez', 'l1', NULL);
 
 -- --------------------------------------------------------
 
@@ -91,7 +91,7 @@ CREATE TABLE `pedidos` (
   `alumno` varchar(255) DEFAULT NULL,
   `salon` varchar(255) DEFAULT NULL,
   `curso` varchar(255) DEFAULT NULL,
-  `estado` varchar(8) DEFAULT NULL
+  `estado` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -99,12 +99,13 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`, `estado`) VALUES
-(15, '1111-11-11', 'anana22', '1', '1982', '1', NULL),
-(16, '1111-11-11', '1', '1', '1', '1', NULL),
-(17, '1111-11-11', '1', '1', '1', '1', NULL),
-(18, '1111-11-11', '1', '1', '1', '1', NULL),
-(19, '1111-11-11', '6', '66', '6', '6', NULL),
-(20, '1111-11-11', '1', '11', '1', '1', NULL);
+(3, '2023-08-02', 'tobias', 'Alumno', NULL, NULL, NULL),
+(4, '2023-08-10', '1', '1', '1', '1', NULL),
+(5, '0000-00-00', '1', '1', '1', '1', NULL),
+(6, '1111-11-11', '1', '1', '1', '1', NULL),
+(7, '2023-08-10', 'prueba final', 'prueba final', 'prueba final', 'prueba final', NULL),
+(8, '0000-00-00', '59', '59', '59', '59', NULL),
+(9, '1111-11-11', 'aa', 'a', 'a', '22', NULL);
 
 -- --------------------------------------------------------
 
@@ -144,57 +145,6 @@ ALTER TABLE `detalles_pedidos`
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id_herramienta`);
-
---
--- Indices de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  ADD PRIMARY KEY (`id_pedido`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `detalles_pedidos`
---
-ALTER TABLE `detalles_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `inventario`
---
-ALTER TABLE `inventario`
-  MODIFY `id_herramienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT de la tabla `pedidos`
---
-ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `detalles_pedidos`
---
-ALTER TABLE `detalles_pedidos`
-  ADD CONSTRAINT `detalles_pedidos_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
-  ADD CONSTRAINT `detalles_pedidos_ibfk_2` FOREIGN KEY (`id_herramienta`) REFERENCES `inventario` (`id_herramienta`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
