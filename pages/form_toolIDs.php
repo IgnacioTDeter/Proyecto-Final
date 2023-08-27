@@ -73,21 +73,6 @@
             <button type="submit" class="btn__blue">Guardar</button>
         </form>
 
-  <!-- </section>
-    <section class="form__section">
-        <form id="toolIDsForm" method="post" action="process_toolIDs.php">
-            <?php
-            $nombre = $_GET['nombre'];
-            $cantidad = intval($_GET['cantidad']);
-
-            for ($i = 1; $i <= $cantidad; $i++) {
-                echo '<label class="hola" for="toolID' . $i . '">ID de ' . $nombre . ' ' . $i . '</label>';
-                echo '<input class="hola" id="toolID' . $i . '" name="toolID' . $i . '" required />';
-            }
-            ?>
-            <button type="submit" class="btn__blue">Guardar</button>
-        </form>
-    </section> -->
 
     <!-- ... (Script JavaScript y otros elementos) ... -->
 </body>
