@@ -134,7 +134,9 @@ include('../php/search/search_orders.php');
             <!-- Filas de detalles relacionadas a la fila principal -->
             <tr class="custom-dropdown-row table__header-item table__header-item-0" style="display: none;" data-row-id="<?php echo $rowId; ?>">
               <th class="" colspan="3" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Herramienta</th>
-              <th class="" colspan="3" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Cantidad</th>
+              <th class="" colspan="2" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Cantidad</th>
+              <th class="" colspan="1" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Devoluciones</th>
+
             </tr>
 
 
@@ -146,9 +148,19 @@ include('../php/search/search_orders.php');
                 <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
                   <?php echo $row['herramienta']; ?>
                 </td>
-                <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
+                <td colspan="2" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
                   <?php echo $row['cantidad_solicitada']; ?>
                 </td>
+                <td colspan="1" class="table__cell select-column" style="background-color: rgba(255, 255, 27, 0.470);"> 
+                <div class="content-select">
+                  <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                  <i></i>
+                </div>
+              </td>
               </tr>
             <?php
             }

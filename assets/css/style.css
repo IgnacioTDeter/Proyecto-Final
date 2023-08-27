@@ -1,4 +1,4 @@
-/* dante pufahl */
+/* dante pufahl y espindola juan*/
 
 /* =========== google fonts ============*/
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap");
@@ -83,7 +83,12 @@ body {
   font-size: 14px;
   font-family: var(--heebo);
 }
-
+.content-input input,
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
 /**====== REUSABLE CSS CLASSES ======*/
 
 a {
@@ -433,7 +438,55 @@ input[type="password"] {
   background-color: hsl(215, 100%, 50%);
   color: var(--text-white);
 }
+.content-select select::-ms-expand {
+  display: none;
+}
 
+.content-select {
+  max-width: 25%; 
+  position: relative;
+  margin: 0 auto;
+}
+
+.content-select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 5px 8px; 
+  height: 32px; 
+  outline: 0;
+  border: 0;
+  border-radius: 6px; 
+  background: #f0f0f0;
+  color: #7b7b7b;
+  font-size: 1em;
+  font-family: 'Quicksand', sans-serif;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.content-select select:hover {
+  background: hsl(215, 100%, 85%);
+
+}
+
+.content-select i {
+  position: absolute;
+  right: 8px; 
+  top: calc(50% - 7px); 
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-left: 3px solid #7b7b7b; 
+  border-bottom: 3px solid #7b7b7b; 
+  transform: rotate(-45deg);
+  transition: all 0.25s ease;
+}
+
+.content-select:hover i {
+  margin-top: 2px; 
+}
 /** pedidos-inventario */
 
 .title__section {
