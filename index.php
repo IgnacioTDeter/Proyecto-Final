@@ -6,7 +6,7 @@ if(isset($_SESSION['user'])) {
 
   echo '<script>
     alert("La sesión ya está iniciada");
-    window.history.go(-1);
+    window.location = "pages/inventory.php";
   </script>';
 } 
 

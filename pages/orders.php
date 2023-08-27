@@ -1,21 +1,9 @@
 <?php
 include('../php/connect_bd.php');
-
-if (isset($_GET['enviar'])) {
-  $busqueda = $_GET['search'];
-
-  if (!empty($busqueda)) {
-    $busqueda = '%' . $conexion->real_escape_string($busqueda) . '%'; // Sanitizar la entrada
-    $sql = "SELECT * FROM pedidos 
-    WHERE alumno LIKE '" . $busqueda . "'";
-  } else {
-    $sql = "SELECT * FROM pedidos";
-  }
-} else {
-  $sql = "SELECT * FROM pedidos";
-}
-
+include('../php/checkPages.php');
+include('../php/search/search_orders.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -96,6 +84,7 @@ if (isset($_GET['enviar'])) {
   <section class="section__table">
     <div class="table__responsive">
       <table class="table">
+        <!-- Encabezado de la tabla -->
         <thead class="table__header">
           <tr class="tr">
             <th class="table__header-item table__header-item-0">Dia</th>
@@ -104,43 +93,76 @@ if (isset($_GET['enviar'])) {
             <th class="table__header-item" colspan="2">Datos</th>
             <th class="table__header-item">Acciones</th>
           </tr>
+          </tr>
         </thead>
-
-        <?php
-        $orders = mysqli_query($conexion, $sql);
-        while ($row = mysqli_fetch_assoc($orders)) {
+        <tbody>
+          <?php
+          while ($row = mysqli_fetch_assoc($orders)) {
+            $rowId = $row['id_pedido']; // Obtener el id del pedido
           ?>
-            <tr class="tr">
-              <td class="table__cell table__cell-0"><?php echo $row['dia']; ?></td>
-              <td class="table__cell"><?php echo $row['profesor']; ?></td>
-              <td class="table__cell"><?php echo $row['alumno']; ?></td>
-              <td class="table__cell"><?php echo $row['salon']; ?></td>
-              <td class="table__cell"><?php echo $row['curso']; ?></td>
+            <tr class="tr" data-row-id="<?php echo $rowId; ?>">
+              <td class="table__cell table__cell-0">
+                <?php echo $row['dia']; ?>
+              </td>
               <td class="table__cell">
-                <a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>
-                <a href="form_newOrders.php?edit=<?php echo $row['id']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
-                <a href="#" class="btn__table btn__table-red"><i class="ri-close-circle-fill"></i></a>
+                <?php echo $row['profesor']; ?>
+              </td>
+              <td class="table__cell">
+                <?php echo $row['alumno']; ?>
+              </td>
+              <td class="table__cell">
+                <?php echo $row['salon']; ?>
+              </td>
+              <td class="table__cell">
+                <?php echo $row['curso']; ?>
+              </td>
+              <td class="table__cell">
+                <div class="btn-group">
+                  <!-- Configurar el botón con el atributo data-row-id -->
+                  <a href="#" class="btn__table btn__table-blue" data-row-id="<?php echo $rowId; ?>"><i class="ri-eye-fill"></i></a>
+                  <a href="form_editOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
+                  <a href="../php/deleteOrder.php?id_pedido=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
+                </div>
               </td>
             </tr>
+
+            <?php
+            $sql_detalles = "SELECT * FROM detalles_pedidos WHERE id_pedido = $rowId";
+            $detalles = mysqli_query($conexion, $sql_detalles);
+            ?>
+
+            <!-- Filas de detalles relacionadas a la fila principal -->
+            <tr class="custom-dropdown-row table__header-item table__header-item-0" style="display: none;" data-row-id="<?php echo $rowId; ?>">
+              <th class="" colspan="3" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Herramienta</th>
+              <th class="" colspan="3" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Cantidad</th>
+            </tr>
+
+
+            <?php
+            while ($row = mysqli_fetch_assoc($detalles)) {
+
+            ?>
+              <tr class="custom-dropdown-row" style="display: none;" data-row-id="<?php echo $rowId; ?>">
+                <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
+                  <?php echo $row['herramienta']; ?>
+                </td>
+                <td colspan="3" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
+                  <?php echo $row['cantidad_solicitada']; ?>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
           <?php
           }
-          mysqli_free_result($orders);
           ?>
+        </tbody>
       </table>
     </div>
-  
-  <div class="pagination">
-    <button class="pagination__button" onclick="previousPage()" id="btnPrevious">
-      <i class="ri-arrow-left-s-line"></i>
-    </button>
-    <span id="pageNumbers"></span>
-    <button class="pagination__button" onclick="nextPage()" id="btnNext">
-      <i class="ri-arrow-right-s-line"></i>
-    </button>
-  </div>
-</section>
-  <script src="../assets/js/header.js"></script>
-  <script src="../assets/js/table.js"></script>
+  </section>
+
+
+  <script src="../assets/js/data_into_orders.js"></script>
 </body>
 
 </html>
