@@ -8,7 +8,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
-## [Versión 2.3.0] - 24-08-2023
+## [Versión 2.3.0] - 27-08-2023
 ### Cambios
 
 - Se agrego la funcionalidad de anotar las devoluciones individuales por herramienta
