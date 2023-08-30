@@ -7,12 +7,8 @@ include('../php/checkPages.php');
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
  
 
-    $nombre = $_GET['nombre'];
-    $cantidad = $_GET['cantidad'];
-    $rubro = $_GET['rubro'];
-    $subrubro = $_GET['subrubro'];
-    $proveedor = $_GET['proveedor'];
-    $ubicacion = $_GET['ubicacion'];
+    $id = $_GET['id'];
+
 
 
     $sql = "INSERT INTO inventario (herramienta, cantidad, rubro, sub_rubro, proveedor, ubicacion)
@@ -22,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($conexion->query($sql) === TRUE) {
     echo "Los datos se han insertado correctamente.";
     } else {
-    echo "Error al insertar los datos: " . $conexion->error;
+    echo "Error al insertar los datos: " . $conexion -> error;
     }
 
     $toolName = $nombre;
