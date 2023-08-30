@@ -8,23 +8,12 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
-## [Versión 2.3.0] - 27-08-2023
-### Cambios
-
-- Se agrego la funcionalidad de anotar las devoluciones individuales por herramienta
-
-
-<br>
-<br>
-
 ## [Versión 2.2.0] - 24-08-2023
 ### Cambios
 
 - Se agrego la columna "id_detalles" en la base de datos para las herramientas del inventario 
 - Se agrego la columna "Status" a la base de datos
 
-<br>
-<br>
 
 ## [Versión 2.1.0] - 23-08-2023
 ### Cambios

@@ -386,6 +386,11 @@ input[type="password"] {
   border-top: 1px solid var(--text-color);
 }
 
+.tr:nth-child(odd) {
+  background-color: var();
+  border-top: 1px solid var(--text-color);
+}
+
 .btn__table {
   color: var(--title-color);
   font-weight: var(--font-bold);
@@ -525,8 +530,66 @@ input[type="password"] {
   width: 60%;
 }
 
-/* formularios*/
+/* Estilos para el menú desplegable de estado del pedido */
+.status-dropdown {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+}
 
+.status-select {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: rgba(240, 98, 98, 0.511);
+  border-radius: 6px;
+  color: var(--sub-title-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+}
+
+/* Estilos para las opciones del menú desplegable */
+.status-select option {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.red-style {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: rgba(209, 226, 53, 0.511);
+  border-radius: 6px;
+  color: var(--sub-title-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+}
+
+.yellow-style {
+  color: yellow;
+  font-size: 20px;
+  background-color: red;
+  padding: 20px;
+}
+
+.green-style {
+  color: green;
+  font-size: 20px;
+  background-color: blue;
+  padding: 20px;
+}
+
+
+
+/* formularios*/
 
 /* Estilos para el contenido principal */
 .form__section {

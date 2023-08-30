@@ -88,11 +88,7 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
           <button class="btn__blue" type="button" onclick="agregarHerramienta()">Agregar Herramienta</button><br><br>
           <input class="btn__blue" type="submit" value="Enviar Pedido">
           <div class="action__div">
-            <div class="btn__container">
-              <?php if ($update) : ?>
-                <button class="btn__blue" type="submit" name="update">Editar</button>
-              <?php endif ?>
-            </div>
+          
         </fieldset>
 
 

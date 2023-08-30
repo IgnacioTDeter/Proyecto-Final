@@ -108,7 +108,7 @@ include('../php/search/search_inventory.php');
             echo '<td class="table__cell">' . $row['proveedor'] . '</td>';
             echo '<td class="table__cell">' . $row['ubicacion'] . '</td>';
             echo '<td class="table__cell">';
-            echo '<a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
+            echo '<a href="#"form_editOrders.php"" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
             echo '<a href="#" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>';
             echo '</td>';
             echo '</tr>';

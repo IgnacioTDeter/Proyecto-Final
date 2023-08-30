@@ -27,7 +27,6 @@ if (isset($_POST['add'])) {
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profesor'], $_POST['alumno'], $_POST['salon'], $_POST['curso'])) {
-
   $dia = $_POST['dia'];
   $profesor = $_POST['profesor'];
   $alumno = $_POST['alumno'];
@@ -50,14 +49,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
           foreach ($herramientas as $i => $herramienta) {
               $cantidad_solicitada = $cantidades[$i];
 
-              // Obtener el ID de la herramienta desde la tabla inventario
-              $query_id_herramienta = "SELECT id_herramienta FROM inventario WHERE herramienta = ?";
-              $stmt_id_herramienta = $conexion->prepare($query_id_herramienta);
-              $stmt_id_herramienta->bind_param("s", $herramienta);
-              $stmt_id_herramienta->execute();
-              $stmt_id_herramienta->bind_result($id_herramienta);
-              $stmt_id_herramienta->fetch();
-              $stmt_id_herramienta->close();
 
               // Insertar en detalles_pedidos
               $query_detalle = "INSERT INTO detalles_pedidos (id_pedido, id_herramienta, herramienta, cantidad_solicitada) VALUES (?, ?, ?, ?)";
