@@ -41,13 +41,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
   if ($stmt_pedido->execute()) {
       $pedido_id = $stmt_pedido->insert_id;
 
-      if (isset($_POST['herramienta'], $_POST['cantidad_solicitada'])) {
-          $herramientas = $_POST['herramienta'];
-          $cantidades = $_POST['cantidad_solicitada'];
+     if (isset($_POST['herramienta'], $_POST['cantidad_solicitada'])) {
+        $herramientas = $_POST['herramienta'];
+        $cantidades = $_POST['cantidad_solicitada'];
+
 
           foreach ($herramientas as $i => $herramienta) {
               if (isset($cantidades[$i])) {
                   $cantidad_solicitada = $cantidades[$i];
+                
+                  $query_detalle = "INSERT INTO detalles_pedidos (id_pedido, id_herramienta, herramienta, cantidad_solicitada) VALUES (?, ?, ?, ?)";
+                  $stmt_detalle = $conexion->prepare($query_detalle);
+                  $stmt_detalle->bind_param("iisi", $pedido_id, $id_herramienta, $herramienta, $cantidad_solicitada);
+                  $stmt_detalle->execute();
+                  $stmt_detalle->close();
+
 
                   $query = "SELECT cantidad FROM inventario WHERE herramienta = ?";
                   $stmt = $conexion->prepare($query);
