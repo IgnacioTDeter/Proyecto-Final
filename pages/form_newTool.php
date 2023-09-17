@@ -85,7 +85,6 @@ include('../php/logic/logic_inventory/logic_Tool.php');
 
 
       <!-- Botones del formulario -->
-      <button type="submit" class="btn__blue">Enviar</button>
       <button type="button" class="btn__blue" id="nextButton">Siguiente</button>
     </form>
 
@@ -95,13 +94,18 @@ include('../php/logic/logic_inventory/logic_Tool.php');
   <!-- ------------------------------------------ -->
 
   <script>
-    document.getElementById("nextButton").addEventListener("click", function() {
-      const nombre = document.getElementById("nombre").value;
-      const cantidad = parseInt(document.getElementById("cantidad").value);
+   document.getElementById("nextButton").addEventListener("click", function() {
+  const nombre = document.getElementById("nombre").value;
+  const cantidad = parseInt(document.getElementById("cantidad").value);
+  const rubro = document.getElementById("rubro").value; // Obtener el valor del campo rubro
+  const subrubro = document.getElementById("subrubro").value; // Obtener el valor del campo subrubro
+  const proveedor = document.getElementById("proveedor").value; // Obtener el valor del campo proveedor
+  const ubicacion = document.getElementById("ubicacion").value; // Obtener el valor del campo ubicación
 
-      // Redirigir a la página de ingreso de IDs
-      window.location.href = "form_toolIDs.php?nombre=" + encodeURIComponent(nombre) + "&cantidad=" + cantidad;
-    });
+  // Redirigir a la página de ingreso de IDs con todos los parámetros
+  window.location.href = "form_toolID.php?nombre=" + encodeURIComponent(nombre) + "&cantidad=" + cantidad + "&rubro=" + encodeURIComponent(rubro) + "&subrubro=" + encodeURIComponent(subrubro) + "&proveedor=" + encodeURIComponent(proveedor) + "&ubicacion=" + encodeURIComponent(ubicacion);
+});
+
   </script>
 
 

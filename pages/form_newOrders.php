@@ -88,11 +88,7 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
           <button class="btn__blue" type="button" onclick="agregarHerramienta()">Agregar Herramienta</button><br><br>
           <input class="btn__blue" type="submit" value="Enviar Pedido">
           <div class="action__div">
-            <div class="btn__container">
-              <?php if ($update) : ?>
-                <button class="btn__blue" type="submit" name="update">Editar</button>
-              <?php endif ?>
-            </div>
+          
         </fieldset>
 
 
@@ -105,5 +101,26 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
   <!-- Script JavaScript para el formulario -->
   <script src="../assets/js/orders.js"></script>
   <script src="../assets/js/add_tool.js"></script>
+  
+<!-- Agrega esto en la sección <script> de tu página -->
+<script>
+  // Función para obtener la fecha actual en el formato "YYYY-MM-DD"
+  function obtenerFechaActual() {
+    const fecha = new Date();
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Suma 1 porque en JavaScript los meses van de 0 a 11
+    const anio = fecha.getFullYear();
+    return `${anio}-${mes}-${dia}`;
+  }
+
+  // Función para establecer la fecha actual en el campo "Día"
+  function establecerFechaActual() {
+    const campoDia = document.getElementById("dia");
+    campoDia.value = obtenerFechaActual();
+  }
+
+  // Llama a la función para establecer la fecha actual cuando la página se carga
+  window.addEventListener("load", establecerFechaActual);
+</script>
 </body>
 </html>

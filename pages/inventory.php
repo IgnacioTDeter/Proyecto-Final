@@ -23,7 +23,7 @@ include('../php/search/search_inventory.php');
 </head>
 
 <body>
-  <header class="hero">
+<header class="hero">
     <input type="checkbox" id="nav__check" hidden />
     <label for="nav__check" class="hamburger">
       <i class="ri-menu-line hamburger__icon"></i>
@@ -43,9 +43,11 @@ include('../php/search/search_inventory.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-
         <li class="nav__iteam">
-          <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          <a href="reports.php" class="nav__link">Informes</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
     </nav>
@@ -54,6 +56,7 @@ include('../php/search/search_inventory.php');
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
+
 
 
   <section class="section__pedidos">
@@ -84,39 +87,43 @@ include('../php/search/search_inventory.php');
 
   <section class="section__table">
     <div class="table__responsive">
-      <table class="table">
-        <thead class="table__header">
-          <tr class="tr">
-            <th class="table__header-item">Herramienta</th>
-            <th class="table__header-item">Cantidad</th>
-            <th class="table__header-item">Rubro</th>
-            <th class="table__header-item">Sub-Rubro</th>
-            <th class="table__header-item">Proveedor</th>
-            <th class="table__header-item">Ubicacion</th>
-            <th class="table__header-item">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $orders = mysqli_query($conexion, $sql);
-          while ($row = mysqli_fetch_assoc($orders)) {
-            echo '<tr class="tr">';
-            echo '<td class="table__cell table__cell-0">' . $row['herramienta'] . '</td>';
-            echo '<td class="table__cell">' . $row['cantidad'] . '</td>';
-            echo '<td class="table__cell">' . $row['rubro'] . '</td>';
-            echo '<td class="table__cell">' . $row['sub_rubro'] . '</td>';
-            echo '<td class="table__cell">' . $row['proveedor'] . '</td>';
-            echo '<td class="table__cell">' . $row['ubicacion'] . '</td>';
-            echo '<td class="table__cell">';
-            echo '<a href="#" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
-            echo '<a href="#" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>';
-            echo '</td>';
-            echo '</tr>';
-          }
-          mysqli_free_result($orders);
-          ?>
-        </tbody>
-      </table>
+    <table class="table">
+  <thead class="table__header">
+    <tr class="tr">
+      <th class="table__header-item">Herramienta</th>
+      <th class="table__header-item">Cantidad</th>
+      <th class="table__header-item">Rubro</th>
+      <th class="table__header-item">Sub-Rubro</th>
+      <th class="table__header-item">Proveedor</th>
+      <th class="table__header-item">Ubicacion</th>
+      <th class="table__header-item">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    $orders = mysqli_query($conexion, $sql);
+    while ($row = mysqli_fetch_assoc($orders)) {
+    ?>
+      <tr class="tr">
+        <td class="table_cell table_cell-0"><?php echo $row['herramienta']; ?></td>
+        <td class="table__cell"><?php echo $row['cantidad']; ?></td>
+        <td class="table__cell"><?php echo $row['rubro']; ?></td>
+        <td class="table__cell"><?php echo $row['sub_rubro']; ?></td>
+        <td class="table__cell"><?php echo $row['proveedor']; ?></td>
+        <td class="table__cell"><?php echo $row['ubicacion']; ?></td>
+        <td class="table__cell">
+        <div class="btn-group">
+          <a href="tools_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-eye-fill"></i></a>
+          <a href="#" class="btn_table btn_table-yellow"><i class="ri-pencil-fill"></i></a>
+        </div>
+        </td>
+      </tr>
+    <?php
+    }
+    mysqli_free_result($orders);
+    ?>
+  </tbody>
+</table>
 
     </div>
   
