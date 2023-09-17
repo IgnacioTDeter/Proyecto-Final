@@ -114,7 +114,8 @@ include('../php/search/search_inventory.php');
         <td class="table__cell">
         <div class="btn-group">
           <a href="tools_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-eye-fill"></i></a>
-          <a href="#" class="btn_table btn_table-yellow"><i class="ri-pencil-fill"></i></a>
+          <a href="edit_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-yellow"><i class="ri-pencil-fill"></i></a>
+          <a href="addTool.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-add-line"></i></a>
         </div>
         </td>
       </tr>

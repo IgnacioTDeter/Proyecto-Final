@@ -2,6 +2,7 @@
 
 include('../php/connect_bd.php');
 include('../php/checkPages.php');
+include('../php/logic/logic_inventory/logic_stateTool.php');
 
 $id = $_GET['id'];
 $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
@@ -28,8 +29,8 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
         </label>
         <nav class="nav">
             <div class="hero__logo hero__logo-1">
-                <img class="hero__logo-img"
-                    src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+                <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4"
+                    alt="logo" />
                 <h2 class="title__hero">Pañol</h2>
                 <label for="nav__check" class="hamburger">
                     <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -48,14 +49,13 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
             </ul>
         </nav>
         <div class="hero__logo hero__logo-0">
-            <img class="hero__logo-img"
-                src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+            <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
             <h2 class="title__hero">Pañol</h2>
         </div>
     </header>
     <section class="form__section">
         <div id="mensajeExito" class="mensaje__exito"></div>
-        <form id="toolIDsForm" method="post" >
+        <form id="toolIDsForm" method="post">
             <fieldset class="input__container">
                 <legend>ID de cada herramienta</legend>
                 <!-- <?php
@@ -65,30 +65,42 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
                 for ($i = 1; $i <= $cantidad; $i++) {
                     echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
                     echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
+
                 }
                 ?> -->
 
                 <?php
-                
+
                 $sql_result = mysqli_query($conexion, $sql);
 
-                while($row = mysqli_fetch_assoc($sql_result)) {
-                ?>
-                <p>Herramienta <?php echo $row['id_herramienta']?></p>
-                
-                <label class="input__label" for="toolID">
-                <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta']?>">
-                
+                while ($row = mysqli_fetch_assoc($sql_result)) {
+                    ?>
+                    <p>Herramienta
+                        <?php echo $row['id'] ?>
+                        <?php echo $row['estado'] ?>
+                    </p>
+
+                    <label class="input__label" for="toolID">
+                        <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta'] ?>">
+                        <div style="display: flex; gap: 10px;">
+
+                        </div>
 
 
-                <?php
-                } mysqli_free_result($sql_result);
+                        <?php
+                }
+                mysqli_free_result($sql_result);
                 ?>
-                <button type="submit" class="btn__blue">Guardar</button>
+                    <br>
+                    <button type="submit" class="btn__blue">Guardar</button>
             </fieldset>
         </form>
     </section>
     <!-- Agrega aquí tu JavaScript para manejar mensajes de éxito/fracaso -->
+
+
+
+
 </body>
 
 </html>
