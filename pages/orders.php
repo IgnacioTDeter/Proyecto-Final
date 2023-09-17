@@ -15,6 +15,8 @@ include('../php/search/search_orders.php');
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" type="image/x-icon">
   <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <title>Pañol - Pedidos</title>
 
 </head>
@@ -39,6 +41,9 @@ include('../php/search/search_orders.php');
         </li>
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="reports.php" class="nav__link">Informes</a>
         </li>
         <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
@@ -88,6 +93,7 @@ include('../php/search/search_orders.php');
             <th class="table__header-item" colspan="2">Datos</th>
             <th class="table__header-item">Estado</th>
             <th class="table__header-item">Acciones</th>
+            <th class="table__header-item">Informe</th>
           </tr>
         </thead>
         <tbody>
@@ -132,11 +138,15 @@ include('../php/search/search_orders.php');
                   <!-- Botones de estado -->
                   <a href="#" class="btn__table btn__table-blue" data-row-id="<?php echo $rowId; ?>"><i class="ri-eye-fill"></i></a>
                   <a href="form_editOrders.php?edit=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-yellow"><i class="ri-pencil-fill"></i></a>
-                  <a href="../php/deleteOrder.php?id_pedido=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-red" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
+                  <a href="../php/deleteOrder.php?id_pedido=<?php echo $row['id_pedido']; ?>" class="btn__table btn__table-red delete-button" delete-id=<?php echo $rowId; ?> id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
                 </div>
               </td>
-            </tr>
 
+              <td>
+              <button class="btn__popup fas fa-exclamation-triangle"  onclick="openPopup('<?php echo $row['profesor'] ?>', '<?php echo $row['curso'] ?>', '<?php echo $row['dia'] ?>', '<?php echo $row['id_pedido'] ?>')"></button>
+              </td>
+            </tr>
+              
             <?php
             $sql_detalles = "SELECT * FROM detalles_pedidos WHERE id_pedido = $rowId";
             $detalles = mysqli_query($conexion, $sql_detalles);
@@ -146,7 +156,7 @@ include('../php/search/search_orders.php');
             <tr class="custom-dropdown-row table__header-item table__header-item-0" style="display: none;" data-row-id="<?php echo $rowId; ?>">
               <th class="" colspan="4" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Herramienta</th>
               <th class="" colspan="2" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Cantidad</th>
-              <th class="" colspan="1" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Devoluciones</th>
+              <th class="" colspan="2" style="background-color: hsl(0, 0%, 25%); border: solid 1px grey">Devoluciones</th>
             </tr>
 
             <?php
@@ -159,7 +169,7 @@ include('../php/search/search_orders.php');
                 <td colspan="2" class="table__cell" style="background-color: rgba(255, 255, 27, 0.470);">
                   <?php echo $row['cantidad_solicitada']; ?>
                 </td>
-                <td colspan="1" class="table__cell amount-column" style="background-color: rgba(255, 255, 27, 0.470);">
+                <td colspan="2" class="table__cell amount-column" style="background-color: rgba(255, 255, 27, 0.470);">
                   
                   <div class="content-select">
                     <select>
@@ -188,6 +198,29 @@ include('../php/search/search_orders.php');
   </section>
 
   <script src="../assets/js/data_into_orders.js"></script>
+  <script src="../assets/js/pop_info.js"></script>
+  <script>
+  // Obtén todos los botones de eliminación por su clase
+  var deleteButtons = document.querySelectorAll(".delete-button");
+
+  // Agrega un controlador de eventos a cada botón de eliminación
+  deleteButtons.forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.preventDefault(); // Evita que el enlace se siga inmediatamente
+
+      // Muestra un cuadro de diálogo de confirmación
+      var result = confirm("¿Estás seguro de que deseas eliminar este pedido?");
+
+      // Si el usuario confirma, redirige al script de eliminación PHP
+      if (result) {
+        window.location.href = button.getAttribute("href");
+      } else {
+        // El usuario canceló la eliminación, no hagas nada
+      }
+    });
+  });
+</script>
+ 
 </body>
 
 </html>

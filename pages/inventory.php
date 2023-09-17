@@ -23,7 +23,7 @@ include('../php/search/search_inventory.php');
 </head>
 
 <body>
-  <header class="hero">
+<header class="hero">
     <input type="checkbox" id="nav__check" hidden />
     <label for="nav__check" class="hamburger">
       <i class="ri-menu-line hamburger__icon"></i>
@@ -43,9 +43,11 @@ include('../php/search/search_inventory.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-
         <li class="nav__iteam">
-          <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          <a href="reports.php" class="nav__link">Informes</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
     </nav>
@@ -54,6 +56,7 @@ include('../php/search/search_inventory.php');
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
+
 
 
   <section class="section__pedidos">

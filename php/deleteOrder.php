@@ -9,7 +9,8 @@
     $delete = mysqli_query($conexion, $query_delete);
     
     if($delete) {
-        echo "<script> alert('Se a eliminado al empleado exitosamente'); window.location='../pages/orders.php';</script>";
+        header("Location: ../pages/orders.php");
+        exit(); // Asegura que el script se detenga después de la redirección
     } else {
         echo 
         '<script> 

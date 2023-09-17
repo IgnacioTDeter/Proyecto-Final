@@ -3,61 +3,9 @@
 include('../php/connect_bd.php');
 include('../php/checkPages.php');
 
+$id = $_GET['id'];
+$sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
- 
-
-    $id = $_GET['id'];
-
-
-
-    $sql = "INSERT INTO inventario (herramienta, cantidad, rubro, sub_rubro, proveedor, ubicacion)
-        VALUES ('$nombre', $cantidad, '$rubro', '$subrubro', '$proveedor', '$ubicacion')";
-
-    // Ejecutar la consulta
-    if ($conexion->query($sql) === TRUE) {
-    echo "Los datos se han insertado correctamente.";
-    } else {
-    echo "Error al insertar los datos: " . $conexion -> error;
-    }
-
-    $toolName = $nombre;
-
-    $idSql = "SELECT id
-    FROM inventario
-    ORDER BY id DESC
-    LIMIT 1;
-    ";
-
-$resultIdSql = $conexion->query($idSql); // Ejecutar la consulta
-
-if ($resultIdSql) {
-    $row = $resultIdSql->fetch_assoc();
-    $lastId = $row['id']; // Obtener el último ID de la tabla inventario
-} else {
-    echo "Error al obtener el último ID: " . $conexion->error;
-}
-
-for ($i = 1; $i <= $cantidad; $i++) {
-    $toolID = $_POST['toolID' . $i];
-    echo "toolID: $toolID"; // Agrega esta línea para depurar
-    // Consulta para verificar si ya existe un registro con el mismo id_detalle
-    $existingQuery = "SELECT id FROM detalles_inventario WHERE id = $toolID";
-    $existingResult = mysqli_query($conexion, $existingQuery);
-
-    if (mysqli_num_rows($existingResult) > 0) {
-        echo "Ya existe un registro con el mismo id_detalle: $toolID";
-    } else {
-        // Inserta el nuevo registro
-        $query = "INSERT INTO detalles_inventario (id_stock, id_herramienta) VALUES ($lastId, $toolID)";
-        $result = mysqli_query($conexion, $query);
-
-        if (!$result) {
-            echo "Error al insertar en la base de datos: " . mysqli_error($conexion);
-        }
-    }
-}
-}
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +58,7 @@ for ($i = 1; $i <= $cantidad; $i++) {
         <form id="toolIDsForm" method="post" >
             <fieldset class="input__container">
                 <legend>ID de cada herramienta</legend>
-                <?php
+                <!-- <?php
                 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
                 $cantidad = isset($_GET['cantidad']) ? intval($_GET['cantidad']) : 0;
 
@@ -118,6 +66,23 @@ for ($i = 1; $i <= $cantidad; $i++) {
                     echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
                     echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
                 }
+                ?> -->
+
+                <?php
+                
+                $sql_result = mysqli_query($conexion, $sql);
+
+                while($row = mysqli_fetch_assoc($sql_result)) {
+                ?>
+                <p>Herramienta <?php echo $row['id_herramienta']?></p>
+                
+                <label class="input__label" for="toolID">
+                <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta']?>">
+                
+
+
+                <?php
+                } mysqli_free_result($sql_result);
                 ?>
                 <button type="submit" class="btn__blue">Guardar</button>
             </fieldset>

@@ -5,7 +5,6 @@ include('../php/checkPages.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
- 
 
     $nombre = $_GET['nombre'];
     $cantidad = $_GET['cantidad'];
@@ -61,6 +60,9 @@ for ($i = 1; $i <= $cantidad; $i++) {
         }
     }
 }
+
+header("Location: inventory.php");
+exit; // Asegúrate de salir del script para evitar que se ejecute más código
 }
 ?>
 
