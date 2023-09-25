@@ -14,7 +14,7 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewpo  rt" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">

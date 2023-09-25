@@ -65,12 +65,18 @@ include('../php/search/search_inventory.php');
     </div>
     <div class="action__div">
       <div class="add__div">
-        <button class="btn__blue">
-          <a href="form_newTool.php" class="btn__blue--text">
+        <a href="form_newTool.php" class="btn__blue--text">
+          <button class="btn__blue">
             <i class="ri-add-circle-fill"></i>
             Añadir
-          </a>
-        </button>
+          </button>
+        </a>
+        <a href="form_uploadTool.php" class="btn__blue--text">
+          <button class="btn__blue">
+            <i class="ri-add-circle-fill"></i>
+            Añadir Herramienta
+          </button>
+        </a>
       </div>
 
       <form method="GET" action="inventory.php">
@@ -105,18 +111,24 @@ include('../php/search/search_inventory.php');
     while ($row = mysqli_fetch_assoc($orders)) {
     ?>
       <tr class="tr">
-        <td class="table_cell table_cell-0"><?php echo $row['herramienta']; ?></td>
+        <td class="table__cell table_cell-0"><?php echo $row['herramienta']; ?></td>
         <td class="table__cell"><?php echo $row['cantidad']; ?></td>
         <td class="table__cell"><?php echo $row['rubro']; ?></td>
         <td class="table__cell"><?php echo $row['sub_rubro']; ?></td>
         <td class="table__cell"><?php echo $row['proveedor']; ?></td>
         <td class="table__cell"><?php echo $row['ubicacion']; ?></td>
         <td class="table__cell">
-        <div class="btn-group">
-          <a href="tools_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-eye-fill"></i></a>
-          <a href="edit_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-yellow"><i class="ri-pencil-fill"></i></a>
-          <a href="addTool.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-add-line"></i></a>
-        </div>
+                <div class="btn-group">
+                  <!-- Botones de estado -->
+                  <a href="tools_id_inventory.php?id=<?php echo $row['id']; ?>"
+                    class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>
+
+                  <a href="edit_id_inventory.php?id=<?php echo $row['id']; ?>" 
+                    class="btn__table btn__table-yellow delete-button"><i class="ri-pencil-fill"></i></a>
+                      <a href="addTool.php?id=<?php echo $row['id']; ?>"
+                      class="btn__table btn__table-blue" style="background: rgb(66, 245, 120);"><i class="ri-add-line"></i></a>
+                </div>
+              </td>
         </td>
       </tr>
     <?php

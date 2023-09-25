@@ -1,7 +1,7 @@
 <?php
 include('../php/connect_bd.php');
-include('../php/checkPages.php');
 include('../php/logic/logic_orders/logic_form_newOrders.php');
+include('../php/checkPages.php');
 ?>
 
 
@@ -70,13 +70,13 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
           <label for="dia">Día </label>
           <input id="dia" name="dia" type="date" required>
           <label for="profesor">Profesor </label>
-          <input id="profesor" name="profesor" type="text" required>
+          <input id="profesor" name="profesor" type="text" required maxlength="40">
           <label for="alumno">Alumno </label>
-          <input id="alumno" name="alumno" type="text" required>
+          <input id="alumno" name="alumno" type="text" required maxlength="40">
           <label for="salon">Salón </label>
-          <input id="salon" name="salon" type="text" required>
+          <input id="salon" name="salon" type="text" required maxlength="4">
           <label for="curso">Curso </label>
-          <input id="curso" name="curso" type="text" required>
+          <input id="curso" name="curso" type="text" required maxlength="5">
 
           <!-- Agregar aquí los demás campos del pedido -->
 

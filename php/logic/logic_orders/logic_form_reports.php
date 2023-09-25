@@ -1,8 +1,8 @@
 <?php
 
-include('../php/connect_bd.php');
+include('../../connect_bd.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['profesor'], $_POST['curso'], $_POST['fecha'], $_POST['texto'], $_POST['id'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['profesor'], $_POST['curso'], $_POST['fecha'], $_POST['texto'])) {
     // Recuperar los datos del formulario
     $profesor = $_POST["profesor"];
     $curso = $_POST["curso"];

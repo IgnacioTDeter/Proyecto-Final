@@ -122,7 +122,7 @@ exit; // Asegúrate de salir del script para evitar que se ejecute más código
 
                 for ($i = 1; $i <= $cantidad; $i++) {
                     echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
-                    echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
+                    echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required maxlength="10"/>';
                 }
                 ?>
                 <button type="submit" class="btn__blue">Guardar</button>

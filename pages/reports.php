@@ -8,6 +8,7 @@ include('../php/checkPages.php');
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css">
   <title>Document</title>
 </head>
@@ -56,16 +57,16 @@ if ($result->num_rows > 0) {
         echo '<section class="inform__section">';
         echo '<div class="card__inform card">';
         echo '<div class="info__inform">';
-        echo '<h1 class="title__inform" style="color: black;">Profesor: ' . $row['profesor'] . '</h1>';
-        echo '<h3 class="curso__inform" style="color: grey;">' . $row['curso'] . '</h3>';
-        echo '<h4 class="fecha__inform">' . $row['fecha'] . '</h4>';
+        echo '<h2 class="title__inform">Profesor: ' . $row['profesor'] . '</h2>';
+        echo '<h3 class="curso__inform">' . $row['curso'] . '</h3>';
+        echo '<h4 class="curso__inform">' . $row['fecha'] . '</h4>';
         echo '</div>';
         echo '<div class="div__inform">';
         echo '<p class="paragraph__inform">Informe:</p>';
         echo '<div class="text__inform">';
         echo '<p>' . $row['texto'] . '</p>';
         echo '<div>';
-        echo '<a href="../php/deleteReport.php?id_informe=' . $row['id'] . '"><button class="btn__blue" style="margin-top: 20px; background-color: rgb(179, 0, 0);">Borrar</button></a>';
+        echo '<a href="../php/deleteReport.php?id_informe=' . $row['id'] . '"><button class="btn__blue-red">Borrar</button></a>';
         echo '</div>';
         echo '</div>';
         echo '</div>';
@@ -78,6 +79,8 @@ if ($result->num_rows > 0) {
 // Cierra la conexión a la base de datos
 $conexion->close();
 ?>
+
+<script src="../assets/js/header.js"></script>
 
 </body>
 </html>

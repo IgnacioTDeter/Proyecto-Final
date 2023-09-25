@@ -91,7 +91,7 @@
         </div>
 
         <button class="btn__blue" type="button" onclick="agregarHerramienta()">Agregar Herramienta</button><br><br>
-        <div class="action__div">
+  
         <div class="btn__container">
         <button class="btn__blue" type="submit" name="update">Editar</button>
         </div>

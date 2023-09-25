@@ -8,6 +8,17 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+
+## [Versión 2.2.1] - 24-08-2023
+### Cambios
+
+- se agrego en newOrders una logica para poder sumar o restar la cantidad devuelta
+- modificaciones en base de datos 
+
+
+
+
+
 ## [Versión 2.2.0] - 24-08-2023
 ### Cambios
 

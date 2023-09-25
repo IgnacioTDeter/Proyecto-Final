@@ -81,7 +81,7 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
 
                     <label class="input__label" for="toolID">
                         <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta'] ?>">
-                        <div style="display: flex; gap: 10px;">
+                        <div class="form__inventory">
                         <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
                         </form>
                         
@@ -96,18 +96,17 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
                             <input type="hidden" name="id_herramienta" value="<?php echo $row['id'] ?>">
                             <input type="hidden" name="nuevo_estado" value="Desgastada">
                             <button type="submit" name="boton" class="btn__blue"
-                                style="background-color: rgb(252, 186, 3)">Desgastada</button>
+                                style="background-color: rgb(252, 186, 3); margin-left:10px;">Desgastada</button>
                         </form>
                         <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
                             <input type="hidden" name="id_herramienta" value="<?php echo $row['id'] ?>">
                             <input type="hidden" name="nuevo_estado" value="Funcional">
                             <button type="submit" name="boton" class="btn__blue"
-                                style="background-color: rgb(154, 212, 11)">Funcional</button>
+                                style="background-color: rgb(154, 212, 11); margin-left:10px;">Funcional</button>
                         </form>
                         </div>
 
-                        <br>
-                        <br>
+                   
 
                         <?php
                 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2023 a las 23:31:14
+-- Tiempo de generación: 25-09-2023 a las 04:06:16
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -30,39 +30,30 @@ SET time_zone = "+00:00";
 CREATE TABLE `detalles_inventario` (
   `id` int(11) NOT NULL,
   `id_herramienta` int(11) NOT NULL,
-  `id_stock` int(11) NOT NULL
+  `id_stock` int(11) NOT NULL,
+  `estado` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `detalles_inventario`
 --
 
-INSERT INTO `detalles_inventario` (`id`, `id_herramienta`, `id_stock`) VALUES
-(23, 1, 9),
-(24, 2, 9),
-(25, 3, 9),
-(26, 1, 10),
-(27, 2, 10),
-(28, 3, 10),
-(29, 1, 11),
-(30, 2, 11),
-(31, 3, 11),
-(32, 2, 12),
-(33, 45, 12),
-(34, 42, 12),
-(35, 78, 13),
-(36, 78, 13),
-(37, 78, 13),
-(38, 345, 14),
-(39, 234, 14),
-(40, 639, 14),
-(41, 1, 15),
-(42, 1, 15),
-(43, 2, 15),
-(44, 4, 16),
-(45, 3, 16),
-(46, 4, 16),
-(47, 3, 16);
+INSERT INTO `detalles_inventario` (`id`, `id_herramienta`, `id_stock`, `estado`) VALUES
+(48, 4, 17, NULL),
+(49, 5, 17, NULL),
+(50, 6, 17, NULL),
+(51, 234, 18, NULL),
+(52, 235, 18, NULL),
+(53, 236, 18, NULL),
+(54, 545, 19, 'Baja'),
+(55, 456, 19, NULL),
+(56, 456, 19, NULL),
+(57, 23542, 20, NULL),
+(58, 34536, 22, NULL),
+(59, 234652, 23, NULL),
+(60, 34526, 23, NULL),
+(61, 1235325, 23, NULL),
+(62, 326231, 24, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,23 +66,41 @@ CREATE TABLE `detalles_pedidos` (
   `id_pedido` int(11) DEFAULT NULL,
   `id_herramienta` int(11) DEFAULT NULL,
   `herramienta` varchar(255) DEFAULT NULL,
-  `cantidad_solicitada` int(11) DEFAULT NULL
+  `cantidad_solicitada` int(11) DEFAULT NULL,
+  `estado` varchar(255) DEFAULT NULL,
+  `inventario` int(11) DEFAULT NULL,
+  `devoluciones` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `detalles_pedidos`
 --
 
-INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramienta`, `cantidad_solicitada`) VALUES
-(8, 43, NULL, 'Martillo', 1),
-(9, 43, NULL, 'Herramienta', 132),
-(10, 43, NULL, 'Martillo ', 132),
-(13, 45, NULL, 'Herramienta', 3),
-(14, 46, NULL, 'Alicate', 3),
-(15, 46, NULL, 'Martillo ', 5),
-(16, 46, NULL, 'Destornilladores', 4),
-(17, 47, NULL, 'Alicate', 3),
-(18, 48, NULL, 'Herramienta', 7);
+INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramienta`, `cantidad_solicitada`, `estado`, `inventario`, `devoluciones`) VALUES
+(1, 1, NULL, 'Martillo', 3, NULL, NULL, NULL),
+(2, 1, NULL, 'Destornillador', 2, NULL, NULL, NULL),
+(3, 2, NULL, 'Martillo', 2, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `formulario_herramientas`
+--
+
+CREATE TABLE `formulario_herramientas` (
+  `id` int(11) NOT NULL,
+  `rubro` varchar(255) DEFAULT NULL,
+  `sub_rubro` varchar(255) DEFAULT NULL,
+  `herramienta` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `formulario_herramientas`
+--
+
+INSERT INTO `formulario_herramientas` (`id`, `rubro`, `sub_rubro`, `herramienta`) VALUES
+(1, 'Carpinteria', 'Herramienta de mano', 'Martillo'),
+(2, 'General', 'Herramienta de mano', 'Destornillador');
 
 -- --------------------------------------------------------
 
@@ -112,7 +121,7 @@ CREATE TABLE `informes` (
 --
 
 INSERT INTO `informes` (`id`, `profesor`, `curso`, `texto`, `fecha`) VALUES
-(36, 'Mateo', '3°3°', 'Rompio un martillo', '2023-08-30');
+(37, 'Pedro', '1°3°', 'Test', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -136,14 +145,14 @@ CREATE TABLE `inventario` (
 --
 
 INSERT INTO `inventario` (`herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `id_detalle`, `id`) VALUES
-('Martillo', 3, 'aslñkdj', 'asdfjn', 'lñkasjdf', 'CUBA', NULL, 9),
-('Martillo', 3, 'aslñkdj', 'asdfjn', 'lñkasjdf', 'CUBA', NULL, 10),
-('Martillo', 3, 'Manual', 'ALA', 'Pedro', 'CUBA', NULL, 11),
-('Martillo', 3, 'Manual', 'ALA', 'Pedro', 'BANANA', NULL, 12),
-('Martillo', 3, 'Manual', 'ALA', 'Pedro', 'PEDROAIDJSFO', NULL, 13),
-('Martillo', 3, 'Manual', 'ALA', 'Pedro', 'CUBA', NULL, 14),
-('Martillo', 3, 'Manual', 'ALA', 'lñaksdfj', 'CUBA', NULL, 15),
-('Ignacio', 4, 'alñskj', 'ñlskj', 'añlsfkj', 'ñalsfdj', NULL, 16);
+('Martillo', 1, 'Nose', 'Nose', 'NOse', 'Nose', NULL, 17),
+('1', 3, '', '', 'añlsfkj', 'ñalsfdj', NULL, 18),
+('1', 3, '', '', 'añlsfkj', 'LAS BAHAMAS', NULL, 19),
+('2', 1, 'Carpinteria', '', 'añlsfkj', 'ñalsfdj', NULL, 20),
+('Destornillador', 1, 'General', '', '32', 'ñalsfdj', NULL, 21),
+('Destornillador', 1, 'General', '', '32', 'ñalsfdj', NULL, 22),
+('Martillo', 3, 'Carpinteria', 'Herramienta de mano', 'iouy', 'ñalsfdj', NULL, 23),
+('Martillo', 1, 'Carpinteria', 'Herramienta de mano', 'añlsfkj', 'ñalsfdj', NULL, 24);
 
 -- --------------------------------------------------------
 
@@ -166,11 +175,8 @@ CREATE TABLE `pedidos` (
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`, `estado`) VALUES
-(43, '2023-08-19', 'Mateo', 'lkjhoj', 'l3', '33', NULL),
-(45, '2023-08-30', 'Pedro', 'sdf', 'dw', 'wd', NULL),
-(46, '2023-08-30', 'Sergio marcelo deter', 'Pedro', 'L3', '3°3°', NULL),
-(47, '2023-08-30', 'Mateo', 'lkjhoj', '34', '3°2', NULL),
-(48, '2023-08-30', 'Pedro', 'lkjhoj', '34', 'l9', NULL);
+(1, '2023-09-18', 'Pedro', 'Pedro', 'L8', '1°3°', NULL),
+(2, '2023-09-18', 'asdf', 'Pedro', 'L8', '1°3°', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,6 +219,12 @@ ALTER TABLE `detalles_pedidos`
   ADD KEY `id_herramienta` (`id_herramienta`);
 
 --
+-- Indices de la tabla `formulario_herramientas`
+--
+ALTER TABLE `formulario_herramientas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `informes`
 --
 ALTER TABLE `informes`
@@ -238,31 +250,37 @@ ALTER TABLE `pedidos`
 -- AUTO_INCREMENT de la tabla `detalles_inventario`
 --
 ALTER TABLE `detalles_inventario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `detalles_pedidos`
 --
 ALTER TABLE `detalles_pedidos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `formulario_herramientas`
+--
+ALTER TABLE `formulario_herramientas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `informes`
 --
 ALTER TABLE `informes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id_pedido` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_pedido` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
