@@ -8,21 +8,56 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
-## [Versión 2.8.1] - 18-9-2023
+## [Versión 3.3.0] - 15-10-2023
+### Cambios
+
+- Ahora, si solo existe 1 usuario con el rol de "administrador", este no podra ser eliminado
+<br>
+
+
+## [Versión 3.2.0] - 14-10-2023
+### Cambios
+
+- La pagina de Usuarios es capaz de modificar contraseñas y eliminar usuarios.
+- Tambien ahora es capaz de agregar nuevos usuarios
+  
+<br>
+
+
+## [Versión 3.1.0] - 13-10-2023
+### Cambios
+
+- Se modificaron ciertos accesos. Ahora el rol de "profesor" solo tendra acceso a visualizar el inventario y realizar pedidos
+- Se creo la pagina de "Usuarios" (Solo disponible para adminsitradores)
+  
+<br>
+
+
+## [Versión 3.0.0] - 12-10-2023
+### Cambios
+
+- Se modifico la base de datos, en la tabla de usuario, agregando la columna de "roles"
+- Ahora existiran 3 roles: Profesor, Pañolero, Administrador
+- Ahora solo podra acceder al formulario de "Agregar herramienta" aquel usuario con rol de administrador
+  
+<br>
+
+
+## [Versión 2.9.0] - 20-9-2023
 ### Cambios
 
 - Los datos preedetermidos se mostraran en el formulario principal como unica opcion para agregar herramientas al inventario
   
 <br>
 
-## [Versión 2.7.1] - 17-9-2023
+## [Versión 2.8.0] - 19-9-2023
 ### Cambios
 
 - Se agrego un formulario en el cual se agregaran herramientas, rubros y subrubros preedeterminados, hechos unicamente por el administrador
   
 <br>
 
-## [Versión 2.7.1] - 17-9-2023
+## [Versión 2.7.0] - 17-9-2023
 ### Cambios
 
 - Ahora cada herramienta tendra un estado, inicialmente se guardara en "buen estado"
@@ -31,7 +66,8 @@ Permite llevar un registro de las herramientas disponibles, así como también d
   
 <br>
 
-## [Versión 2.6.1] - 10-9-2023
+
+## [Versión 2.6.0] - 2-9-2023
 ### Cambios
 
 - Se pueden agregar herramientas por ID en la seccion del Inventario
@@ -39,16 +75,8 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 <br>
 
-## [Versión 2.6.1] - 2-9-2023
-### Cambios
 
-- Se pueden agregar herramientas por ID en la seccion del Inventario
-- Se puede visualizar el ID de cada herramienta del inventario
-
-<br>
-
-
-## [Versión 2.5.1] - 10-9-2023
+## [Versión 2.5.0] - 10-9-2023
 ### Cambios
 
 - Se implemento la funcionalidad de "Estado" para los pedidos. Esto ayudara a visualizar rapidamente si un pedido se encuentra No entregado, parcialmente entregado, o totalmente entregado
@@ -57,7 +85,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 <br>
 
 
-## [Versión 2.4.1] - 2-9-2023
+## [Versión 2.4.0] - 2-9-2023
 ### Cambios
 
 - Se creó la página de informes 
@@ -65,7 +93,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 <br>
 
 
-## [Versión 2.3.1] - 30-08-2023
+## [Versión 2.3.0] - 30-08-2023
 ### Cambios
 
 - Se agregó el botón de informes
@@ -90,6 +118,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se agrego la columna "id_detalles" en la base de datos para las herramientas del inventario 
 - Se agrego la columna "Status" a la base de datos
 
+<br>
 
 ## [Versión 2.1.0] - 23-08-2023
 ### Cambios
