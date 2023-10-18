@@ -8,6 +8,13 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+## [Versión 3.3.1] - 15-10-2023
+### Cambios
+
+- Se arreglo un problema a la hora de eliminar un usuario administrador. Si existia un solo administrador, no tenias permitido eliminar ningun  usuario. 
+<br>
+
+
 ## [Versión 3.3.0] - 15-10-2023
 ### Cambios
 
