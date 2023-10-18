@@ -8,6 +8,71 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+## [Versión 2.8.1] - 18-9-2023
+### Cambios
+
+- Los datos preedetermidos se mostraran en el formulario principal como unica opcion para agregar herramientas al inventario
+  
+<br>
+
+## [Versión 2.7.1] - 17-9-2023
+### Cambios
+
+- Se agrego un formulario en el cual se agregaran herramientas, rubros y subrubros preedeterminados, hechos unicamente por el administrador
+  
+<br>
+
+## [Versión 2.7.1] - 17-9-2023
+### Cambios
+
+- Ahora cada herramienta tendra un estado, inicialmente se guardara en "buen estado"
+- Se cambio la tabla de inventario, agregando la columna "estado"
+- Se puede editar el estado de cada herramienta manualmente
+  
+<br>
+
+## [Versión 2.6.1] - 10-9-2023
+### Cambios
+
+- Se pueden agregar herramientas por ID en la seccion del Inventario
+- Se puede visualizar el ID de cada herramienta del inventario
+
+<br>
+
+## [Versión 2.6.1] - 2-9-2023
+### Cambios
+
+- Se pueden agregar herramientas por ID en la seccion del Inventario
+- Se puede visualizar el ID de cada herramienta del inventario
+
+<br>
+
+
+## [Versión 2.5.1] - 10-9-2023
+### Cambios
+
+- Se implemento la funcionalidad de "Estado" para los pedidos. Esto ayudara a visualizar rapidamente si un pedido se encuentra No entregado, parcialmente entregado, o totalmente entregado
+- Se modifico la tabla de pedidos agregando la columna de estado
+
+<br>
+
+
+## [Versión 2.4.1] - 2-9-2023
+### Cambios
+
+- Se creó la página de informes 
+
+<br>
+
+
+## [Versión 2.3.1] - 30-08-2023
+### Cambios
+
+- Se agregó el botón de informes
+- Base de datos con nueva tabla "informes" 
+
+<br>
+
 
 ## [Versión 2.2.1] - 24-08-2023
 ### Cambios
@@ -15,7 +80,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - se agrego en newOrders una logica para poder sumar o restar la cantidad devuelta
 - modificaciones en base de datos 
 
-
+<br>
 
 
 
@@ -79,6 +144,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 ## [Versión 1.1.0] - 19-08-2023
 ### Cambios
 - Se agrego la columna "Estado" en la base de datos
+- Ahora se pueden visualizar las herramientas en prestamo
 
 <br>
 <br>
