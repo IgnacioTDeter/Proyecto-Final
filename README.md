@@ -55,8 +55,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Ahora existiran 3 roles: Profesor, Pañolero, Administrador
 - Ahora solo podra acceder al formulario de "Agregar herramienta" aquel usuario con rol de administrador
 
-###Errores 
--Al momento de ingresar en una cuenta se  permite realizar
+
 <br>
 
 
@@ -105,8 +104,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se modifico la funcionalida de "Estado" para los pedidos. Esto ayudara a visualizar rapidamente si un pedido se encuentra en No entregado, parcialmente entregado, o totalmente entregado
 - Se modifico la tabla de pedidos agregando la columna de estado
 
-###Errores 
-- El estado del pedido no se guarda al refrescar la pagina 
+
 <br>
 
 
@@ -140,13 +138,6 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 - se agrego en newOrders una logica para poder sumar o restar la cantidad devuelta
 - modificaciones en base de datos 
-
-### Errores 
-- Al momento de hacer un pedido se puede
-    1. Superar la cantidad de herramientas que tengo en el inventario
-    2. Los datos del inventario pueden pasarse a numeros negrativos
-    3. Algunos datos del inventario no se modifican
-
        
 <br>
 
@@ -209,10 +200,6 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 │       └── search_orders.php <br>
 
     
-### Errores
-- Al agregar  herramientas solo se agrega 1
-- El boton de editar solo muestra 1 herramienta
-- El estado de la herramienta no se guarda
 
 
 <br>
@@ -225,11 +212,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Ahora se pueden visualizar las herramientas en prestamo
 
 
-### Errores
-- Al agregar  herramientas solo se agrega 1
-- El boton de editar solo muestra 1 herramienta
-- El estado de la herramienta no se guarda
-- 
+
 <br>
 <br>
 
@@ -248,9 +231,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Cerrar sesion
 
 
-### Errores
-- Al agregar  herramientas solo se agrega 1
-- El boton de editar solo muestra 1 herramienta
+
   
 
   
