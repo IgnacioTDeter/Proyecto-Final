@@ -39,6 +39,14 @@ Permite llevar un registro de las herramientas disponibles, así como también d
   
 <br>
 
+## [Versión 3.0.1] 
+###Solucion de errores
+- Se corrigio el sistema de usuraios
+- validacion al momento de ir para atras
+- error de cuentas guardadas 
+
+
+<br>
 
 ## [Versión 3.0.0] - 12-10-2023
 ### Cambios
@@ -46,7 +54,9 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se modifico la base de datos, en la tabla de usuario, agregando la columna de "roles"
 - Ahora existiran 3 roles: Profesor, Pañolero, Administrador
 - Ahora solo podra acceder al formulario de "Agregar herramienta" aquel usuario con rol de administrador
-  
+
+###Errores 
+-Al momento de ingresar en una cuenta se  permite realizar
 <br>
 
 
@@ -82,13 +92,21 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 <br>
 
+## [Versión 2.5.1] 
+
+### Solucion de errores 
+- Al momento de modificar un estado ahora se guarda este y lo mismo si se refresca la pagina.
+- 
+<br>
 
 ## [Versión 2.5.0] - 10-9-2023
 ### Cambios
 
-- Se implemento la funcionalidad de "Estado" para los pedidos. Esto ayudara a visualizar rapidamente si un pedido se encuentra No entregado, parcialmente entregado, o totalmente entregado
+- Se modifico la funcionalida de "Estado" para los pedidos. Esto ayudara a visualizar rapidamente si un pedido se encuentra en No entregado, parcialmente entregado, o totalmente entregado
 - Se modifico la tabla de pedidos agregando la columna de estado
 
+###Errores 
+- El estado del pedido no se guarda al refrescar la pagina 
 <br>
 
 
@@ -106,8 +124,16 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se agregó el botón de informes
 - Base de datos con nueva tabla "informes" 
 
+
 <br>
 
+## [Versión 2.2.2] 
+### Solucion de errores 
+ 1. La cantidad de herramientas no puede superar la cantidad del inventario
+ 2. Los datos del inventario ya no pueden ser menores a 0
+ 3. Las herramientas del inventario ya se modifican todas
+
+<br>
 
 ## [Versión 2.2.1] - 24-08-2023
 ### Cambios
@@ -115,6 +141,13 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - se agrego en newOrders una logica para poder sumar o restar la cantidad devuelta
 - modificaciones en base de datos 
 
+### Errores 
+- Al momento de hacer un pedido se puede
+    1. Superar la cantidad de herramientas que tengo en el inventario
+    2. Los datos del inventario pueden pasarse a numeros negrativos
+    3. Algunos datos del inventario no se modifican
+
+       
 <br>
 
 
@@ -131,7 +164,12 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 ### Cambios
 
 - Opcion de eliminar Pedidos
-- Solucion de varios errores de editar y agregar herramienta
+
+
+### Solucion de errores 
+- Al agregar  herramientas solo se agrega 1
+- El boton de editar solo muestra 1 herramienta
+- El estado de la herramienta no se guarda
 
   
 <br>
@@ -140,7 +178,7 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 ## [Versión 2.0.0] - 21-08-2023
 ### Cambios
 - funciones agregadas 
-    -agregar hrramienta
+    -agregar herramienta
     -input dinamicos
 
 - actualizacion archivo add_tool.js
@@ -150,12 +188,12 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 - translado de codigo php a archivos en carpetas nuevas
 
--creacion archivo checkPages.php
+- creacion archivo checkPages.php
     -permite ver si la secion esta iniciada 
 
--Actualizacion de la BD
+- Actualizacion de la BD
 
-- se agrego 2 carpetas
+- Se agrego 2 carpetas
 
 <br>
 . <br>
@@ -171,6 +209,10 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 │       └── search_orders.php <br>
 
     
+### Errores
+- Al agregar  herramientas solo se agrega 1
+- El boton de editar solo muestra 1 herramienta
+- El estado de la herramienta no se guarda
 
 
 <br>
@@ -182,9 +224,18 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se agrego la columna "Estado" en la base de datos
 - Ahora se pueden visualizar las herramientas en prestamo
 
+
+### Errores
+- Al agregar  herramientas solo se agrega 1
+- El boton de editar solo muestra 1 herramienta
+- El estado de la herramienta no se guarda
+- 
 <br>
 <br>
-  
+
+
+
+ 
 ## [Versión 1.0.0] 
 ### Cambios
 - Poder agregar pedidos con varias herramientas
@@ -195,4 +246,11 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Buscador de herramientas
 - Iniciar sesion
 - Cerrar sesion
+
+
+### Errores
+- Al agregar  herramientas solo se agrega 1
+- El boton de editar solo muestra 1 herramienta
+  
+
   
