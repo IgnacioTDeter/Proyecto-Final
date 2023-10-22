@@ -1,4 +1,4 @@
-/* dante pufahl */
+/* dante pufahl y espindola juan*/
 
 /* =========== google fonts ============*/
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap");
@@ -22,6 +22,8 @@
   --grey: hsl(215, 10%, 62%);
   --grey-hover: hsl(215, 10%, 50%);
   --grey-ultra-light: hsl(215, 10%, 85%);
+  --btn-blue:hsl(215, 100%, 50%);
+  --btn-blue-hover:hsl(215, 100%, 35%);
 
   /**============ fonts ============*/
 
@@ -58,6 +60,7 @@
 
   /**========== extra ==========*/
   --transition: color 0.4s, background-color 0.4s ease-in-out;
+  --border-radius-btn: 4px;
 }
 
 /** ======+ media variables ====+==*/
@@ -80,7 +83,12 @@ body {
   font-size: 14px;
   font-family: var(--heebo);
 }
-
+.content-input input,
+.content-select select{
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
 /**====== REUSABLE CSS CLASSES ======*/
 
 a {
@@ -103,12 +111,48 @@ a {
   box-shadow: var(--box-shadow);
 }
 
+.btn__blue{
+  padding: var(--mb-0-5) var(--mb-1);
+  font-size: var(--fs-1);
+  border: none;
+  background-color: var(--btn-blue);
+  border-radius: var(--border-radius-btn);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.btn__blue-red{
+  margin-top: var(--mb-0-5);
+  padding: var(--mb-0-5) var(--mb-1);
+  font-size: var(--fs-1);
+  border: none;
+  border-radius: var(--border-radius-btn);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: white;
+  background-color: hsl(0, 100%, 50%);
+}
+
+.btn__blue-red:hover{
+  background-color: hsl(0, 100%, 30%);
+}
+
+.btn__blue:hover {
+  background-color: var(--btn-blue-hover);
+  color: white;
+}
+
+.btn__blue--text {
+  color: var(--text-white);
+}
+
 /**====== Login ======  */
 
 .section__container {
   display: flex;
   height: 100vh;
-  min-height: 600px;
+  min-height: 40rem;
   align-items: center;
   justify-content: center;
 }
@@ -119,22 +163,21 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0px 4px 32px hsla(0, 0%, 0%, 0.3);
+  background-color: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
 }
 
 .image__content {
   width: 50%;
   display: flex;
-  margin: 0;
   justify-content: center;
   overflow: hidden;
 }
 
 .image__img {
   width: 100%;
-  border-radius: 10px 0 0 10px;
+  border-radius: 1rem 0 0 1rem;
 }
 
 .form__content {
@@ -159,7 +202,7 @@ a {
 }
 
 .form__paragraph {
-  font-weight: 300;
+  font-weight: var(--font-regular);
 }
 
 .msg {
@@ -172,7 +215,7 @@ a {
 }
 
 .form__link {
-  font-weight: 400;
+  font-weight: var(--font-regular);
   color: black;
 }
 
@@ -195,7 +238,6 @@ a {
   border: none;
   outline: none;
   border-bottom: 1px solid #706c6c;
-
   z-index: 100;
   position: relative;
 }
@@ -227,7 +269,7 @@ input[type="password"] {
 
 .form__submit {
   background-color: hsl(0, 0%, 25%);
-  color: white;
+  color: var(--text-white);
   font-weight: 300;
   font-size: 1rem;
   padding: 0.5rem 0;
@@ -355,15 +397,37 @@ input[type="password"] {
   border-left: none;
 }
 
+.table__cell-view{
+  background-color: hsl(215, 10%, 92%);
+  border-top: 1px solid var(--text-color);
+}
+
 .tr:nth-child(even) {
   background-color: var(--grey-ultra-light);
   border-top: 1px solid var(--text-color);
 }
 
+.tr:nth-child(odd) {
+  border-top: 1px solid var(--text-color);
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+
+
 .btn__table {
   color: var(--title-color);
   font-weight: var(--font-bold);
   padding: var(--mb-0-25) var(--mb-0-5);
+  cursor: pointer;
+  border: none;
+}
+
+.btn__table-1{
+  margin-top: var(--mb-0-25);
 }
 
 .btn__table-blue {
@@ -412,22 +476,69 @@ input[type="password"] {
   background-color: hsl(215, 100%, 50%);
   color: var(--text-white);
 }
+.content-select select::-ms-expand {
+  display: none;
+}
 
+.content-select {
+  max-width: 25%; 
+  position: relative;
+  margin: 0 auto;
+}
+
+.content-select select {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  padding: 5px 8px; 
+  height: 32px; 
+  outline: 0;
+  border: 0;
+  border-radius: 6px; 
+  background: #f0f0f0;
+  color: #7b7b7b;
+  font-size: 1em;
+  font-family: 'Quicksand', sans-serif;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.content-select select:hover {
+  background: hsl(215, 100%, 85%);
+
+}
+
+.content-select i {
+  position: absolute;
+  right: 8px; 
+  top: calc(50% - 7px); 
+  width: 10px;
+  height: 10px;
+  display: block;
+  border-left: 3px solid #7b7b7b; 
+  border-bottom: 3px solid #7b7b7b; 
+  transform: rotate(-45deg);
+  transition: all 0.25s ease;
+}
+
+.content-select:hover i {
+  margin-top: 2px; 
+}
 /** pedidos-inventario */
 
-.title__pedidos {
+.title__section {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: var(--mb-1);
 }
 
-.pedidos__title {
+.section__title {
   color: var(--title-color);
   font-size: var(--fs-2);
   font-weight: var(--font-bold);
 }
-/* corregis si es posible esto es para dante */
 
 .action__div {
   display: flex;
@@ -440,21 +551,6 @@ input[type="password"] {
   width: 30%;
 }
 
-.add__btn {
-  padding: var(--mb-0-5) var(--mb-1);
-  font-size: var(--fs-1);
-  border: none;
-  background-color: hsl(215, 100%, 50%);
-  color: var(--text-white);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.add__btn:hover {
-  background-color: hsl(215, 100%, 35%);
-  color: white;
-}
-
 .search__container {
   text-align: center;
 }
@@ -463,122 +559,217 @@ input[type="password"] {
   padding: var(--mb-0-5) var(--mb-0-75);
   font-size: var(--fs-1);
   border: 1px solid var(--text-color);
-  border-radius: 4px;
+  border-radius: var(--border-radius-btn);
   width: 60%;
 }
 
-.search__button {
-  padding: var(--mb-0-5) var(--mb-1);
-  font-size: var(--fs-1);
-  border: none;
-  background-color: hsl(215, 100%, 50%);
-  color: var(--text-white);
-  border-radius: 4px;
-  cursor: pointer;
-  width: 30%;
+.view__th{
+  background-color: var(--grey-text);
 }
 
-.search__button:hover {
-  background-color: hsl(215, 100%, 35%);
-  color: white;
-}
-
-.search__results {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.result__item {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  width: 300px;
+/* Estilos para el menú desplegable de estado del pedido */
+.status-dropdown {
+  position: relative;
   display: inline-block;
+  font-size: 14px;
+  text-align: center;
 }
 
-/** =====pedidos===== */
-
-.button {
-  cursor: pointer;
-  color: white;
+.status-select {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
   border: none;
-  border-radius: 4px;
-  padding: 10px 25px;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: rgba(240, 98, 98, 0.511);
+  border-radius: 6px;
+  color: var(--sub-title-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
 }
 
-/* Estilos de los botones al pasar el mouse por encima */
-button:hover {
-  background-color: #f8f8f8;
-  color: #000000;
+/* Estilos para las opciones del menú desplegable */
+.status-select option {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
+
+.red-style {
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  background-color: rgba(209, 226, 53, 0.511);
+  border-radius: 6px;
+  color: var(--sub-title-color);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-align: center;
+}
+
+.yellow-style {
+  color: yellow;
+  font-size: 20px;
+  background-color: red;
+  padding: 20px;
+}
+
+.green-style {
+  color: green;
+  font-size: 20px;
+  background-color: blue;
+  padding: 20px;
+}
+
+
+
+/* formularios*/
 
 /* Estilos para el contenido principal */
-.main-content {
+.form__section {
   padding: 25px;
   max-width: 600px;
   margin: 25px auto;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: var(--card-background);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilos para los conjuntos de campos */
-.solicitante-fieldset,
-.pedido-fieldset {
+.input__container {
   margin-bottom: 25px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--text-color);
   border-radius: 8px;
   padding: 25px;
 }
 
 /* Estilos para la leyenda de los conjuntos de campos */
-legend {
+.input__container legend {
   font-weight: bold;
 }
 
 /* Estilos para las etiquetas de los campos */
-label {
+.input__container label {
   display: block;
   margin-bottom: 5px;
 }
 
 /* Estilos para los campos de entrada (input, textarea, select) */
-input,
-textarea,
-select {
+.input__container input,
+.input__container textarea,
+.input__container select {
   width: 100%;
   padding: 8px;
-  border: 1px solid #706c6c;
+  border: 1px solid var(--text-color);
   border-radius: 4px;
   margin-bottom: 10px;
   box-sizing: border-box;
-  color: #706c6c;
 }
 
-/* Estilos para los botones de "Agregar" y "Enviar" */
-.btn-agregar {
-  background-color: hsl(0, 0%, 25%);
+
+/* Estilos para el menú desplegable (select) */
+.input__container select {
+  appearance: none;
+  padding-right: 30px;
+  background-image: url("arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+/* Estilos para el área de texto (textarea) que permite redimensionar verticalmente */
+.input__container textarea {
+  resize: vertical;
+}
+
+/* Estilos para el mensaje de éxito */
+.mensaje-exito {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4caf50;
   color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Para que aparezca por encima de otros elementos */
 }
 
-.form__submit {
-  background-color: hsl(215, 100%, 50%);
+
+/* Estilos para el scroll bar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Fondo transparente */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.3); /* Gris más oscuro y transparente */
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.5); /* Cambio de color en hover */
+}
+
+
+.btn__popup {
+  background-color: red;
   color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
-/* Estilos para los botones de "Agregar" y "Enviar" al pasar el mouse por encima */
-.btn-agregar:hover {
-  background-color: hsl(0, 1%, 37%);
-  color: white;
+/* Estilos para el popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.form__submit:hover {
-  background-color: hsl(215, 100%, 35%);
-  color: white;
+.popup-content {
+  background-color: white;
+  width: 80%;
+  max-width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form__inventory{
+  display: flex;
+}
+
+.title__inform{
+  color: var(--title-color);
+}
+
+.curso__inform{
+  color: var(--sub-title-color);
+}
 /**=========== medias ============  */
 
 /**====== Login ======  */
@@ -612,6 +803,10 @@ select {
   .form__content {
     width: 100%;
     height: 50%;
+  }
+
+  .popup-content {
+    max-width: 80%;
   }
 }
 
