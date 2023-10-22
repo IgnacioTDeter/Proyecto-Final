@@ -18,6 +18,8 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Se agrego un "¿Olvidaste tu contraseña", Falta arreglar los estilos
 - Se agrego password_forgotten.php Este sera el formulario para enviar las credenciales de la cuenta asociada con el mail
 - Se agrego sendMail.php, Esta sera la logica de php para enviar el mail
+- Se agrego deleteTool.php, esta es la logica para eliminar las herramientas del inventario
+- Se agrego un boton de eliminar en inventory.php
 
 ## [Versión 3.3.1] - 15-10-2023
 ### Cambios

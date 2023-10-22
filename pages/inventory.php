@@ -159,6 +159,7 @@ if(in_array($_SESSION['rol'], $allowedRoles)){
 echo '<a href="tools_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
 echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow delete-button" ><i class="ri-pencil-fill"></i></a>';
 echo '<a href="addTool.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-add-line"></i></a>';
+echo '<a href="../php/deleteTool.php?id_herramienta=' . $row['id'] . '" class="btn__table btn__table-red delete-button" delete-id="' . $row['id'] . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
 }
 else{
 echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-eye-fill"></i></a>';
@@ -196,6 +197,28 @@ echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CC
   
   <script src="../assets/js/header.js"></script>
   <script src="../assets/js/table.js"></script>
+  <script>
+// Obtén todos los botones de eliminación por su clase
+var deleteButtons = document.querySelectorAll(".delete-button");
+
+// Agrega un controlador de eventos a cada botón de eliminación
+deleteButtons.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    event.preventDefault(); // Evita que el enlace se siga inmediatamente
+
+    // Muestra un cuadro de diálogo de confirmación
+    var result = confirm("¿Estás seguro de que deseas eliminar este pedido?");
+
+    // Si el usuario confirma, redirige al script de eliminación PHP
+    if (result) {
+      window.location.href = button.getAttribute("href");
+    } else {
+      // El usuario canceló la eliminación, no hagas nada
+    }
+  });
+});
+</script>
+
 </body>
 
 </html>
