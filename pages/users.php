@@ -110,12 +110,13 @@ include('../php/search/search_inventory.php');
     <tr class="tr">
       <th class="table__header-item">Nombre de usuario</th>
       <th class="table__header-item">Rol</th>  
-      <th class="table__header-item">Acciones</th>  
+      <th class="table__header-item">Gmail</th> 
+      <th class="table__header-item">Acciones</th> 
     </tr>
   </thead>
   <tbody>
     <?php
-    $sql = "SELECT id, user_name, password, rol FROM usuarios";
+    $sql = "SELECT * FROM usuarios";
     $orders = mysqli_query($conexion, $sql);
 
    
@@ -124,6 +125,7 @@ include('../php/search/search_inventory.php');
         <tr class="tr">
           <td class="table__cell table_cell-0"><?php echo $row['user_name']; ?></td>
           <td class="table__cell"><?php echo $row['rol']; ?></td>
+          <td class="table__cell"><?php echo $row['gmail']; ?></td>
           <td class="table__cell">
           <div class="btn-group">
       <!-- Botones de estado -->

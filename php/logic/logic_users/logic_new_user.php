@@ -8,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $password = $_POST['password'];
     $rol = $_POST['rol'];
-
+    $gmail = $_POST['gmail'];
     // Realiza la inserción en la base de datos
-    $sql = "INSERT INTO usuarios (user_name, password, rol) VALUES ('$nombre', '$password', '$rol')";
+    $sql = "INSERT INTO usuarios (user_name, password, rol, gmail) VALUES ('$nombre', '$password', '$rol', '$gmail')";
 
     if (mysqli_query($conexion, $sql)) {
         // Éxito al insertar el usuario

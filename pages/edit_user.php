@@ -85,11 +85,17 @@ if ($result && mysqli_num_rows($result) > 0) {
       <fieldset class="input__container">
         <legend>Datos de la herramienta</legend>
         <label for="nombre">Nombre de usuario</label>
-        <input id="nombre" name="nombre" value="<?php echo $row['user_name'] ?>" maxlength="40"/>
+        <input id="nombre" name="nombre" value="<?php echo $row['user_name'] ?>" maxlength="40" />
         <label for="rubro">Nueva Contraseña</label>
         <input id="newPassword" name="newPassword" value="" required maxlength="40"/>
+        <label for="gmail">gmail</label>
+        <input type="email" name="gmail" value="<?php echo $row['gmail']?>">
         <label for="subrubro">Rol</label>
-        <input id="subrubro" name="subrubro" value="<?php echo $row['rol'] ?>" required maxlength="40"/>
+        <select id="subrubro" name="subrubro" required>
+            <option value="panol">Pañol</option>
+            <option value="profesor">Profesor</option>
+            <option value="admin">Admin</option>
+        </select>
       </fieldset>
 
       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">

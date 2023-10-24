@@ -1,3 +1,18 @@
+
+<?php 
+
+include('../php/connect_bd.php');
+
+
+
+
+// send gmail 
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,5 +30,8 @@
             <input type="submit" value="Enviar Email">
         </div>
     </form>
+
+
+    
 </body>
 </html>
