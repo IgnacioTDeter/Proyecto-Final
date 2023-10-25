@@ -157,7 +157,7 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
 $allowedRoles = ['admin', 'panol'];
 if(in_array($_SESSION['rol'], $allowedRoles)){
 echo '<a href="tools_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
-echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow delete-button" ><i class="ri-pencil-fill"></i></a>';
+echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow" ><i class="ri-pencil-fill"></i></a>';
 echo '<a href="addTool.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-add-line"></i></a>';
 echo '<a href="../php/deleteTool.php?id_herramienta=' . $row['id'] . '" class="btn__table btn__table-red delete-button" delete-id="' . $row['id'] . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
 }
