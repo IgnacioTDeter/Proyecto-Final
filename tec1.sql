@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2023 a las 00:32:34
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Oct 24, 2023 at 09:38 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `tec1`
+-- Database: `tec1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_inventario`
+-- Table structure for table `detalles_inventario`
 --
 
 CREATE TABLE `detalles_inventario` (
@@ -35,7 +35,7 @@ CREATE TABLE `detalles_inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `detalles_inventario`
+-- Dumping data for table `detalles_inventario`
 --
 
 INSERT INTO `detalles_inventario` (`id`, `id_herramienta`, `id_stock`, `estado`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `detalles_inventario` (`id`, `id_herramienta`, `id_stock`, `estado`)
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `detalles_pedidos`
+-- Table structure for table `detalles_pedidos`
 --
 
 CREATE TABLE `detalles_pedidos` (
@@ -68,7 +68,7 @@ CREATE TABLE `detalles_pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `detalles_pedidos`
+-- Dumping data for table `detalles_pedidos`
 --
 
 INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramienta`, `cantidad_solicitada`, `estado`, `inventario`, `devoluciones`) VALUES
@@ -86,7 +86,7 @@ INSERT INTO `detalles_pedidos` (`id`, `id_pedido`, `id_herramienta`, `herramient
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `formulario_herramientas`
+-- Table structure for table `formulario_herramientas`
 --
 
 CREATE TABLE `formulario_herramientas` (
@@ -97,7 +97,7 @@ CREATE TABLE `formulario_herramientas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `formulario_herramientas`
+-- Dumping data for table `formulario_herramientas`
 --
 
 INSERT INTO `formulario_herramientas` (`id`, `rubro`, `sub_rubro`, `herramienta`) VALUES
@@ -107,7 +107,7 @@ INSERT INTO `formulario_herramientas` (`id`, `rubro`, `sub_rubro`, `herramienta`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `informes`
+-- Table structure for table `informes`
 --
 
 CREATE TABLE `informes` (
@@ -119,7 +119,7 @@ CREATE TABLE `informes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `informes`
+-- Dumping data for table `informes`
 --
 
 INSERT INTO `informes` (`id`, `profesor`, `curso`, `texto`, `fecha`) VALUES
@@ -129,7 +129,7 @@ INSERT INTO `informes` (`id`, `profesor`, `curso`, `texto`, `fecha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inventario`
+-- Table structure for table `inventario`
 --
 
 CREATE TABLE `inventario` (
@@ -144,7 +144,7 @@ CREATE TABLE `inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `inventario`
+-- Dumping data for table `inventario`
 --
 
 INSERT INTO `inventario` (`herramienta`, `cantidad`, `rubro`, `sub_rubro`, `proveedor`, `ubicacion`, `id_detalle`, `id`) VALUES
@@ -155,7 +155,7 @@ INSERT INTO `inventario` (`herramienta`, `cantidad`, `rubro`, `sub_rubro`, `prov
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pedidos`
+-- Table structure for table `pedidos`
 --
 
 CREATE TABLE `pedidos` (
@@ -169,7 +169,7 @@ CREATE TABLE `pedidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `pedidos`
+-- Dumping data for table `pedidos`
 --
 
 INSERT INTO `pedidos` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso`, `estado`) VALUES
@@ -180,38 +180,39 @@ INSERT INTO `pedidos` (`id_pedido`, `dia`, `profesor`, `alumno`, `salon`, `curso
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `user_name` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `rol` varchar(255) DEFAULT NULL
+  `rol` varchar(255) DEFAULT NULL,
+  `gmail` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `user_name`, `password`, `rol`) VALUES
-(8, 'Joaquin', 'nacho', 'panol'),
-(15, 'Lucas', '123', 'admin'),
-(16, 'Pelado', '123', 'panol');
+INSERT INTO `usuarios` (`id`, `user_name`, `password`, `rol`, `gmail`) VALUES
+(8, 'Joaquin', 'nacho', 'panol', ''),
+(15, 'Lucas', '123', 'admin', ''),
+(16, 'Pelado', '123', 'panol', '');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `detalles_inventario`
+-- Indexes for table `detalles_inventario`
 --
 ALTER TABLE `detalles_inventario`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_stock` (`id_stock`);
 
 --
--- Indices de la tabla `detalles_pedidos`
+-- Indexes for table `detalles_pedidos`
 --
 ALTER TABLE `detalles_pedidos`
   ADD PRIMARY KEY (`id`),
@@ -219,77 +220,77 @@ ALTER TABLE `detalles_pedidos`
   ADD KEY `id_herramienta` (`id_herramienta`);
 
 --
--- Indices de la tabla `formulario_herramientas`
+-- Indexes for table `formulario_herramientas`
 --
 ALTER TABLE `formulario_herramientas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `informes`
+-- Indexes for table `informes`
 --
 ALTER TABLE `informes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `inventario`
+-- Indexes for table `inventario`
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `pedidos`
+-- Indexes for table `pedidos`
 --
 ALTER TABLE `pedidos`
   ADD PRIMARY KEY (`id_pedido`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `detalles_inventario`
+-- AUTO_INCREMENT for table `detalles_inventario`
 --
 ALTER TABLE `detalles_inventario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT de la tabla `detalles_pedidos`
+-- AUTO_INCREMENT for table `detalles_pedidos`
 --
 ALTER TABLE `detalles_pedidos`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de la tabla `formulario_herramientas`
+-- AUTO_INCREMENT for table `formulario_herramientas`
 --
 ALTER TABLE `formulario_herramientas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT de la tabla `informes`
+-- AUTO_INCREMENT for table `informes`
 --
 ALTER TABLE `informes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT de la tabla `inventario`
+-- AUTO_INCREMENT for table `inventario`
 --
 ALTER TABLE `inventario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT de la tabla `pedidos`
+-- AUTO_INCREMENT for table `pedidos`
 --
 ALTER TABLE `pedidos`
   MODIFY `id_pedido` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;

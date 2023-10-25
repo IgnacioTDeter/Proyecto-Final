@@ -64,6 +64,10 @@ include('../php/checkPages.php');
         <label for="password">Contraseña</label>
         <input id="password" name="password" required />
 
+        <label for="gmail">gmail</label>
+        <input type="email" id="gmail" name="gmail" required />
+
+        
         <label for="rol">Rol</label>
         <select id="rol" name="rol" required>
             <option value="panol">Pañol</option>
