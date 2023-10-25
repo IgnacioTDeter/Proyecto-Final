@@ -18,7 +18,7 @@ function openPopup(profesor, curso, fecha, id) {
             <input type="hidden" id="curso" name="curso" value="${curso}">
             <input type="hidden" id="profesor" name="profesor" value="${profesor}">
             <input type="hidden" id="fecha" name="fecha" value="${fecha}">
-            <input type="hidden" id="fecha" name="fecha" value="${id}">
+            <input type="hidden" id="id" name="id" value="${id}">
             <button type="submit" class="btn__blue">Enviar</button>
         </form>
     `;
