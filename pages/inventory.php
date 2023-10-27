@@ -37,34 +37,34 @@ include('../php/search/search_inventory.php');
         </label>
       </div>
       <ul class="nav__list">
-    <li class="nav__item">
-        <a href="orders.php" class="nav__link">Pedidos</a>
-    </li>
-    <li class="nav__item">
-        <a href="inventory.php" class="nav__link">Inventario</a>
-    </li>
-    <?php
+        <li class="nav__iteam">
+          <a href="orders.php" class="nav__link">Pedidos</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="inventory.php" class="nav__link">Inventario</a>
+        </li>
+        <?php
     $allowedRoles = ['admin', 'panol'];
     if (in_array($_SESSION['rol'], $allowedRoles)) {
         // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
-        echo '<li class="nav__item">
-                <a href="reports.php" class="nav__link">Informes</a>
-              </li>';
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
     }
     
     $allowedRoles = ['admin'];
     if (in_array($_SESSION['rol'], $allowedRoles)){
-      echo '<li class="nav__item">
-          <a href="users.php" class="nav__link">Usuarios</a>
-       </li>';
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
     }
     
     ?>
-    <li class="nav__item">
-        <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
-    </li>
-</ul>
-
+       
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
+        </li>
+      </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
       <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
@@ -73,6 +73,9 @@ include('../php/search/search_inventory.php');
   </header>
 
 
+
+
+  
 
   <section class="section__pedidos">
     <div class="title__section">
@@ -157,14 +160,14 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
 $allowedRoles = ['admin', 'panol'];
 if(in_array($_SESSION['rol'], $allowedRoles)){
 echo '<a href="tools_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
-echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow delete-button" ><i class="ri-pencil-fill"></i></a>';
+echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow" ><i class="ri-pencil-fill"></i></a>';
 echo '<a href="addTool.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-add-line"></i></a>';
 echo '<a href="../php/deleteTool.php?id_herramienta=' . $row['id'] . '" class="btn__table btn__table-red delete-button" delete-id="' . $row['id'] . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
 }
 else{
-echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-eye-fill"></i></a>';
-echo '<a href="" class="btn__table btn__table-yellow delete-button" style="background-color: #CCCCCC"><i class="ri-pencil-fill"></i></a>';
-echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-add-line"></i></a>';
+echo '<a href="#" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-eye-fill"></i></a>';
+echo '<a href="#" class="btn__table btn__table-yellow" style="background-color: #CCCCCC"><i class="ri-pencil-fill"></i></a>';
+echo '<a href="#" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-add-line"></i></a>';
 }
 
 ?>

@@ -46,8 +46,26 @@ include('../php/checkPages.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
         <li class="nav__iteam">
-          <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
     </nav>
@@ -56,7 +74,6 @@ include('../php/checkPages.php');
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
-
   <!-- Contenido principal -->
   <main>
     <section class="form__section">
@@ -101,6 +118,7 @@ include('../php/checkPages.php');
   <!-- Script JavaScript para el formulario -->
   <script src="../assets/js/orders.js"></script>
   <script src="../assets/js/add_tool.js"></script>
+  <script src="../assets/js/header.js"></script>
   
 <!-- Agrega esto en la sección <script> de tu página -->
 <script>

@@ -31,13 +31,31 @@ include('../php/checkPages.php');
         </label>
       </div>
       <ul class="nav__list">
-        <li class="nav__item">
+        <li class="nav__iteam">
           <a href="orders.php" class="nav__link">Pedidos</a>
         </li>
-        <li class="nav__item">
+        <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-        <li class="nav__item">
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
+        <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
@@ -133,7 +151,7 @@ include('../php/checkPages.php');
   </section>
 
   <!-- ------------------------------------------ -->
-
+  <script src="../assets/js/header.js"></script>
   <script>
   document.getElementById("nextButton").addEventListener("click", function () {
   const nombre = document.getElementById("nombre").value;

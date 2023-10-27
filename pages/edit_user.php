@@ -8,10 +8,10 @@ $sql = "SELECT * FROM usuarios WHERE id = '$id'";
 $result = mysqli_query($conexion, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    // Ahora $row contiene los datos del usuario.
+  $row = mysqli_fetch_assoc($result);
+  // Ahora $row contiene los datos del usuario.
 } else {
-    echo "No se encontraron datos para el ID proporcionado.";
+  echo "No se encontraron datos para el ID proporcionado.";
 }
 
 ?>
@@ -34,7 +34,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 </head>
 
 <body>
-<header class="hero">
+  <header class="hero">
     <input type="checkbox" id="nav__check" hidden />
     <label for="nav__check" class="hamburger">
       <i class="ri-menu-line hamburger__icon"></i>
@@ -48,27 +48,34 @@ if ($result && mysqli_num_rows($result) > 0) {
         </label>
       </div>
       <ul class="nav__list">
-    <li class="nav__item">
-        <a href="orders.php" class="nav__link">Pedidos</a>
-    </li>
-    <li class="nav__item">
-        <a href="inventory.php" class="nav__link">Inventario</a>
-    </li>
-    <?php
-    $allowedRoles = ['admin', 'panol'];
-    if (in_array($_SESSION['rol'], $allowedRoles)) {
-        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
-        echo '<li class="nav__item">
-                <a href="reports.php" class="nav__link">Informes</a>
-              </li>';
-    }
+        <li class="nav__iteam">
+          <a href="orders.php" class="nav__link">Pedidos</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="inventory.php" class="nav__link">Inventario</a>
+        </li>
+        <?php
+        $allowedRoles = ['admin', 'panol'];
+        if (in_array($_SESSION['rol'], $allowedRoles)) {
+          // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+          echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+        }
 
-    ?>
-    <li class="nav__item">
-        <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
-    </li>
-</ul>
+        $allowedRoles = ['admin'];
+        if (in_array($_SESSION['rol'], $allowedRoles)) {
+          echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+        }
 
+        ?>
+
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
+        </li>
+      </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
       <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
@@ -85,11 +92,11 @@ if ($result && mysqli_num_rows($result) > 0) {
       <fieldset class="input__container">
         <legend>Datos de la herramienta</legend>
         <label for="nombre">Nombre de usuario</label>
-        <input id="nombre" name="nombre" value="<?php echo $row['user_name'] ?>" maxlength="40"/>
+        <input id="nombre" name="nombre" value="<?php echo $row['user_name'] ?>" maxlength="40" />
         <label for="rubro">Nueva Contraseña</label>
-        <input id="newPassword" name="newPassword" value="" required maxlength="40"/>
+        <input id="newPassword" name="newPassword" value="" required maxlength="40" />
         <label for="subrubro">Rol</label>
-        <input id="subrubro" name="subrubro" value="<?php echo $row['rol'] ?>" required maxlength="40"/>
+        <input id="subrubro" name="subrubro" value="<?php echo $row['rol'] ?>" required maxlength="40" />
       </fieldset>
 
       <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
@@ -98,3 +105,8 @@ if ($result && mysqli_num_rows($result) > 0) {
     </form>
 
   </section>
+<script src="../assets/js/header.js"></script>
+</body>
+
+</html>
+  
