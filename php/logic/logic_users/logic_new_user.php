@@ -9,8 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $rol = $_POST['rol'];
 
+    // Genera el hash de la contraseña
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
     // Realiza la inserción en la base de datos
-    $sql = "INSERT INTO usuarios (user_name, password, rol) VALUES ('$nombre', '$password', '$rol')";
+    $sql = "INSERT INTO usuarios (user_name, password, rol) VALUES ('$nombre', '$hashed_password', '$rol')";
 
     if (mysqli_query($conexion, $sql)) {
         // Éxito al insertar el usuario
@@ -22,5 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error al crear el usuario: " . mysqli_error($conexion);
     }
 }
+
 ?>
 
