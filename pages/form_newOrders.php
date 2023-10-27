@@ -1,68 +1,7 @@
 <?php
-include("../php/connect_bd.php");
-$update = false;
-$del = false;
-$dia = date("Y-m-d");
-$profesor = "";
-$alumno = "";
-$salon = "";
-$curso = "";
-$cantidad_solicitada = "";
-$herramienta = "";
-
-if (isset($_POST['add'])) {
-  $dia = $_POST['dia'];
-  $profesor = $_POST['profesor'];
-  $alumno = $_POST['alumno'];
-  $salon = $_POST['salon'];
-  $curso = $_POST['curso'];
-  $cantidad_solicitada = $_POST['cantidad_solicitada'];
-  $herramienta = $_POST['herramienta'];
-
-  $pedidos = "INSERT INTO pedidos (dia, profesor, alumno, salon, curso, cantidad_solicitada, herramienta) 
-    VALUES ('$dia', '$profesor', '$alumno', '$salon', '$curso', '$cantidad_solicitada', '$herramienta')";
-  $result = mysqli_query($conexionecction, $pedidos) or die("¡Algo salió mal!");
-  header('location: orders.php');
-}
-
-if (isset($_POST['update'])) {
-  $id = $_POST['id'];
-  $dia = $_POST['dia'];
-  $profesor = $_POST['profesor'];
-  $alumno = $_POST['alumno'];
-  $salon = $_POST['salon'];
-  $curso = $_POST['curso'];
-  $cantidad_solicitada = $_POST['cantidad_solicitada'];
-  $herramienta = $_POST['herramienta'];
-
-  $sql = "UPDATE pedidos SET  dia='$dia', profesor='$profesor', alumno='$alumno', salon='$salon', curso='$curso', cantidad_solicitada='$cantidad_solicitada', herramienta='$herramienta' WHERE id=$id";
-  
-  if (mysqli_query($conexion, $sql)) {
-    echo "actualizacion exitosa.";
-  } else {
-    echo "ERROR: no se pudo ejecutar $sql. " . mysqli_error($conexion);
-  }
-  header('location: orders.php');
-}
-
-if (isset($_GET['edit'])) {
-  $id = $_GET['edit'];
-  $update = true;
-  $registro = mysqli_query($conexion, "SELECT * FROM pedidos WHERE id='$id'");
-  if (mysqli_num_rows($registro) == 1) {
-    $n = mysqli_fetch_array($registro);
-    $id = $n['id'];
-    $dia = $n['dia'];
-    $profesor = $n['profesor'];
-    $alumno = $n['alumno'];
-    $salon = $n['salon'];
-    $curso = $n['curso'];
-    $cantidad_solicitada = $n['cantidad_solicitada'];
-    $herramienta = $n['herramienta'];
-  } else {
-    echo ("ERROR: datos no autorizados");
-  }
-}
+include('../php/connect_bd.php');
+include('../php/logic/logic_orders/logic_form_newOrders.php');
+include('../php/checkPages.php');
 ?>
 
 
@@ -72,6 +11,8 @@ if (isset($_GET['edit'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../assets/css/orders.css">
 
   <link rel="stylesheet" href="../assets/css/style.css">
 
@@ -105,7 +46,6 @@ if (isset($_GET['edit'])) {
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-
         <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
         </li>
@@ -117,54 +57,70 @@ if (isset($_GET['edit'])) {
     </div>
   </header>
 
-  <section class="form__section">
-    <!-- Agregamos un contenedor para el mensaje de éxito -->
-    <div id="mensajeExito" class="mensaje__exito"></div>
+  <!-- Contenido principal -->
+  <main>
+    <section class="form__section">
+      <!-- Agregamos un contenedor para el mensaje de éxito -->
+      <div id="mensajeExito" class="mensaje__exito"></div>
 
-    <!-- Formulario de pedido -->
-    <form id="pedidoForm" method="post" action="form_newOrders.php">
-      <!-- Datos de la herramienta -->
-      <fieldset class="input__container" id="fieldset">
-          <legend class="input__title">Datos del Pedido</legend>
-          <input type="hidden" name="id" value="<?php echo $id;?>">
+      <!-- Formulario de pedido -->
+      <form id="pedidoForm" action="form_newOrders.php" method="post">
+        <fieldset class="input__container" id="fieldset">
+          <legend>Datos del Pedido</legend>
           <label for="dia">Día </label>
-          <input id="dia" value="<?php echo $dia; ?>" name="dia" type="date" required>
+          <input id="dia" name="dia" type="date" required>
           <label for="profesor">Profesor </label>
-          <input type="text" class="input" value="<?php echo $profesor; ?>" id="profesor" name="profesor">
-          <label for="alumno">Alumno</label>
-          <input id="alumno" value="<?php echo $alumno; ?>" name="alumno" type="text" required>
+          <input id="profesor" name="profesor" type="text" required maxlength="40">
+          <label for="alumno">Alumno </label>
+          <input id="alumno" name="alumno" type="text" required maxlength="40">
           <label for="salon">Salón </label>
-          <input id="salon" value="<?php echo $salon; ?>" name="salon" type="text" required>
+          <input id="salon" name="salon" type="text" required maxlength="4">
           <label for="curso">Curso </label>
-          <input id="curso" value="<?php echo $curso; ?>" name="curso" type="text" required>
-          <label for="cantidad_solicitada">Cantidad Solicitada </label>
-          <input id="cantidad_solicitada" value="<?php echo $cantidad_solicitada; ?>" name="cantidad_solicitada" type="number" required>
-          <label for="herramienta">Herramienta </label>
-          <input id="herramienta" value="<?php echo $herramienta; ?>" name="herramienta" type="text" required>
+          <input id="curso" name="curso" type="text" required maxlength="5">
+
+          <!-- Agregar aquí los demás campos del pedido -->
+
+          <div id="herramientas">
+            <div>
+            </div>
+          </div>
+
+          <button class="btn__blue" type="button" onclick="agregarHerramienta()">Agregar Herramienta</button><br><br>
+          <input class="btn__blue" type="submit" value="Enviar Pedido">
+          <div class="action__div">
+          
         </fieldset>
-      <!-- Botones del formulario -->
 
 
-      <div class="action__div">
-      <div class="btn__container">
-          <?php if ($update == true) : ?>
-            <button class="btn__blue" type="submit" name="update">Editar</button>
-          <?php else : ?>
-            <button class="btn__blue" type="submit" name="add">Añadir</button>
-          <?php endif ?>
         </div>
-        <div class="btn__blue" id="btn_add">
-          <p class="btn__blue--text">Agregar Herramienta</p>
-        </div>
-        
-      </div>
 
-    </form>
-  </section>
+      </form>
+    </section>
+  </main>
 
   <!-- Script JavaScript para el formulario -->
   <script src="../assets/js/orders.js"></script>
   <script src="../assets/js/add_tool.js"></script>
-</body>
+  
+<!-- Agrega esto en la sección <script> de tu página -->
+<script>
+  // Función para obtener la fecha actual en el formato "YYYY-MM-DD"
+  function obtenerFechaActual() {
+    const fecha = new Date();
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Suma 1 porque en JavaScript los meses van de 0 a 11
+    const anio = fecha.getFullYear();
+    return `${anio}-${mes}-${dia}`;
+  }
 
+  // Función para establecer la fecha actual en el campo "Día"
+  function establecerFechaActual() {
+    const campoDia = document.getElementById("dia");
+    campoDia.value = obtenerFechaActual();
+  }
+
+  // Llama a la función para establecer la fecha actual cuando la página se carga
+  window.addEventListener("load", establecerFechaActual);
+</script>
+</body>
 </html>

@@ -3,6 +3,10 @@ include('../php/connect_bd.php');
 include('../php/checkPages.php');
 include('../php/search/search_inventory.php');
 
+    $sqlCountAdmins = "SELECT COUNT(*) as adminCount FROM usuarios WHERE rol = 'admin'";
+    $result = mysqli_query($conexion, $sqlCountAdmins);
+    $row = mysqli_fetch_assoc($result);
+    $adminCount = $row['adminCount'];
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +23,7 @@ include('../php/search/search_inventory.php');
   <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
 
 
-  <title>Pañol - Inventario</title>
+  <title>Pañol - Usuarios</title>
 </head>
 
 <body>
@@ -51,14 +55,13 @@ include('../php/search/search_inventory.php');
                 <a href="reports.php" class="nav__link">Informes</a>
               </li>';
     }
-    
+
     $allowedRoles = ['admin'];
     if (in_array($_SESSION['rol'], $allowedRoles)){
       echo '<li class="nav__item">
           <a href="users.php" class="nav__link">Usuarios</a>
        </li>';
     }
-    
     ?>
     <li class="nav__item">
         <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
@@ -76,40 +79,16 @@ include('../php/search/search_inventory.php');
 
   <section class="section__pedidos">
     <div class="title__section">
-      <h1 class="section__title">Inventario</h1>
+      <h1 class="section__title">Usuarios</h1>
     </div>
     <div class="action__div">
       <div class="add__div">
-        <?php 
-        $allowedRoles = ['admin', 'panol'];
-        if (in_array($_SESSION['rol'], $allowedRoles)) {
-          // El usuario tiene el rol de "admin", muestra el botón.
-          echo '<a href="form_newTool.php" class="btn__blue--text">
+         <a href="register_user.php" class="btn__blue--text">
                     <button class="btn__blue">
                       <i class="ri-add-circle-fill"></i>
-                      Añadir 
+                      Añadir Usuario 
                     </button>
-                  </a>';
-        } else {
-          // El usuario no tiene el rol de "admin", no muestra nada.
-          // Puedes agregar un mensaje o contenido alternativo si lo deseas.
-        }
-        ?>
-        <?php
-$allowedRoles = ['admin'];
-if (in_array($_SESSION['rol'], $allowedRoles)) {
-  // El usuario tiene el rol de "admin", muestra el botón.
-  echo '<a href="form_uploadTool.php" class="btn__blue--text">
-            <button class="btn__blue">
-              <i class="ri-add-circle-fill"></i>
-              Añadir Herramienta
-            </button>
-          </a>';
-} else {
-  // El usuario no tiene el rol de "admin", no muestra nada.
-  // Puedes agregar un mensaje o contenido alternativo si lo deseas.
-}
-?>
+                  </a>;
 </div>
 
       <form method="GET" action="inventory.php">
@@ -129,56 +108,41 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
     <table class="table">
   <thead class="table__header">
     <tr class="tr">
-      <th class="table__header-item">Herramienta</th>
-      <th class="table__header-item">Cantidad</th>
-      <th class="table__header-item">Rubro</th>
-      <th class="table__header-item">Sub-Rubro</th>
-      <th class="table__header-item">Proveedor</th>
-      <th class="table__header-item">Ubicacion</th>
-      <th class="table__header-item">Acciones</th>
+      <th class="table__header-item">Nombre de usuario</th>
+      <th class="table__header-item">Rol</th>  
+      <th class="table__header-item">Acciones</th>  
     </tr>
   </thead>
   <tbody>
     <?php
+    $sql = "SELECT id, user_name, password, rol FROM usuarios";
     $orders = mysqli_query($conexion, $sql);
+
+   
     while ($row = mysqli_fetch_assoc($orders)) {
-    ?>
-      <tr class="tr">
-        <td class="table__cell table_cell-0"><?php echo $row['herramienta']; ?></td>
-        <td class="table__cell"><?php echo $row['cantidad']; ?></td>
-        <td class="table__cell"><?php echo $row['rubro']; ?></td>
-        <td class="table__cell"><?php echo $row['sub_rubro']; ?></td>
-        <td class="table__cell"><?php echo $row['proveedor']; ?></td>
-        <td class="table__cell"><?php echo $row['ubicacion']; ?></td>
-        <td class="table__cell">
-        <div class="btn-group">
-    <!-- Botones de estado -->
- <?php
-$allowedRoles = ['admin', 'panol'];
-if(in_array($_SESSION['rol'], $allowedRoles)){
-echo '<a href="tools_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
-echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow delete-button" ><i class="ri-pencil-fill"></i></a>';
-echo '<a href="addTool.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-add-line"></i></a>';
-echo '<a href="../php/deleteTool.php?id_herramienta=' . $row['id'] . '" class="btn__table btn__table-red delete-button" delete-id="' . $row['id'] . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
-}
-else{
-echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-eye-fill"></i></a>';
-echo '<a href="" class="btn__table btn__table-yellow delete-button" style="background-color: #CCCCCC"><i class="ri-pencil-fill"></i></a>';
-echo '<a href="" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-add-line"></i></a>';
-}
+      ?>
+        <tr class="tr">
+          <td class="table__cell table_cell-0"><?php echo $row['user_name']; ?></td>
+          <td class="table__cell"><?php echo $row['rol']; ?></td>
+          <td class="table__cell">
+          <div class="btn-group">
+      <!-- Botones de estado -->
+   
+  <a href="edit_user.php?id=<?php echo $row['id']; ?>" class="btn__table btn__table-yellow "><i class="ri-pencil-fill"></i></a>
+  <a href="../php/logic/logic_users/logic_delete_user.php?id_delete=<?php echo $row['id']; ?>" class="btn__table btn__table-red delete-button" delete-id="<?php echo $row['id']; ?>" delete-rol="<?php echo $row['rol']; ?>" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>
 
-?>
-
-</div>
-
-              </td>
-        </td>
-      </tr>
-    <?php
+  
+  </div>
+  
+                </td>
+          </td>
+        </tr>
+      <?php
     }
     mysqli_free_result($orders);
     ?>
-  </tbody>
+</tbody>
+
 </table>
 
     </div>
@@ -206,17 +170,30 @@ deleteButtons.forEach(function (button) {
   button.addEventListener("click", function (event) {
     event.preventDefault(); // Evita que el enlace se siga inmediatamente
 
-    // Muestra un cuadro de diálogo de confirmación
-    var result = confirm("¿Estás seguro de que deseas eliminar este pedido?");
+    // Obtén el número de usuarios con el rol de "admin"
+    var adminCount = <?php echo $adminCount; ?>; // Debes obtener el valor de $adminCount en PHP
 
-    // Si el usuario confirma, redirige al script de eliminación PHP
-    if (result) {
-      window.location.href = button.getAttribute("href");
+    // Obtén el rol del usuario que se va a eliminar
+    var rolUsuarioAEliminar = button.getAttribute("delete-rol"); // Debes establecer el atributo "delete-rol" en tus botones
+
+    // Verifica si el usuario tiene el rol de "admin" y el recuento de administradores es igual a 1
+    if (rolUsuarioAEliminar === "admin" && adminCount === 1) {
+      // Muestra un mensaje que indica que no se puede eliminar el único administrador
+      alert("No puedes eliminar este usuario. Debe haber al menos un usuario con el rol de admin.");
     } else {
-      // El usuario canceló la eliminación, no hagas nada
+      // Muestra un cuadro de diálogo de confirmación
+      var result = confirm("¿Estás seguro de que deseas eliminar este usuario?");
+
+      // Si el usuario confirma, redirige al script de eliminación PHP
+      if (result) {
+        window.location.href = button.getAttribute("href");
+      } else {
+        // El usuario canceló la eliminación, no hagas nada
+      }
     }
   });
 });
+
 </script>
 
 </body>
