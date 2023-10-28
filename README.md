@@ -8,6 +8,12 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 # Registro de Versiones
 
+## [Versión 3.3.2] - 24-10-2023
+### Cambios
+
+- Se arreglo un problema del inicio de sesion el cual permitia bajo ciertas condiciones entrar a la pagina sin tener usuario
+<br>
+
 ## [Versión 3.3.1] - 15-10-2023
 ### Cambios
 
