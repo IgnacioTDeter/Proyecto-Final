@@ -52,7 +52,7 @@ if(isset($_SESSION['user'])) {
               <input type="password" id="password" class="form__input" name="password"/>
               <label for="name" class="form__label">Contraseña</label>
             </div>
-            <a class="forgo_pass" href="password_forgotten.php">¿Olvidaste tu contraseña?</a>
+            <a class="forgo_pass" href="./pages/password_forgotten.php">¿Olvidaste tu contraseña?</a>
             <input type="submit" class="form__submit" value="Iniciar sesion">
           </div>
         </form>

@@ -92,7 +92,7 @@ include('../php/search/search_inventory.php');
                   </a>;
 </div>
 
-      <form method="GET" action="inventory.php">
+      <form method="GET" action="users.php">
         <div class="search__container">
           <input name="search" type="search" class="search__input" placeholder="Buscar..." />
           <button class="btn__blue" type="submit" name="enviar">
