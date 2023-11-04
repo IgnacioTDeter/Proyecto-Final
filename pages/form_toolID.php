@@ -5,7 +5,6 @@ include('../php/checkPages.php');
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
- 
 
     $nombre = $_GET['nombre'];
     $cantidad = $_GET['cantidad'];
@@ -61,6 +60,9 @@ for ($i = 1; $i <= $cantidad; $i++) {
         }
     }
 }
+
+header("Location: inventory.php");
+exit; // Asegúrate de salir del script para evitar que se ejecute más código
 }
 ?>
 
@@ -77,38 +79,54 @@ for ($i = 1; $i <= $cantidad; $i++) {
 </head>
 
 <body>
-    <header class="hero">
-        <input type="checkbox" id="nav__check" hidden />
+<header class="hero">
+    <input type="checkbox" id="nav__check" hidden />
+    <label for="nav__check" class="hamburger">
+      <i class="ri-menu-line hamburger__icon"></i>
+    </label>
+    <nav class="nav">
+      <div class="hero__logo hero__logo-1">
+        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
-            <i class="ri-menu-line hamburger__icon"></i>
+          <i class="ri-menu-fold-line hamburger__icon"></i>
         </label>
-        <nav class="nav">
-            <div class="hero__logo hero__logo-1">
-                <img class="hero__logo-img"
-                    src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
-                <h2 class="title__hero">Pañol</h2>
-                <label for="nav__check" class="hamburger">
-                    <i class="ri-menu-fold-line hamburger__icon"></i>
-                </label>
-            </div>
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a href="orders.php" class="nav__link">Pedidos</a>
-                </li>
-                <li class="nav__item">
-                    <a href="inventory.php" class="nav__link">Inventario</a>
-                </li>
-                <li class="nav__item">
-                    <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="hero__logo hero__logo-0">
-            <img class="hero__logo-img"
-                src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
-            <h2 class="title__hero">Pañol</h2>
-        </div>
-    </header>
+      </div>
+      <ul class="nav__list">
+        <li class="nav__iteam">
+          <a href="orders.php" class="nav__link">Pedidos</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="inventory.php" class="nav__link">Inventario</a>
+        </li>
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="hero__logo hero__logo-0">
+      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <h2 class="title__hero">Pañol</h2>
+    </div>
+  </header>
     <section class="form__section">
         <div id="mensajeExito" class="mensaje__exito"></div>
         <form id="toolIDsForm" method="post" >
@@ -120,7 +138,7 @@ for ($i = 1; $i <= $cantidad; $i++) {
 
                 for ($i = 1; $i <= $cantidad; $i++) {
                     echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
-                    echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
+                    echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required maxlength="10"/>';
                 }
                 ?>
                 <button type="submit" class="btn__blue">Guardar</button>
@@ -128,6 +146,7 @@ for ($i = 1; $i <= $cantidad; $i++) {
         </form>
     </section>
     <!-- Agrega aquí tu JavaScript para manejar mensajes de éxito/fracaso -->
+    <script src="../assets/js/header.js"></script>
 </body>
 
 </html>

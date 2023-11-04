@@ -94,15 +94,36 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
                     ?>
                     <p>Herramienta
                         <?php echo $row['id'] ?>
-                        <?php echo $row['estado'] ?>
                     </p>
 
                     <label class="input__label" for="toolID">
                         <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta'] ?>">
-                        <div style="display: flex; gap: 10px;">
-
+                        <div class="form__inventory">
+                        <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
+                        </form>
+                        
+                        <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
+                            <input type="hidden" name="id_herramienta" value="<?php echo $row['id'] ?>">
+                            <input type="hidden" name="nuevo_estado" value="Baja">
+                            <button type="submit" name="boton" class="btn__blue"
+                                style="background-color: rgb(179, 0, 0)">Dar de baja</button>
+                        </form>
+                        
+                        <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
+                            <input type="hidden" name="id_herramienta" value="<?php echo $row['id'] ?>">
+                            <input type="hidden" name="nuevo_estado" value="Desgastada">
+                            <button type="submit" name="boton" class="btn__blue"
+                                style="background-color: rgb(252, 186, 3); margin-left:10px;">Desgastada</button>
+                        </form>
+                        <form action="../php/logic/logic_inventory/logic_stateTool.php" method="post">
+                            <input type="hidden" name="id_herramienta" value="<?php echo $row['id'] ?>">
+                            <input type="hidden" name="nuevo_estado" value="Funcional">
+                            <button type="submit" name="boton" class="btn__blue"
+                                style="background-color: rgb(154, 212, 11); margin-left:10px;">Funcional</button>
+                        </form>
                         </div>
 
+                   
 
                         <?php
                 }
@@ -116,10 +137,8 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
     <!-- Agrega aquí tu JavaScript para manejar mensajes de éxito/fracaso -->
 
 
-
+    <script src="../assets/js/header.js"></script>
 
 </body>
-
-<script src="../assets/js/header.js"></script>
 
 </html>

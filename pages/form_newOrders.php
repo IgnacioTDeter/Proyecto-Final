@@ -1,7 +1,7 @@
 <?php
 include('../php/connect_bd.php');
-include('../php/checkPages.php');
 include('../php/logic/logic_orders/logic_form_newOrders.php');
+include('../php/checkPages.php');
 ?>
 
 
@@ -46,8 +46,26 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
         <li class="nav__iteam">
-          <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
     </nav>
@@ -56,7 +74,6 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
-
   <!-- Contenido principal -->
   <main>
     <section class="form__section">
@@ -70,13 +87,13 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
           <label for="dia">Día </label>
           <input id="dia" name="dia" type="date" required>
           <label for="profesor">Profesor </label>
-          <input id="profesor" name="profesor" type="text" required>
+          <input id="profesor" name="profesor" type="text" required maxlength="40">
           <label for="alumno">Alumno </label>
-          <input id="alumno" name="alumno" type="text" required>
+          <input id="alumno" name="alumno" type="text" required maxlength="40">
           <label for="salon">Salón </label>
-          <input id="salon" name="salon" type="text" required>
+          <input id="salon" name="salon" type="text" required maxlength="4">
           <label for="curso">Curso </label>
-          <input id="curso" name="curso" type="text" required>
+          <input id="curso" name="curso" type="text" required maxlength="5">
 
           <!-- Agregar aquí los demás campos del pedido -->
 
@@ -101,5 +118,27 @@ include('../php/logic/logic_orders/logic_form_newOrders.php');
   <!-- Script JavaScript para el formulario -->
   <script src="../assets/js/orders.js"></script>
   <script src="../assets/js/add_tool.js"></script>
+  <script src="../assets/js/header.js"></script>
+  
+<!-- Agrega esto en la sección <script> de tu página -->
+<script>
+  // Función para obtener la fecha actual en el formato "YYYY-MM-DD"
+  function obtenerFechaActual() {
+    const fecha = new Date();
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Suma 1 porque en JavaScript los meses van de 0 a 11
+    const anio = fecha.getFullYear();
+    return `${anio}-${mes}-${dia}`;
+  }
+
+  // Función para establecer la fecha actual en el campo "Día"
+  function establecerFechaActual() {
+    const campoDia = document.getElementById("dia");
+    campoDia.value = obtenerFechaActual();
+  }
+
+  // Llama a la función para establecer la fecha actual cuando la página se carga
+  window.addEventListener("load", establecerFechaActual);
+</script>
 </body>
 </html>

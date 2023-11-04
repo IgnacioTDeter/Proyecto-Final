@@ -2,10 +2,25 @@
 
 include('../php/connect_bd.php');
 include('../php/checkPages.php');
-include('../php/logic/logic_inventory/logic_stateTool.php');
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $cantidad = $_GET['cantidad'];
+    $id = $_GET['id'];
+
+    for ($i = 1; $i <= $cantidad; $i++) {
+        $id_herramienta = $_POST['toolID' . $i]; // Obtener el id_herramienta del formulario
+
+        $sql = "INSERT INTO detalles_inventario (id_stock, id_herramienta, estado)
+            VALUES ('$id', '$id_herramienta', 'Funcional')";
+
+        if ($conexion->query($sql) === TRUE) {
+            header("Location: inventory.php");
+            exit(); // Asegúrate de que el script se detenga después de la redirección
+        } else {
+            echo "Error al insertar los datos: " . $conexion->error;
+        }
+    }
+}
 
 ?>
 
@@ -72,54 +87,24 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
   </header>
     <section class="form__section">
         <div id="mensajeExito" class="mensaje__exito"></div>
-        <form id="toolIDsForm" method="post">
+        <form id="toolIDsForm" method="post" >
             <fieldset class="input__container">
                 <legend>ID de cada herramienta</legend>
-                <!-- <?php
+                <?php
                 $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
                 $cantidad = isset($_GET['cantidad']) ? intval($_GET['cantidad']) : 0;
 
                 for ($i = 1; $i <= $cantidad; $i++) {
                     echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
                     echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
-
                 }
-                ?> -->
-
-                <?php
-
-                $sql_result = mysqli_query($conexion, $sql);
-
-                while ($row = mysqli_fetch_assoc($sql_result)) {
-                    ?>
-                    <p>Herramienta
-                        <?php echo $row['id'] ?>
-                        <?php echo $row['estado'] ?>
-                    </p>
-
-                    <label class="input__label" for="toolID">
-                        <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta'] ?>">
-                        <div style="display: flex; gap: 10px;">
-
-                        </div>
-
-
-                        <?php
-                }
-                mysqli_free_result($sql_result);
                 ?>
-                    <br>
-                    <button type="submit" class="btn__blue">Guardar</button>
+                <button type="submit" class="btn__blue">Guardar</button>
             </fieldset>
         </form>
     </section>
     <!-- Agrega aquí tu JavaScript para manejar mensajes de éxito/fracaso -->
-
-
-
-
+    <script src="../assets/js/header.js"></script>
 </body>
-
-<script src="../assets/js/header.js"></script>
 
 </html>

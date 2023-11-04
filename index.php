@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -6,7 +7,7 @@ if(isset($_SESSION['user'])) {
 
   echo '<script>
     alert("La sesión ya está iniciada");
-    window.location = "pages/inventory.php";
+    window.location = "pages/orders.php";
   </script>';
 } 
 
@@ -42,6 +43,7 @@ if(isset($_SESSION['user'])) {
         <form class="form" id="form">
           <h2 class="form__title">Inicia sesión</h2>
           <div class="form__container">
+
             <p class="msg" id="msg">Nombre de usuario o contraseña incorrecta</p>
             <div class="form__group">
               <input type="text" id="username" class="form__input" name="user_name"/>
@@ -51,6 +53,8 @@ if(isset($_SESSION['user'])) {
               <input type="password" id="password" class="form__input" name="password"/>
               <label for="name" class="form__label">Contraseña</label>
             </div>
+            
+            <a href="password_forgotten.html" class="forgo_pass"> ¿Olvidaste tu contraseña?</a>
             <input type="submit" class="form__submit" value="Iniciar sesion">
           </div>
         </form>

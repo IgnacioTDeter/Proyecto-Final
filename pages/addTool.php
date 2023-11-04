@@ -14,7 +14,7 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewpo  rt" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
@@ -71,55 +71,31 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
     </div>
   </header>
     <section class="form__section">
-        <div id="mensajeExito" class="mensaje__exito"></div>
-        <form id="toolIDsForm" method="post">
-            <fieldset class="input__container">
-                <legend>ID de cada herramienta</legend>
-                <!-- <?php
-                $nombre = isset($_GET['nombre']) ? $_GET['nombre'] : '';
-                $cantidad = isset($_GET['cantidad']) ? intval($_GET['cantidad']) : 0;
+        <fieldset class="input__container">
+            <legend>Seleccione cuantas herramientas agregar</legend>
+            <label for="cantidad">Cantidad *</label>
+            <input id="cantidad" name="cantidad" required />
+        </fieldset>
 
-                for ($i = 1; $i <= $cantidad; $i++) {
-                    echo '<label class="input__label" for="toolID' . $i . '">ID de ' . htmlspecialchars($nombre) . ' ' . $i . '</label>';
-                    echo '<input class="input__field" id="toolID' . $i . '" name="toolID' . $i . '" required />';
+        <button type="button" class="btn__blue" id="nextButton">Siguiente</button>
 
-                }
-                ?> -->
-
-                <?php
-
-                $sql_result = mysqli_query($conexion, $sql);
-
-                while ($row = mysqli_fetch_assoc($sql_result)) {
-                    ?>
-                    <p>Herramienta
-                        <?php echo $row['id'] ?>
-                        <?php echo $row['estado'] ?>
-                    </p>
-
-                    <label class="input__label" for="toolID">
-                        <input class="input__field" id="toolID" value="<?php echo $row['id_herramienta'] ?>">
-                        <div style="display: flex; gap: 10px;">
-
-                        </div>
-
-
-                        <?php
-                }
-                mysqli_free_result($sql_result);
-                ?>
-                    <br>
-                    <button type="submit" class="btn__blue">Guardar</button>
-            </fieldset>
-        </form>
     </section>
     <!-- Agrega aquí tu JavaScript para manejar mensajes de éxito/fracaso -->
 
+    <script>
+        document.getElementById("nextButton").addEventListener("click", function () {
+            const cantidad = parseInt(document.getElementById("cantidad").value);
 
+            // Obtener el valor de 'id' desde PHP
+            const id = "<?php echo $id; ?>";
 
+            // Redirigir a la página de ingreso de IDs con los parámetros "cantidad" y "id"
+            window.location.href = "form_addTool.php?cantidad=" + cantidad + "&id=" + id;
+        });
+
+    </script>
+        <script src="../assets/js/header.js"></script>
 
 </body>
-
-<script src="../assets/js/header.js"></script>
 
 </html>

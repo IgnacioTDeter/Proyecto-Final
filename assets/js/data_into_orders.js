@@ -1,18 +1,4 @@
-function changeStyle(color) {
-  const elemento = document.querySelector(".status-select");
-  
-  elemento.style.padding = "5px 10px";
-  elemento.style.fontSize = "34px";
-  elemento.style.fontWeight = "bold";
-  elemento.style.border = "none";
-  elemento.style.backgroundColor = "rgba(209, 226, 53, 0.511)";
-  elemento.style.borderRadius = "6px";
-  elemento.style.color = "var(--sub-title-color)";
-  elemento.style.appearance = "none";
-  elemento.style.webkitAppearance = "none";
-  elemento.style.mozAppearance = "none";
-  elemento.style.textAlign = "center";
-}
+
 
 document.addEventListener("DOMContentLoaded", function () {
 const borrarBtn = document.getElementById("deleteOrder");

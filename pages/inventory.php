@@ -23,7 +23,7 @@ include('../php/search/search_inventory.php');
 </head>
 
 <body>
-  <header class="hero">
+<header class="hero">
     <input type="checkbox" id="nav__check" hidden />
     <label for="nav__check" class="hamburger">
       <i class="ri-menu-line hamburger__icon"></i>
@@ -43,9 +43,26 @@ include('../php/search/search_inventory.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
         <li class="nav__iteam">
-          <a href="../php/logout.php" class="nav__link">Cerrar sesion</a>
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
     </nav>
@@ -56,19 +73,47 @@ include('../php/search/search_inventory.php');
   </header>
 
 
+
+
+  
+
   <section class="section__pedidos">
     <div class="title__section">
       <h1 class="section__title">Inventario</h1>
     </div>
     <div class="action__div">
       <div class="add__div">
-        <button class="btn__blue">
-          <a href="form_newTool.php" class="btn__blue--text">
-            <i class="ri-add-circle-fill"></i>
-            Añadir
-          </a>
-        </button>
-      </div>
+        <?php 
+        $allowedRoles = ['admin', 'panol'];
+        if (in_array($_SESSION['rol'], $allowedRoles)) {
+          // El usuario tiene el rol de "admin", muestra el botón.
+          echo '<a href="form_newTool.php" class="btn__blue--text">
+                    <button class="btn__blue">
+                      <i class="ri-add-circle-fill"></i>
+                      Añadir 
+                    </button>
+                  </a>';
+        } else {
+          // El usuario no tiene el rol de "admin", no muestra nada.
+          // Puedes agregar un mensaje o contenido alternativo si lo deseas.
+        }
+        ?>
+        <?php
+$allowedRoles = ['admin'];
+if (in_array($_SESSION['rol'], $allowedRoles)) {
+  // El usuario tiene el rol de "admin", muestra el botón.
+  echo '<a href="form_uploadTool.php" class="btn__blue--text">
+            <button class="btn__blue">
+              <i class="ri-add-circle-fill"></i>
+              Añadir Herramienta
+            </button>
+          </a>';
+} else {
+  // El usuario no tiene el rol de "admin", no muestra nada.
+  // Puedes agregar un mensaje o contenido alternativo si lo deseas.
+}
+?>
+</div>
 
       <form method="GET" action="inventory.php">
         <div class="search__container">
@@ -102,7 +147,7 @@ include('../php/search/search_inventory.php');
     while ($row = mysqli_fetch_assoc($orders)) {
     ?>
       <tr class="tr">
-        <td class="table_cell table_cell-0"><?php echo $row['herramienta']; ?></td>
+        <td class="table__cell table_cell-0"><?php echo $row['herramienta']; ?></td>
         <td class="table__cell"><?php echo $row['cantidad']; ?></td>
         <td class="table__cell"><?php echo $row['rubro']; ?></td>
         <td class="table__cell"><?php echo $row['sub_rubro']; ?></td>
@@ -110,9 +155,26 @@ include('../php/search/search_inventory.php');
         <td class="table__cell"><?php echo $row['ubicacion']; ?></td>
         <td class="table__cell">
         <div class="btn-group">
-          <a href="tools_id_inventory.php?id=<?php echo $row['id']; ?>" class="btn_table btn_table-blue"><i class="ri-eye-fill"></i></a>
-          <a href="#" class="btn_table btn_table-yellow"><i class="ri-pencil-fill"></i></a>
-        </div>
+    <!-- Botones de estado -->
+ <?php
+$allowedRoles = ['admin', 'panol'];
+if(in_array($_SESSION['rol'], $allowedRoles)){
+echo '<a href="tools_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-eye-fill"></i></a>';
+echo '<a href="edit_id_inventory.php?id=' . $row['id'] . '" class="btn__table btn__table-yellow" ><i class="ri-pencil-fill"></i></a>';
+echo '<a href="addTool.php?id=' . $row['id'] . '" class="btn__table btn__table-blue"><i class="ri-add-line"></i></a>';
+echo '<a href="../php/deleteTool.php?id_herramienta=' . $row['id'] . '" class="btn__table btn__table-red delete-button" delete-id="' . $row['id'] . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
+}
+else{
+echo '<a href="#" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-eye-fill"></i></a>';
+echo '<a href="#" class="btn__table btn__table-yellow" style="background-color: #CCCCCC"><i class="ri-pencil-fill"></i></a>';
+echo '<a href="#" class="btn__table btn__table-blue" style="background-color: #CCCCCC"><i class="ri-add-line"></i></a>';
+}
+
+?>
+
+</div>
+
+              </td>
         </td>
       </tr>
     <?php
@@ -138,6 +200,28 @@ include('../php/search/search_inventory.php');
   
   <script src="../assets/js/header.js"></script>
   <script src="../assets/js/table.js"></script>
+  <script>
+// Obtén todos los botones de eliminación por su clase
+var deleteButtons = document.querySelectorAll(".delete-button");
+
+// Agrega un controlador de eventos a cada botón de eliminación
+deleteButtons.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    event.preventDefault(); // Evita que el enlace se siga inmediatamente
+
+    // Muestra un cuadro de diálogo de confirmación
+    var result = confirm("¿Estás seguro de que deseas eliminar este pedido?");
+
+    // Si el usuario confirma, redirige al script de eliminación PHP
+    if (result) {
+      window.location.href = button.getAttribute("href");
+    } else {
+      // El usuario canceló la eliminación, no hagas nada
+    }
+  });
+});
+</script>
+
 </body>
 
 </html>
