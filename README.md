@@ -12,7 +12,17 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 
 
 # TRABAJO EN PROCESO 
-## Versión 3.4.0 - 4 de noviembre de 2023
+## Versión 3.4.1 - 6/11/23
+
+## Cambios
+
+- se modifico el mensaje del gmail 
+
+## Importante 
+
+- este codigo esta corriendo en localhost por lo tanto las direcciones tienen que estar bien porque estas se llaman desde gmail y desde la nueva contraseña.
+
+## Versión 3.4.0 - 4/11/23
 
 ### Cambios
 

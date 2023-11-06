@@ -34,9 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             alert("1");
             </script>');
 
-            header('Location: /Proyecto-Final/index.php');
+            header('Location: index.php');
             exit;
-        
         } 
         else {
             // Error al insertar el usuario

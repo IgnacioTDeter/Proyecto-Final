@@ -52,16 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     font-weight: bold;
                     text-align: center;
                     text-decoration: none;
-                    background-color: hsl(215, 100%, 50%);
+                    
                     color: #ffffff;
                     padding: 10px 20px;
                     border-radius: 5px;
-                    transition: background-color 0.3s;
+                    
                 }
         
-                .btn_blue:hover {
-                    background-color: hsl(215, 100%, 35%);
-                }
             </style>
         </head>
         <body>
@@ -69,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class=card>
             <p>Hola Usuario,</p>
             <p>Hemos recibido una solicitud para cambiar su contraseña. Haga clic en el siguiente enlace para continuar:</p>
-            <a href='http://localhost/Proyecto-Final/new__password.php' class=btn_blue>Restablecer contraseña</a>
+            <a href='http://localhost/pruebas+/Proyecto-Final/new__password.php' class=btn_blue>Restablecer contraseña</a>
         </div>
         
         </body>

@@ -38,7 +38,7 @@
                     <button class="btn_blue forgo_pass--button" type="button" onclick="cancelReset()">
                         <p>Cancelar</p>
                     </button>
-                    <a href="./index.php"><input class="btn_blue btn_blue-email" type="submit" value="Enviar Email">
+                    <a href="../"><input class="btn_blue btn_blue-email" type="submit" value="Cambiar contraseña">
                 </div>
             </form>
         </div>
