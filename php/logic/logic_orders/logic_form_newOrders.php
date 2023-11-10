@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
                   $stmt->fetch();
                   $stmt->close();
 
-                  if ($cantidad_actual !== null) {
+                  if ($cantidad_actual != null ) {
                       if ($cantidad_solicitada <= $cantidad_actual) {
                           $query_detalle = "INSERT INTO detalles_pedidos (id_pedido, id_herramienta, herramienta, cantidad_solicitada) VALUES (?, ?, ?, ?)";
                           $stmt_detalle = $conexion->prepare($query_detalle);
@@ -61,6 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
                       echo "La herramienta '$herramienta' no fue encontrada en la base de datos.";
                   }
               } else {
+
                   echo "Error: No se proporcionó una cantidad para la herramienta '$herramienta'.";
               }
           }

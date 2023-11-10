@@ -7,13 +7,13 @@ $dbname = "tec1";
 
 // Conectar a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Error de conexión: " . $conn->connect_error);
+if ($conexion->connect_error) {
+  die("Error de conexión: " . $conexion->connect_error);
 }
 
 // Obtener el estado actual de todos los pedidos desde la base de datos
 $sql = "SELECT id, estado FROM detalles_pedidos"; // Reemplaza con tu consulta SQL
-$result = $conn->query($sql);
+$result = $conexion->query($sql);
 
 $data = array();
 
@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
   }
 }
 
-$conn->close();
+$conexion->close();
 
 echo json_encode($data);
 ?>

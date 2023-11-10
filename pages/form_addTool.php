@@ -4,22 +4,26 @@ include('../php/connect_bd.php');
 include('../php/checkPages.php');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $cantidad = $_GET['cantidad'];
-    $id = $_GET['id'];
+  $cantidad = $_GET['cantidad'];
+  $id = $_GET['id'];
 
-    for ($i = 1; $i <= $cantidad; $i++) {
-        $id_herramienta = $_POST['toolID' . $i]; // Obtener el id_herramienta del formulario
+  for ($i = 1; $i <= $cantidad; $i++) {
+      $id_herramienta = $_POST['toolID' . $i]; // Obtener el id_herramienta del formulario
 
-        $sql = "INSERT INTO detalles_inventario (id_stock, id_herramienta, estado)
-            VALUES ('$id', '$id_herramienta', 'Funcional')";
+      $sql = "INSERT INTO detalles_inventario (id_stock, id_herramienta, estado)
+          VALUES ('$id', '$id_herramienta', 'Funcional')";
 
-        if ($conexion->query($sql) === TRUE) {
-            header("Location: inventory.php");
-            exit(); // Asegúrate de que el script se detenga después de la redirección
-        } else {
-            echo "Error al insertar los datos: " . $conexion->error;
-        }
-    }
+
+      if ($conexion->query($sql) === TRUE) {
+
+// tengo que guardar el valor de las nuevas erramientas 
+
+          header("Location: inventory.php");
+          exit(); // Asegúrate de que el script se detenga después de la redirección
+      } else {
+          echo "Error al insertar los datos: " . $conexion->error;
+      }
+  }
 }
 
 ?>
@@ -32,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
     <title>Pañol - Formulario de Pedidos</title>
 </head>
 
@@ -44,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -81,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>

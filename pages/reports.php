@@ -10,7 +10,8 @@ include('../php/checkPages.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css">
-  <title>Document</title>
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+  <title>Pañol - Informes</title>
 </head>
 <body>
 <header class="hero">
@@ -20,7 +21,7 @@ include('../php/checkPages.php');
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -56,7 +57,7 @@ include('../php/checkPages.php');
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>

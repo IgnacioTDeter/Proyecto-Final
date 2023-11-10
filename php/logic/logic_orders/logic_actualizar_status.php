@@ -12,22 +12,22 @@ $dbname = "tec1";
 
 // Conectar a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Error de conexión: " . $conn->connect_error);
+if ($conexion->connect_error) {
+  die("Error de conexión: " . $conexion->connect_error);
 }
 
 $sql = "UPDATE detalles_pedidos SET estado = '$newStatus' WHERE id = '$orderId'"; // Reemplaza con tu consulta SQL
 
 $response = array();
 
-if ($conn->query($sql) === TRUE) {
+if ($conexion->query($sql) === TRUE) {
   $response['success'] = true;
 } else {
   $response['success'] = false;
-  $response['error'] = "Error al actualizar el estado: " . $conn->error;
+  $response['error'] = "Error al actualizar el estado: " . $conexion->error;
 }
 
-$conn->close();
+$conexion->close();
 
 echo json_encode($response);
 ?>

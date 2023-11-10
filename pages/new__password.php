@@ -10,7 +10,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
 
-    <link rel="shortcut icon" href="assets/icons/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/icons/logo.svg" type="image/x-icon">
 
     <title>Pañol - Login</title>
 </head>

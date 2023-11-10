@@ -17,8 +17,10 @@ if (empty($_POST['user_name']) || empty($_POST['password'])) {
     } else {
         $row = mysqli_fetch_assoc($user_name_validation);
 
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         // Verifica la contraseña utilizando password_verify
-        if (password_verify($password, $row['password'])) {
+        if ($hashed_password) {
             $_SESSION['user'] = $user_name;
             $_SESSION['rol'] = $row['rol']; // Obtén el rol de la base de datos y guárdalo en la variable de sesión
             echo json_encode('success');

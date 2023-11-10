@@ -16,7 +16,7 @@ include('../php/search/search_inventory.php');
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
 
-  <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
 
 
   <title>Pañol - Inventario</title>
@@ -30,7 +30,7 @@ include('../php/search/search_inventory.php');
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -49,6 +49,8 @@ include('../php/search/search_inventory.php');
         // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
         echo '<li class="nav__iteam">
         <a href="reports.php" class="nav__link">Informes</a>
+        
+        
       </li>';
     }
     
@@ -67,7 +69,7 @@ include('../php/search/search_inventory.php');
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>

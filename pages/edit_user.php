@@ -18,8 +18,8 @@ if ($result && mysqli_num_rows($result) > 0) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
-  <title>Pañol - Usuarios</title>
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+  <title>Pañol - Editar usuarios</title>
 </head>
 <body>
 <header class="hero">
@@ -29,7 +29,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -45,10 +45,16 @@ if ($result && mysqli_num_rows($result) > 0) {
     <?php
     $allowedRoles = ['admin', 'panol'];
     if (in_array($_SESSION['rol'], $allowedRoles)) {
-        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
-        echo '<li class="nav__item">
-                <a href="reports.php" class="nav__link">Informes</a>
-              </li>';
+      // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+      echo '<li class="nav__item">
+            <a href="reports.php" class="nav__link">Informes</a>
+          </li>';
+    }
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+      echo '<li class="nav__item">
+      <a href="users.php" class="nav__link">Usuarios</a>
+   </li>';
     }
     ?>
     <li class="nav__item">
@@ -57,7 +63,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>

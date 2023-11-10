@@ -14,8 +14,8 @@ include('../php/search/search_orders.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" type="image/x-icon">
-  <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <title>Pañol - Pedidos</title>
@@ -30,7 +30,7 @@ include('../php/search/search_orders.php');
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -67,7 +67,7 @@ include('../php/search/search_orders.php');
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>

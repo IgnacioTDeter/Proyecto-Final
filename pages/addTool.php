@@ -17,8 +17,8 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
     <meta name="viewpo  rt" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
-    <title>Pañol - Formulario de Pedidos</title>
+    <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+    <title>Pañol - Añadir herramienta</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -66,7 +66,7 @@ $sql = "SELECT * FROM detalles_inventario WHERE id_stock = '$id'";
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
+      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
