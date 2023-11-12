@@ -4,30 +4,20 @@ $data = json_decode(file_get_contents("php://input"), true);
 $newStatus = $data['newStatus'];
 $orderId = $data['orderId'];
 
-// Conexión a la base de datos (reemplaza con tus propias credenciales)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tec1";
-
-// Conectar a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conexion->connect_error) {
-  die("Error de conexión: " . $conexion->connect_error);
-}
+include('../../connect_bd.php');
 
 $sql = "UPDATE detalles_pedidos SET estado = '$newStatus' WHERE id = '$orderId'"; // Reemplaza con tu consulta SQL
 
 $response = array();
 
-if ($conexion->query($sql) === TRUE) {
+if ($conn->query($sql) === TRUE) {
   $response['success'] = true;
 } else {
   $response['success'] = false;
-  $response['error'] = "Error al actualizar el estado: " . $conexion->error;
+  $response['error'] = "Error al actualizar el estado: " . $conn->error;
 }
 
-$conexion->close();
+$conn->close();
 
 echo json_encode($response);
 ?>

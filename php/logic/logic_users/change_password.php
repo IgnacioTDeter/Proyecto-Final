@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect('localhost', 'root', '', 'tec1');
+$conexion = mysqli_connect('localhost', 'panoluser', 'M27j*Vz3mPBb', 'panol');
 session_start(); // Inicia la sesión
 
          

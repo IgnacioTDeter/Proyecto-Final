@@ -19,9 +19,9 @@
     
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet"/>
 
-    <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
 
-    <title>Pañol - Editar formulario</title>
+    <title> Pañol - Formulario de Pedidos </title>
 
   </head>
   <body>
@@ -33,7 +33,7 @@
     </label>
     <nav class="nav">
       <div class="hero__logo hero__logo-1">
-        <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
+        <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
         <h2 class="title__hero">Pañol</h2>
         <label for="nav__check" class="hamburger">
           <i class="ri-menu-fold-line hamburger__icon"></i>
@@ -70,7 +70,7 @@
       </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
-      <img class="hero__logo-img" src="../assets/icons/logo.svg" alt="logo" />
+      <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
       <h2 class="title__hero">Pañol</h2>
     </div>
   </header>
@@ -99,7 +99,7 @@
         
         <!-- Agregar aquí los demás campos del pedido -->
 
-        <!-- <div id="herramientas">
+        <div id="herramientas">
             <div>
                 <label for="herramienta[]">Herramienta:</label>
                 <input type="text" name="herramienta[]" required value="<?php echo $row_details['herramienta'];?>">
@@ -109,7 +109,7 @@
         </div>
 
         <button class="btn__blue" type="button" onclick="agregarHerramienta()">Agregar Herramienta</button><br><br>
-   -->
+  
         <div class="btn__container">
         <button class="btn__blue" type="submit" name="update">Editar</button>
         </div>

@@ -1,21 +1,21 @@
 <?php
-$conexion = mysqli_connect('localhost', 'root', '', 'tec1');
+$conexion = mysqli_connect('localhost', 'panoluser', 'M27j*Vz3mPBb', 'panol');
 // Agrega código para procesar el formulario aquí
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recupera los datos del formulario
     $nombre = $_POST['nombre'];
-    $password = $_POST['password'];
+    $password = $_POST['newPassword'];
     $rol = $_POST['rol'];
     $gmail = $_POST['gmail'];
-
-    $hashed_password = password_hash($password_1, PASSWORD_DEFAULT);
+    $test = $password;
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     // Realiza la inserción en la base de datos
     $sql = "UPDATE usuarios SET password = '$hashed_password', rol = '$rol' WHERE gmail = '$gmail'";
 
     if (mysqli_query($conexion, $sql)) {
         // Éxito al insertar el usuario
         echo "Usuario creado correctamente.";
-        header("Location: ../../../pages/users.php");
+         header("Location: ../../../pages/users.php");
     } 
     else {
         // Error al insertar el usuario

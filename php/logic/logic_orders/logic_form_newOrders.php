@@ -16,8 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
   $salon = $_POST['salon'];
   $curso = $_POST['curso'];
 
-  $errores = array();  // Crear un arreglo para almacenar errores
-
   // Insertar el pedido en la tabla 'pedidos'
   $query_pedido = "INSERT INTO pedidos (dia, profesor, alumno, salon, curso) VALUES (?, ?, ?, ?, ?)";
   $stmt_pedido = $conexion->prepare($query_pedido);
@@ -42,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
                   $stmt->fetch();
                   $stmt->close();
 
-                  if ($cantidad_actual != null ) {
+                  if ($cantidad_actual !== null) {
                       if ($cantidad_solicitada <= $cantidad_actual) {
                           $query_detalle = "INSERT INTO detalles_pedidos (id_pedido, id_herramienta, herramienta, cantidad_solicitada) VALUES (?, ?, ?, ?)";
                           $stmt_detalle = $conexion->prepare($query_detalle);
@@ -57,40 +55,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
                           $stmt->execute();
                           $stmt->close();
                       } else {
-                          $errores[] = "La cantidad solicitada para la herramienta '$herramienta' es mayor que la cantidad disponible en stock.";
+                          echo "Error: La cantidad solicitada para la herramienta '$herramienta' es mayor que la cantidad disponible en stock.";
                       }
                   } else {
-                      $errores[] = "La herramienta '$herramienta' no fue encontrada en la base de datos.";
+                      echo "La herramienta '$herramienta' no fue encontrada en la base de datos.";
                   }
               } else {
-                $errores[] = "No se proporcionó una cantidad para la herramienta '$herramienta'.";
+                  echo "Error: No se proporcionó una cantidad para la herramienta '$herramienta'.";
               }
           }
       } else {
-        $errores[] = "No se proporcionaron herramientas o cantidades para el pedido.";
+          echo "Error: No se proporcionaron herramientas o cantidades para el pedido.";
       }
 
-      if (empty($errores)) {
-          $_SESSION['success_message'] = "Pedido procesado exitosamente";
-      } else {
-          // Almacenar los errores en la sesión
-          $_SESSION['error_messages'] = $errores;
-          
-          // Eliminar el pedido si hubo errores
-          $query_eliminar_pedido = "DELETE FROM pedidos WHERE id_pedido = ?";
-          $stmt_eliminar_pedido = $conexion->prepare($query_eliminar_pedido);
-          $stmt_eliminar_pedido->bind_param("i", $pedido_id);
-          $stmt_eliminar_pedido->execute();
-          $stmt_eliminar_pedido->close();
-      }
+      echo "Pedido procesado exitosamente";
   } else {
-      $_SESSION['error_messages'] = "Error al procesar el pedido";
+      echo "Error al procesar el pedido";
   }
 
   $stmt_pedido->close();
   $conexion->close();
-  
-  // Redirigir después de completar el procesamiento
   header('location: ../pages/orders.php');
 }
 ?>

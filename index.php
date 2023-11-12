@@ -1,17 +1,4 @@
 
-<?php
-
-session_start();
-
-if(isset($_SESSION['user'])) {
-
-  echo '<script>
-    alert("La sesión ya está iniciada");
-    window.location = "pages/orders.php";
-  </script>';
-} 
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -25,7 +12,7 @@ if(isset($_SESSION['user'])) {
 
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet"/>
 
-  <link rel="shortcut icon" href="assets/icons/logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="assets/icons/logo.png" type="image/x-icon">
 
   <title>Pañol - Login</title>
 </head>
@@ -36,16 +23,12 @@ if(isset($_SESSION['user'])) {
     <div class="card__container">
       <div class="image__content">
         <img
-          src="assets/icons/image-login.avif"
+          src="https://images.unsplash.com/photo-1588619461335-b81119fee1b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
           alt="martillo" class="image__img" />
       </div>
       <div class="form__content">
         <form class="form" id="form">
-          <div class="form__title-div">
-            <h2 class="form__title">Inicia sesión</h2>
-            <img class="form__logo" src="assets/icons/logo.svg" alt="logo">
-          </div>
-          
+          <h2 class="form__title">Inicia sesión</h2>
           <div class="form__container">
 
             <p class="msg" id="msg">Nombre de usuario o contraseña incorrecta</p>
@@ -58,7 +41,7 @@ if(isset($_SESSION['user'])) {
               <label for="name" class="form__label">Contraseña</label>
             </div>
             
-            <a href="./pages/password_forgotten.php" class="forgo_pass"> ¿Olvidaste tu contraseña?</a>
+            <a href="password_forgotten.php" class="forgo_pass"> ¿Olvidaste tu contraseña?</a>
             <input type="submit" class="form__submit" value="Iniciar sesion">
           </div>
         </form>

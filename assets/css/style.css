@@ -157,17 +157,6 @@ a {
   justify-content: center;
 }
 
-.form__title-div{
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-  margin: 0 5% ;
-}
-
-.form__logo{
-  width: 4rem;
-}
-
 .card__container {
   width: 50%;
   height: 60%;
@@ -210,8 +199,6 @@ a {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: #000000;
-  align-items: center;
-  padding: 1rem 0;
 }
 
 .form__paragraph {
@@ -289,7 +276,6 @@ input[type="password"] {
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  margin-bottom: 1rem;
 }
 
 .form__submit:hover {
@@ -505,7 +491,7 @@ input[type="password"] {
 }
 
 .tr:nth-child(even) {
-  background-color: hsl(240, 20%, 99%);
+  background-color: var(--grey-ultra-light);
   border-top: 1px solid var(--text-color);
 }
 
@@ -910,20 +896,6 @@ input[type="password"] {
   .popup-content {
     max-width: 80%;
   }
-
-  .form__title-div{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column-reverse;
-    width: 60%;
-    margin: 0 20% ;
-  }
-
-  .form__logo{
-    width: 4rem;
-    margin: auto;
-    align-items: center;
-  }
 }
 
 /* Media query para pantallas con ancho máximo de 767px y altura máxima de 1075px */
@@ -1018,14 +990,6 @@ input[type="password"] {
   .card__container {
     width: 80%;
     height: 80%;
-  }
-
-  .form__title {
-    font-size: 1.7rem;
-    margin-bottom: 0.5rem;
-    color: #000000;
-    align-items: center;
-    padding: 1rem 0;
   }
 }
 
@@ -1160,15 +1124,9 @@ input[type="password"] {
 
 /**============ table ============*/
 
-@media screen and (max-width: 1110px) {
+@media screen and (max-width: 1024px) {
   .table {
     max-width: 90%;
-  }
-  .form__title-div{
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-    margin: 0 5% ;
   }
 }
 
@@ -1184,7 +1142,6 @@ input[type="password"] {
   .table {
     max-width: 96%;
   }
-  
 }
 
 @media screen and (max-width: 505px) {
