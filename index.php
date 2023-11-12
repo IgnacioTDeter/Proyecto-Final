@@ -58,7 +58,7 @@ if(isset($_SESSION['user'])) {
               <label for="name" class="form__label">Contraseña</label>
             </div>
             
-            <a href="password_forgotten.php" class="forgo_pass"> ¿Olvidaste tu contraseña?</a>
+            <a href="./pages/password_forgotten.php" class="forgo_pass"> ¿Olvidaste tu contraseña?</a>
             <input type="submit" class="form__submit" value="Iniciar sesion">
           </div>
         </form>
