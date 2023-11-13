@@ -58,16 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
                           $stmt->close();
                       } else {
                           $errores[] = "La cantidad solicitada para la herramienta '$herramienta' es mayor que la cantidad disponible en stock.";
+                          echo "<script>alert('La cantidad solicitada es mayor que la cantidad disponible en stock') </script>";
                       }
                   } else {
                       $errores[] = "La herramienta '$herramienta' no fue encontrada en la base de datos.";
+                      echo "<script>alert('La herramienta no fue encontrada en la base de datos.') </script>";
                   }
               } else {
                 $errores[] = "No se proporcionó una cantidad para la herramienta '$herramienta'.";
+                echo "<script>alert('No se proporcionó una cantidad para la herramienta ') </script>";
               }
           }
       } else {
         $errores[] = "No se proporcionaron herramientas o cantidades para el pedido.";
+        echo "<script>alert('No se proporcionaron herramientas o cantidades para el pedido.') </script>";
       }
 
       if (empty($errores)) {
@@ -91,6 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
 
   $stmt_pedido->close();
   $conexion->close();
-  header('location: ../pages/orders.php');
+ 
 }
 ?>

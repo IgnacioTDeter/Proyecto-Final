@@ -10,10 +10,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     for ($i = 1; $i <= $cantidad; $i++) {
         $id_herramienta = $_POST['toolID' . $i]; // Obtener el id_herramienta del formulario
 
-        $sql = "INSERT INTO detalles_inventario (id_stock, id_herramienta, estado)
+        $sqlDetalles = "INSERT INTO detalles_inventario (id_stock, id_herramienta, estado)
             VALUES ('$id', '$id_herramienta', 'Funcional')";
 
-        if ($conexion->query($sql) === TRUE) {
+
+        if ($conexion->query($sqlDetalles) === TRUE) {
             header("Location: inventory.php");
             exit(); // Asegúrate de que el script se detenga después de la redirección
         } else {
