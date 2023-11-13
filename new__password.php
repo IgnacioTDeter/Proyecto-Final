@@ -10,7 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link rel="stylesheet" href="./assets/css/style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
 
@@ -29,13 +30,13 @@
             <form method="post" action="" id="resetForm">
                 <div class="pass__div--input">
                     <p class="forgo__pass--subtitle">Ingrese su nueva contraseña.</p>
-                    <input class="forgo__pass--email" type="password" placeholder="Nueva contraseña" name="password_1">
+                    <input class="forgo__pass--email" type="password" placeholder="Nueva contraseña" name="password_1" required>
                     <p class="forgo__pass--subtitle-2">Repita su nueva contraseña.</p>
-                    <input class="forgo__pass--email" type="password" placeholder="Nueva contraseña" name="password_2">
+                    <input class="forgo__pass--email" type="password" placeholder="Nueva contraseña" name="password_2" required>
                 </div>
 
                 <div class="forgo__div--button">
-                    <button class="btn_blue forgo_pass--button" type="button" onclick="cancelReset()">
+                    <button class="btn_blue forgo_pass--button" type="button" onclick="cancelReset()" >
                         <p>Cancelar</p>
                     </button>
                     <a href="../"><input class="btn_blue btn_blue-email" type="submit" value="Cambiar contraseña">
