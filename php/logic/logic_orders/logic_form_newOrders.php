@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['dia'], $_POST['profeso
       }
 
       if (empty($errores)) {
-          echo "Pedido procesado exitosamente";
+          header('Location: orders.php');
       } else {
           // Mostrar los errores si los hubiera
           foreach ($errores as $error) {

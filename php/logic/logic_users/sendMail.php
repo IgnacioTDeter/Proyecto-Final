@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class=card>
             <p>Hola Usuario,</p>
             <p>Hemos recibido una solicitud para cambiar su contraseña. Haga clic en el siguiente enlace para continuar:</p>
-            <a href='http://localhost/pruebas+/Proyecto-Final/new__password.php' class=btn_blue>Restablecer contraseña</a>
+            <a href='http://localhost/panol/new__password.php' class=btn_blue>Restablecer contraseña</a>
         </div>
         
         </body>
