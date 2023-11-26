@@ -1,6 +1,6 @@
 <?php
 
-$conexion = mysqli_connect('localhost', 'root', '', 'tec1');
+$conexion = mysqli_connect('localhost', 'panoluser', 'M27j*Vz3mPBb', 'panol');
 
 // Verifica si se recibió el ID de la herramienta y el nuevo estado
 if (isset($_POST['id_herramienta']) && isset($_POST['nuevo_estado'])) {

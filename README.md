@@ -2,17 +2,71 @@
 El proyecto del pañol es una página web diseñada para administrar y gestionar un inventario de herramientas.
 Permite llevar un registro de las herramientas disponibles, así como también de las solicitudes realizadas por diferentes usuarios.
 
+
+=======
 <br>
 <br>
 <br>
 
 # Registro de Versiones
 
-## [Versión 3.3.2] - 24-10-2023
+
+# TRABAJO EN PROCESO 
+## Versión 3.4.1 - 6/11/23
+
+## Cambios
+
+- se modifico el mensaje del gmail 
+
+## Importante 
+
+- este codigo esta corriendo en localhost por lo tanto las direcciones tienen que estar bien porque estas se llaman desde gmail y desde la nueva contraseña.
+
+## Versión 3.4.0 - 4/11/23
+
 ### Cambios
 
-- Se arreglo un problema del inicio de sesion el cual permitia bajo ciertas condiciones entrar a la pagina sin tener usuario
+- Se agregó una funcionalidad para recuperar contraseña mediante un mensaje al Gmail.
+- Se modificó la base de datos para el campo Gmail.
+- Se modificaron los índices de editar usuarios, usuarios y agregar usuarios.
+- Se modificaron los archivos .php de agregar usuario y editar usuario.
+
+### Importante
+
+Para poder utilizar esta versión en modo local, es necesario hacer un par de cambios en el archivo php.ini y el archivo sendmail.ini en XAMPP.
+
+Pasos a seguir:
+
+1. Abrir las carpetas de XAMPP y encontrar la que se llama "php".
+2. Abrir la carpeta "php".
+3. Buscar el archivo .ini de PHP y abrirlo.
+4. En el archivo .ini de PHP, buscar las siguientes líneas:
+   - sendmail_from = suport.tevl@gmail.com
+   - smtp_port=587
+   - SMTP=smtp.gmail.com
+   - sendmail_path ="C:\xampp\sendmail\sendmail.exe -t"
+5. Abrir la carpeta "sendmail".
+6. En el archivo .ini de sendmail, buscar las siguientes líneas:
+   - smtp_server=smtp.gmail.com
+   - smtp_port=587
+   - auth_username= suport.t1.vl@gmail.com
+   - auth_password= ******************
+
+### Importante
+
+Para poder utilizar esta función en el entorno local, el Gmail desde el cual se enviarán los mensajes debe tener habilitada la verificación en dos pasos. Para ello, se deberá entrar en la configuración de seguridad, habilitar la verificación en dos pasos y generar una contraseña de aplicación que se deberá colocar en sendmail.ini en la línea `auth_password=`.
+
 <br>
+
+
+
+## 22-10-2023 
+### Cambios
+- Se agrego un "¿Olvidaste tu contraseña", Falta arreglar los estilos
+- Se agrego password_forgotten.php Este sera el formulario para enviar las credenciales de la cuenta asociada con el mail
+- Se agrego sendMail.php, Esta sera la logica de php para enviar el mail
+- Se agrego deleteTool.php, esta es la logica para eliminar las herramientas del inventario
+- Se agrego un boton de eliminar en inventory.php
 
 ## [Versión 3.3.1] - 15-10-2023
 ### Cambios
@@ -235,3 +289,4 @@ Permite llevar un registro de las herramientas disponibles, así como también d
 - Buscador de herramientas
 - Iniciar sesion
 - Cerrar sesion
+>>>>>>> Stashed changes

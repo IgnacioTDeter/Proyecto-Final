@@ -11,7 +11,7 @@ include('../php/checkPages.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
   <title> Pañol - Formulario de Pedidos </title>
 </head>
 
@@ -31,13 +31,31 @@ include('../php/checkPages.php');
         </label>
       </div>
       <ul class="nav__list">
-        <li class="nav__item">
+        <li class="nav__iteam">
           <a href="orders.php" class="nav__link">Pedidos</a>
         </li>
-        <li class="nav__item">
+        <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-        <li class="nav__item">
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
+       
+        <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>
       </ul>
@@ -133,7 +151,7 @@ include('../php/checkPages.php');
   </section>
 
   <!-- ------------------------------------------ -->
-
+  <script src="../assets/js/header.js"></script>
   <script>
   document.getElementById("nextButton").addEventListener("click", function () {
   const nombre = document.getElementById("nombre").value;

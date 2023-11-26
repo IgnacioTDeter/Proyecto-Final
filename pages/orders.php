@@ -14,8 +14,8 @@ include('../php/search/search_orders.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" type="image/x-icon">
-  <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/x-icon">
+  
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
   <title>Pañol - Pedidos</title>
@@ -23,7 +23,7 @@ include('../php/search/search_orders.php');
 </head>
 
 <body>
-  <header class="hero">
+<header class="hero">
     <input type="checkbox" id="nav__check" hidden />
     <label for="nav__check" class="hamburger">
       <i class="ri-menu-line hamburger__icon"></i>
@@ -37,25 +37,34 @@ include('../php/search/search_orders.php');
         </label>
       </div>
       <ul class="nav__list">
-    <li class="nav__item">
-        <a href="orders.php" class="nav__link">Pedidos</a>
-    </li>
-    <li class="nav__item">
-        <a href="inventory.php" class="nav__link">Inventario</a>
-    </li>
-    <?php
+        <li class="nav__iteam">
+          <a href="orders.php" class="nav__link">Pedidos</a>
+        </li>
+        <li class="nav__iteam">
+          <a href="inventory.php" class="nav__link">Inventario</a>
+        </li>
+        <?php
     $allowedRoles = ['admin', 'panol'];
     if (in_array($_SESSION['rol'], $allowedRoles)) {
         // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
-        echo '<li class="nav__item">
-                <a href="reports.php" class="nav__link">Informes</a>
-              </li>';
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
     }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
     ?>
-    <li class="nav__item">
-        <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
-    </li>
-</ul>
+        
+        <li class="nav__iteam">
+          <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
+        </li>
+      </ul>
     </nav>
     <div class="hero__logo hero__logo-0">
       <img class="hero__logo-img" src="https://avatars.githubusercontent.com/u/6693385?s=200&v=4" alt="logo" />
@@ -154,8 +163,8 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
 } else {
     // El usuario no tiene el rol de "admin" o "tobias", muestra los botones en gris (#CCCCCC).
     echo '<a href="#" class="btn__table btn__table-blue" data-row-id="' . $rowId . '"><i class="ri-eye-fill"></i></a>';
-    echo '<a href="" class="btn__table btn__table-yellow" style="background-color: #CCCCCC;"><i class="ri-pencil-fill"></i></a>';
-    echo '<a href="" class="btn__table btn__table-red " style="background-color: #CCCCCC;" delete-id="' . $rowId . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
+    echo '<a href="#" class="btn__table btn__table-yellow" style="background-color: #CCCCCC;"><i class="ri-pencil-fill"></i></a>';
+    echo '<a href="#" class="btn__table btn__table-red " style="background-color: #CCCCCC;" delete-id="' . $rowId . '" id="deleteOrder"><i class="ri-close-circle-fill"></i></a>';
 }
 ?>
 
@@ -211,14 +220,14 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
 
     for ($i = 0; $i <= $cantidad; $i++) {
       $selected = ($i == $row['devoluciones']) ? 'selected' : '';
-      echo "<option value='$i' $selected>$i</option>";
+      echo "<option value='$i ' $selected>$i</option>";
     }
 
     $allowedRoles = ['admin', 'panol'];
     if (in_array($_SESSION['rol'], $allowedRoles)) {
       
       echo '<!-- Agrega un botón de enviar para enviar el formulario -->
-      <input type="submit" value="Guardar">';
+      <input class="btn__blue-mini" type="submit" value="Guardar">';
    } 
     
     ?>
@@ -228,7 +237,7 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
 
 
 
-<i></i>
+<i class="flecha__numbers"></i>
 </div>
                 </td>
               </tr>
@@ -244,7 +253,8 @@ if (in_array($_SESSION['rol'], $allowedRoles)) {
   </section>
 
   <script src="../assets/js/data_into_orders.js"></script>
-  <script src="../assets/js/pop_info.js"></script>
+  <script src="../assets/js/pop_info1.js"></script>
+  <script src="../assets/js/header.js"></script>
   <script>
  // Obtén todos los botones de eliminación por su clase
 var deleteButtons = document.querySelectorAll(".delete-button");

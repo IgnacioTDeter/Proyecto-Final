@@ -10,7 +10,8 @@ include('../php/checkPages.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css">
-  <title>Document</title>
+  <link rel="shortcut icon" href="../assets/icons/logo.svg" type="image/x-icon">
+  <title>Pañol - Informes</title>
 </head>
 <body>
 <header class="hero">
@@ -33,9 +34,23 @@ include('../php/checkPages.php');
         <li class="nav__iteam">
           <a href="inventory.php" class="nav__link">Inventario</a>
         </li>
-        <li class="nav__iteam">
-          <a href="reports.php" class="nav__link">Informes</a>
-        </li>
+        <?php
+    $allowedRoles = ['admin', 'panol'];
+    if (in_array($_SESSION['rol'], $allowedRoles)) {
+        // El usuario tiene el rol de "admin" o "tobias", muestra la opción "Informes".
+        echo '<li class="nav__iteam">
+        <a href="reports.php" class="nav__link">Informes</a>
+      </li>';
+    }
+    
+    $allowedRoles = ['admin'];
+    if (in_array($_SESSION['rol'], $allowedRoles)){
+      echo '<li class="nav__iteam">
+      <a href="users.php" class="nav__link">usuarios</a>
+    </li>';
+    }
+    
+    ?>
         <li class="nav__iteam">
           <a href="../php/logout.php" class="nav__link">Cerrar sesión</a>
         </li>

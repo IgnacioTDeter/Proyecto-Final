@@ -6,9 +6,9 @@ $orderId = $data['orderId'];
 
 // Conexión a la base de datos (reemplaza con tus propias credenciales)
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tec1";
+$username = "panoluser";
+$password = "M27j*Vz3mPBb";
+$dbname = "panol";
 
 // Conectar a la base de datos
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,7 +16,7 @@ if ($conn->connect_error) {
   die("Error de conexión: " . $conn->connect_error);
 }
 
-$sql = "UPDATE detalles_pedidos SET estado = '$newStatus' WHERE id = '$orderId'"; // Reemplaza con tu consulta SQL
+$sql = "UPDATE pedidos SET estado = '$newStatus' WHERE id_pedido = '$orderId'"; // Reemplaza con tu consulta SQL
 
 $response = array();
 

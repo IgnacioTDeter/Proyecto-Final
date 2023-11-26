@@ -1,15 +1,6 @@
 <?php
 // Conexión a la base de datos (reemplaza con tus propias credenciales)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tec1";
-
-// Conectar a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-  die("Error de conexión: " . $conn->connect_error);
-}
+include('../../connect_bd.php');
 
 // Obtener el estado actual de todos los pedidos desde la base de datos
 $sql = "SELECT id, estado FROM detalles_pedidos"; // Reemplaza con tu consulta SQL

@@ -1,4 +1,4 @@
-/* dante pufahl y espindola juan*/
+/* dante pufahl/
 
 /* =========== google fonts ============*/
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap");
@@ -122,6 +122,30 @@ a {
   color: white;
 }
 
+.btn__blue-mini{
+  padding: 0.2rem;
+  margin-top: 0.2rem;
+  font-size: var(--fs-0-8);
+  border: 1px solid #808080;
+  
+  border-radius: var(--border-radius-btn);
+  cursor: pointer;
+  margin-bottom: 0;
+
+}
+
+.btn__blue-mini:hover{
+  padding: 0.2rem;
+ background-color: hsl(0, 0%, 80%);
+
+}
+
+.flecha__numbers{
+ margin: -12px 0;
+ transform: 0;
+}
+
+
 .btn__blue-red{
   margin-top: var(--mb-0-5);
   padding: var(--mb-0-5) var(--mb-1);
@@ -155,6 +179,17 @@ a {
   min-height: 40rem;
   align-items: center;
   justify-content: center;
+}
+
+.form__title-div{
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 20% ;
+}
+
+.form__logo{
+  width: 4rem;
 }
 
 .card__container {
@@ -199,6 +234,8 @@ a {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   color: #000000;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 .form__paragraph {
@@ -220,7 +257,7 @@ a {
 }
 
 .form__container {
-  margin-top: 3rem;
+
   display: grid;
   grid-gap: 2.5rem;
 }
@@ -283,6 +320,94 @@ input[type="password"] {
 
 }
 
+.forgo_pass:hover{
+  text-decoration: underline;
+  color: var(--btn-blue-hover);
+}
+
+.forgo_pass:active{
+  color: var(--btn-blue-hover);
+}
+
+.forgo_pass:visited{
+  color: var(--btn-blue-hover);
+}
+
+/**====== password forgotten ======*/
+
+.card__forgo__pass {
+  width: 50%;
+  background-color: var(--card-background);
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--card-background);
+  border-radius: var(--border-radius-cards);
+  margin: 1rem;
+  box-shadow: var(--box-shadow);
+}
+
+.pass__div--title{
+  border-bottom: 1px solid var(--text-color);
+  padding: 1rem 0;
+  align-items: center;
+  text-align: center;
+}
+
+.forgo__pass--title{
+  color: var(--title-color);
+  font-size: var(--fs-1-5);
+}
+
+.pass__div--input{
+  padding: 1rem;
+  border-bottom: 1px solid var(--text-color);
+}
+
+.forgo__pass--paragraph{
+  color: var(--grey-text);
+  padding-bottom: 1rem;
+}
+
+.forgo__pass--email{
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.forgo__div--button{
+  padding: 1rem;
+}
+
+.forgo__pass--button{
+  border: 1px solid var(--text-color);
+  background-color: transparent;
+  display: inline-block;
+  height: auto;
+}
+
+.forgo__pass--button p{
+  color: var(--title-color);
+}
+
+.forgo__pass--button:hover{
+  border: 1px solid var(--text-color);
+  background-color: var(--grey-ultra-light);
+}
+
+.btn__blue-email{
+  align-items: end;
+}
+
+.forgo__pass--subtitle{
+  color: var(--sub-title-color);
+  font-weight: var(--font-semi-bold);
+}
+
+.forgo__pass--subtitle-2{
+  margin-top: 0.5rem;
+  color: var(--sub-title-color);
+  font-weight: var(--font-semi-bold);
+}
 /**============ header ============*/
 
 .hero {
@@ -403,7 +528,7 @@ input[type="password"] {
 }
 
 .tr:nth-child(even) {
-  background-color: var(--grey-ultra-light);
+  background-color: hsl(240, 20%, 99%);
   border-top: 1px solid var(--text-color);
 }
 
@@ -808,6 +933,20 @@ input[type="password"] {
   .popup-content {
     max-width: 80%;
   }
+
+  .form__title-div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    width: 60%;
+    margin: 0 20% ;
+  }
+
+  .form__logo{
+    width: 4rem;
+    margin: auto;
+    align-items: center;
+  }
 }
 
 /* Media query para pantallas con ancho máximo de 767px y altura máxima de 1075px */
@@ -1036,9 +1175,15 @@ input[type="password"] {
 
 /**============ table ============*/
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1110px) {
   .table {
     max-width: 90%;
+  }
+  .form__title-div{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 5% ;
   }
 }
 
@@ -1054,13 +1199,18 @@ input[type="password"] {
   .table {
     max-width: 96%;
   }
+  
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 505px) {
   .table__responsive {
     display: block;
     width: 100%;
     overflow-x: auto;
+  }
+
+  .card__forgo__pass {
+    width: 70%;
   }
 
   .table {

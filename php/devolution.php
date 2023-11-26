@@ -2,7 +2,7 @@
 // Verifica si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Conectar a la base de datos (ajusta las credenciales según tu configuración)
-    $conexion = mysqli_connect('localhost', 'root', '', 'tec1');
+    $conexion = mysqli_connect('localhost', 'panoluser', 'M27j*Vz3mPBb', 'panol');
 
     // Verificar la conexión
     if (mysqli_connect_error()) {

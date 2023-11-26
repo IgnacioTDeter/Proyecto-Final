@@ -1,30 +1,25 @@
-    <?php
+<?php
+$conexion = mysqli_connect('localhost', 'panoluser', 'M27j*Vz3mPBb', 'panol');
+// Agrega código para procesar el formulario aquí
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recupera los datos del formulario
+    $nombre = $_POST['nombre'];
+    $password = $_POST['newPassword'];
+    $rol = $_POST['rol'];
+    $gmail = $_POST['gmail'];
+    $test = $password;
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // Realiza la inserción en la base de datos
+    $sql = "UPDATE usuarios SET password = '$hashed_password', rol = '$rol' WHERE gmail = '$gmail'";
 
-    $conexion = mysqli_connect('localhost', 'root', '', 'tec1');
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Verifica si se ha enviado un formulario mediante POST.
-
-        // Recupera el valor ingresado en el campo "Nueva Contraseña".
-        $nuevaContraseña = $_POST['newPassword'];
-
-        // Verifica si el ID del usuario está disponible, generalmente se pasa como un campo oculto en el formulario o a través de la URL.
-        $idUsuario = $_POST['id']; // Asegúrate de que exista un campo id en tu formulario.
-
-        // Asegúrate de que $idUsuario y $nuevaContraseña no estén vacíos antes de realizar la actualización en la base de datos.
-        if (!empty($idUsuario) && !empty($nuevaContraseña)) {
-            // Realiza una consulta SQL para actualizar la contraseña del usuario.
-            $sql = "UPDATE usuarios SET password = '$nuevaContraseña' WHERE id = $idUsuario";
-
-            // Ejecuta la consulta SQL.
-            if (mysqli_query($conexion, $sql)) {
-                echo "La contraseña se actualizó correctamente.";
-            } else {
-                echo "Error al actualizar la contraseña: " . mysqli_error($conexion);
-            }
-        } else {
-            echo "ID de usuario o contraseña no válidos.";
-        }
+    if (mysqli_query($conexion, $sql)) {
+        // Éxito al insertar el usuario
+        echo "Usuario creado correctamente.";
+         header("Location: ../../../pages/users.php");
+    } 
+    else {
+        // Error al insertar el usuario
+        echo "Error al crear el usuario: " . mysqli_error($conexion);
     }
-
-    ?>
+}
+?>
